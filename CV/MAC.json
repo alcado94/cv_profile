@@ -483,9 +483,10 @@
         "name": "Microsoft Certified: AI Engineer ",
         "startDate": "2024-06-01",
         "institution": {
-          "name": "Microsoft "
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/E342888EDA8A2625?sharingId=734E40528099F728"
         },
-        "finishDate": "2024-06-01",
+        "finishDate": "2025-06-01",
         "linkedCompetences": [
           {
             "name": "Azure",
@@ -568,7 +569,11 @@
         "name": "Máster en Ingeniería Informática ",
         "startDate": "2019-09-01",
         "institution": {
-          "name": "Universidad de Vigo"
+          "name": "Universidad de Vigo",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
+            "alt": "Logotipo_Universidade_de_Vigo.jpg"
+          }
         },
         "linkedCompetences": [
           {
