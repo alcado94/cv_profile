@@ -439,7 +439,11 @@
         "name": "Grado en Ingeniería Informática ",
         "startDate": "2014-09-01",
         "institution": {
-          "name": "Universidad de Vigo"
+          "name": "Universidad de Vigo",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/254ca9a9-a689-4ea4-b0bd-409d48d8475b_logotipo_universidad.jpg",
+            "alt": "Logotipo_Universidade_de_Vigo.jpg"
+          }
         },
         "finishDate": "2019-09-01",
         "linkedCompetences": [
