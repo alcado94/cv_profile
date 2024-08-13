@@ -553,7 +553,11 @@
         "startDate": "2023-10-01",
         "institution": {
           "name": "Microsoft ",
-          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId"
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/a26913f4-3f75-48d9-b097-daae0d2d6b48_microsoft-certified-.svg",
+            "alt": "microsoft-certified-associate-badge.svg"
+          }
         },
         "finishDate": "2024-10-01",
         "linkedCompetences": [
