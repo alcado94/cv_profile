@@ -520,7 +520,11 @@
         "name": "Microsoft Certified: Azure Data Fundamentals",
         "startDate": "2023-02-01",
         "institution": {
-          "name": "Microsoft "
+          "name": "Microsoft ",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/c07389da-155f-4656-8c0e-1f09a7d275a9_microsoft-certified-.svg",
+            "alt": "microsoft-certified-fundamentals-badge.svg"
+          }
         },
         "linkedCompetences": [
           {
