@@ -1,0 +1,685 @@
+{
+  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.5/schema/schema.json",
+  "settings": {
+    "language": "EN",
+    "MACVersion": "0.5"
+  },
+  "aboutMe": {
+    "profile": {
+      "name": "Alejandro",
+      "surnames": "Campos Domínguez",
+      "title": "Data Scientist/ML Engineer",
+      "description": "Soy un ingeniero enfocado en el desarrollo de productos y plataformas que integran inteligencia artificial (IA y ML) y procesamiento de datos. Tengo experiencia y conocimientos sobre diferentes ámbitos del desarrollo como Frontend, Backend, ML Big Data y Devops, ya que me interesa aprender nuevas tecnologías continuamente y tener una comunicación efectiva con mi equipo.\n\nEn los últimos años, he estado trabajando proyectos de I+D, donde mi tarea principal era desarrollar modelos de ML y la toma de decisiones en el diseño de plataformas. Recientemente me he formado en IA Generativa y su aplicabilidad, desarrollando proyectos de sistemas RAG con grandes bases documentales.\n\nMe gusta trabajar juntos a diferentes perfiles tanto técnicos como más comerciales, para desarrollar soluciones efectivas y con gran impacto de cara al cliente.\n",
+      "avatar": {
+        "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/fb3840aa-4a74-4e2e-8391-b6f3cba2e69f_linkedin-photo-11521.linkedin-photo-11521",
+        "alt": "23/12/28/fb3840aa-4a74-4e2e-8391-b6f3cba2e69f_linkedin-photo-11521.linkedin-photo-11521"
+      },
+      "location": {
+        "notes": "Autocompleted using Google Maps API (id: ChIJ3VJ27lykOg0RMMvJc4L1BAM)",
+        "country": "España",
+        "region": "Galicia"
+      }
+    },
+    "relevantLinks": [
+      {
+        "type": "linkedin",
+        "URL": "https://linkedin.com/in/alejandro-campos-dom%C3%ADnguez"
+      },
+      {
+        "type": "github",
+        "URL": "https://github.com/alcado94"
+      }
+    ]
+  },
+  "experience": {
+    "jobs": [
+      {
+        "organization": {
+          "name": "EDNON",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521",
+            "alt": "23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521"
+          }
+        },
+        "roles": [
+          {
+            "name": "Data Scientist",
+            "startDate": "2022-03-01",
+            "challenges": [
+              {
+                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Desarrollo de proyectos de IA Generativa (LLM) en el ámbito legal  y desarrollo de sistemas RAG.\n- Uso de herramientas MLOps como MLFlow, AirFlow, Seldon Core o Kubeflow.\n- Especializado en trabajar con el ecosistema de Azure. \n- Apoyo a departamento comercial en promoción de proyectos."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Airflow",
+                "type": "technology"
+              },
+              {
+                "name": "Azure",
+                "type": "technology"
+              },
+              {
+                "name": "Docker",
+                "type": "technology"
+              },
+              {
+                "name": "Fastapi",
+                "type": "technology"
+              },
+              {
+                "name": "InfluxDB",
+                "type": "technology"
+              },
+              {
+                "name": "Kubernetes",
+                "type": "technology"
+              },
+              {
+                "name": "LangChain",
+                "type": "technology"
+              },
+              {
+                "name": "MLflow",
+                "type": "technology"
+              },
+              {
+                "name": "Python",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Centro de Intelixencia Artificial de Ourense"
+        },
+        "roles": [
+          {
+            "name": "Ingeniero de Software e investigación",
+            "startDate": "2020-09-01",
+            "finishDate": "2022-03-31",
+            "challenges": [
+              {
+                "description": "Funciones de asesoramiento y consultoría para el Concello de Ourense en temáticas relacionadas con Tecnologías Web e Inteligencia Artificial.\nAnálisis, diseño y desarrollo de aplicaciones Web Django para la administración pública."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Django",
+                "type": "technology"
+              },
+              {
+                "name": "Docker",
+                "type": "technology"
+              },
+              {
+                "name": "Nginx",
+                "type": "technology"
+              },
+              {
+                "name": "PostgreSQL",
+                "type": "technology"
+              },
+              {
+                "name": "Python",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Bahia Software",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/974e8fd2-ae7d-4532-932c-5505977d1270_linkedin-photo-11521.linkedin-photo-11521",
+            "alt": "23/12/28/974e8fd2-ae7d-4532-932c-5505977d1270_linkedin-photo-11521.linkedin-photo-11521"
+          }
+        },
+        "roles": [
+          {
+            "name": "Desarrollador Big Data - Programador Junior",
+            "startDate": "2020-02-01",
+            "finishDate": "2020-09-30",
+            "challenges": [
+              {
+                "description": "Desarrollador de aplicaciones web en Java y Angular en conjunto de tecnologías Big Data como Stack Elastic (ELK) y Apache Nifi para la realización de ETL"
+              }
+            ],
+            "competences": [
+              {
+                "name": "AngularJS",
+                "type": "technology"
+              },
+              {
+                "name": "Elasticsearch",
+                "type": "technology"
+              },
+              {
+                "name": "Java",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
+          "name": "Centro Tecnológico de la Automoción de Galicia - CTAG",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/25de8f1d-0e65-463d-b47b-3a792723b90f_linkedin-photo-11521.linkedin-photo-11521",
+            "alt": "23/12/28/25de8f1d-0e65-463d-b47b-3a792723b90f_linkedin-photo-11521.linkedin-photo-11521"
+          }
+        },
+        "roles": [
+          {
+            "name": "Ingeniero de Big Data - Técnico de Conectividad",
+            "startDate": "2019-02-01",
+            "finishDate": "2019-04-30",
+            "challenges": [
+              {
+                "description": "Análisis de datos relacionado con el mundo de la automoción con Python, Pandas y Keras.\nDiseño e implementación de ecosistemas Big Data con Apache Spark y Apache Kafka."
+              }
+            ],
+            "competences": [
+              {
+                "name": "Hive",
+                "type": "technology"
+              },
+              {
+                "name": "Kafka",
+                "type": "technology"
+              },
+              {
+                "name": "Pandas",
+                "type": "technology"
+              },
+              {
+                "name": "Python",
+                "type": "technology"
+              },
+              {
+                "name": "Spark",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "knowledge": {
+    "languages": [
+      {
+        "name": "EN",
+        "fullName": "Inglés",
+        "level": "Professional working proficiency"
+      },
+      {
+        "name": "ES",
+        "fullName": "Español",
+        "level": "Native or bilingual proficiency"
+      },
+      {
+        "name": "GL",
+        "fullName": "Gallego",
+        "level": "Native or bilingual proficiency"
+      }
+    ],
+    "hardSkills": [
+      {
+        "skill": {
+          "name": "Airflow",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Azure",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "CSS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Django",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Docker",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "ELK",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Elasticsearch",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "HTML",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "InfluxDB",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Java",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "JavaScript",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Kafka",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Kubernetes",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "LangChain",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "MLflow",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "MySQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "NodeJS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Numpy",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Pandas",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "PostgreSQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "PyTorch",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Python",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Scikit-learn",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Vue",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "dbt",
+          "type": "technology"
+        }
+      }
+    ],
+    "studies": [
+      {
+        "studyType": "unaccredited",
+        "degreeAchieved": true,
+        "name": "Big Data Processing",
+        "startDate": "2017-10-01",
+        "institution": {
+          "name": "Fundación Telefónica "
+        },
+        "finishDate": "2018-01-01",
+        "linkedCompetences": [
+          {
+            "name": "Hadoop",
+            "type": "technology"
+          },
+          {
+            "name": "Hive",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          },
+          {
+            "name": "Spark",
+            "type": "technology"
+          },
+          {
+            "name": "Sqoop",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
+        "name": "Computer Science ",
+        "startDate": "2016-09-01",
+        "institution": {
+          "name": "University of Bielsko-biala "
+        },
+        "finishDate": "2017-06-01",
+        "linkedCompetences": [
+          {
+            "name": "C#",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
+        "name": "Grado en Ingeniería Informática ",
+        "startDate": "2014-09-01",
+        "institution": {
+          "name": "Universidad de Vigo"
+        },
+        "finishDate": "2019-09-01",
+        "linkedCompetences": [
+          {
+            "name": "Java",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": false,
+        "name": "Machine Learning",
+        "startDate": "2019-07-01",
+        "institution": {
+          "name": "Coursera - Stanford University",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId"
+        },
+        "linkedCompetences": [
+          {
+            "name": ".Net Core",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Microsoft Certified: AI Engineer ",
+        "startDate": "2024-06-01",
+        "institution": {
+          "name": "Microsoft "
+        },
+        "finishDate": "2024-06-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": false,
+        "name": "Microsoft Certified: Azure AI Fundamentals",
+        "startDate": "2023-03-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId"
+        },
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": false,
+        "name": "Microsoft Certified: Azure Data Fundamentals",
+        "startDate": "2023-02-01",
+        "institution": {
+          "name": "Microsoft "
+        },
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Microsoft Certified: Azure Data Scientist Associate",
+        "startDate": "2023-08-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/5067E36859B04AB4?sharingId=734E40528099F728"
+        },
+        "finishDate": "2025-08-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Microsoft Certified: Power BI Data Analyst Associate",
+        "startDate": "2023-10-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId"
+        },
+        "finishDate": "2024-10-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          },
+          {
+            "name": "Microsoft Power BI",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": false,
+        "name": "Máster en Ingeniería Informática ",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "Universidad de Vigo"
+        },
+        "linkedCompetences": [
+          {
+            "name": "Java",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          }
+        ]
+      }
+    ],
+    "softSkills": [
+      {
+        "skill": {
+          "name": "Adaptability to change",
+          "type": "practice"
+        }
+      },
+      {
+        "skill": {
+          "name": "Continuous learning",
+          "type": "practice"
+        }
+      },
+      {
+        "skill": {
+          "name": "Proactivity",
+          "type": "practice"
+        }
+      }
+    ]
+  },
+  "careerPreferences": {
+    "contact": {
+      "publicProfiles": [
+        {
+          "URL": "https://linkedin.com/in/alejandro-campos-dom%C3%ADnguez",
+          "type": "linkedin"
+        },
+        {
+          "URL": "https://github.com/alcado94",
+          "type": "github"
+        }
+      ],
+      "contactMails": [
+        "camposdominguezalejandro@gmail.com"
+      ]
+    },
+    "preferences": {
+      "preferredCompetences": [
+        {
+          "name": "Azure",
+          "type": "technology"
+        },
+        {
+          "name": "Docker",
+          "type": "technology"
+        },
+        {
+          "name": "Fastapi",
+          "type": "technology"
+        },
+        {
+          "name": "LangChain",
+          "type": "technology"
+        },
+        {
+          "name": "Python",
+          "type": "technology"
+        }
+      ],
+      "discardedCompetences": [
+        {
+          "name": "PHP",
+          "type": "technology"
+        }
+      ],
+      "preferredRoles": [
+        "Data Engineer",
+        "Data Scientist",
+        "Machine Learning Engineer"
+      ]
+    },
+    "status": "searchingActively",
+    "requirements": {
+      "contractTypes": [
+        "permanent"
+      ]
+    }
+  },
+  "manfredSpecificData": {
+    "mainStackTechs": [
+      {
+        "name": "Azure",
+        "type": "technology"
+      },
+      {
+        "name": "Docker",
+        "type": "technology"
+      },
+      {
+        "name": "PostgreSQL",
+        "type": "technology"
+      },
+      {
+        "name": "Python",
+        "type": "technology"
+      },
+      {
+        "name": "Scikit-learn",
+        "type": "technology"
+      }
+    ],
+    "desiredJobDescription": "Me gustaría trabajar en un equipo multidisciplinar donde se pueda aprender continuamente de otro tipo de roles. Por mis conocimientos considero que puedo tocar diferentes tecnologías de otros ámbitos o al menos comunicarme claramente con otros roles. Me gusta dar soluciones que tengan sentido, por ello me gusta tener una estrecha relación con negocio para llevar los casos de uso más relevantes y útiles. La continuación formación es un MUST de forma diaria. "
+  }
+}
