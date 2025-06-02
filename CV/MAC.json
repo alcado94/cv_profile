@@ -35,11 +35,7 @@
     "jobs": [
       {
         "organization": {
-          "name": "Keepler Data Tech",
-          "image": {
-            "link": "https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/eqj9y9jzisbfsmqcrgey",
-            "alt": "23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521"
-          }
+          "name": "Keepler Data Tech"
         },
         "roles": [
           {
@@ -128,11 +124,7 @@
       },
       {
         "organization": {
-          "name": "Centro de Intelixencia Artificial de Ourense",
-          "image": {
-            "link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ZZW3vWC0do_-WmGhTL_emHffOOdNeR9qRw&s",
-            "alt": "23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521"
-          }
+          "name": "Centro de Intelixencia Artificial de Ourense"
         },
         "roles": [
           {
@@ -415,6 +407,26 @@
     ],
     "studies": [
       {
+        "studyType": "certification",
+        "degreeAchieved": false,
+        "name": "AWS Cloud Practitioner",
+        "startDate": "2025-05-01",
+        "institution": {
+          "name": "AWS",
+          "URL": "https://www.credly.com/badges/750822b3-50cc-485a-b6cb-5c3a80e4b4d7/public_url",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/06/02/56f7cd58-79aa-4d07-9446-baba8ec90d87_image-(1).png",
+            "alt": "image (1).png"
+          }
+        },
+        "linkedCompetences": [
+          {
+            "name": "AWS",
+            "type": "technology"
+          }
+        ]
+      },
+      {
         "studyType": "unaccredited",
         "degreeAchieved": true,
         "name": "Big Data Processing",
@@ -449,6 +461,26 @@
       {
         "studyType": "officialDegree",
         "degreeAchieved": true,
+        "name": "Computer Science ",
+        "startDate": "2016-09-01",
+        "institution": {
+          "name": "University of Bielsko-biala "
+        },
+        "finishDate": "2017-06-01",
+        "linkedCompetences": [
+          {
+            "name": "C#",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
         "name": "Grado en Ingeniería Informática ",
         "startDate": "2014-09-01",
         "institution": {
@@ -475,28 +507,8 @@
         ]
       },
       {
-        "studyType": "officialDegree",
-        "degreeAchieved": true,
-        "name": "Computer Science ",
-        "startDate": "2016-09-01",
-        "institution": {
-          "name": "University of Bielsko-biala "
-        },
-        "finishDate": "2017-06-01",
-        "linkedCompetences": [
-          {
-            "name": "C#",
-            "type": "technology"
-          },
-          {
-            "name": "SQL",
-            "type": "technology"
-          }
-        ]
-      },
-      {
         "studyType": "certification",
-        "degreeAchieved": true,
+        "degreeAchieved": false,
         "name": "Machine Learning",
         "startDate": "2019-07-01",
         "institution": {
@@ -553,7 +565,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": true,
+        "degreeAchieved": false,
         "name": "Microsoft Certified: Azure Data Fundamentals",
         "startDate": "2023-02-01",
         "institution": {
