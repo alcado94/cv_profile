@@ -35,7 +35,11 @@
     "jobs": [
       {
         "organization": {
-          "name": "Keepler Data Tech"
+          "name": "Keepler Data Tech",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/25/06/02/221cd6ee-6bd5-4648-a326-caf861c17443_keepler.png",
+            "alt": "keepler.png"
+          }
         },
         "roles": [
           {
