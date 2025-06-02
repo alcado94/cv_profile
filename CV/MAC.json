@@ -35,7 +35,11 @@
     "jobs": [
       {
         "organization": {
-          "name": "Kepler Data Tech"
+          "name": "Keepler Data Tech",
+          "image": {
+            "link": "https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/eqj9y9jzisbfsmqcrgey",
+            "alt": "23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521"
+          }
         },
         "roles": [
           {
@@ -124,7 +128,11 @@
       },
       {
         "organization": {
-          "name": "Centro de Intelixencia Artificial de Ourense"
+          "name": "Centro de Intelixencia Artificial de Ourense",
+          "image": {
+            "link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ZZW3vWC0do_-WmGhTL_emHffOOdNeR9qRw&s",
+            "alt": "23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521"
+          }
         },
         "roles": [
           {
@@ -133,7 +141,7 @@
             "finishDate": "2022-03-31",
             "challenges": [
               {
-                "description": "Asesoramiento y consultoría al Concello de Ourense en proyectos de tecnologías web e inteligencia artificial.\nAnálisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública."
+                "description": "- Asesoramiento y consultoría al Concello de Ourense en proyectos de tecnologías web e inteligencia artificial.\n- Análisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública"
               }
             ],
             "competences": [
@@ -211,7 +219,7 @@
             "finishDate": "2019-04-30",
             "challenges": [
               {
-                "description": "Análisis de datos relacionado con el mundo de la automoción con Python, Pandas y Keras.\nDiseño e implementación de ecosistemas Big Data con Apache Spark y Apache Kafka."
+                "description": "- Análisis de datos relacionado con el mundo de la automoción con Python, Pandas y Keras.\n- Diseño e implementación de ecosistemas Big Data con Apache Spark y Apache Kafka."
               }
             ],
             "competences": [
