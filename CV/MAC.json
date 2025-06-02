@@ -58,10 +58,6 @@
               {
                 "name": "LangGraph",
                 "type": "technology"
-              },
-              {
-                "name": "MCP",
-                "type": "technology"
               }
             ]
           }
@@ -635,26 +631,6 @@
           }
         ]
       }
-    ],
-    "softSkills": [
-      {
-        "skill": {
-          "name": "Adaptability to change",
-          "type": "practice"
-        }
-      },
-      {
-        "skill": {
-          "name": "Continuous learning",
-          "type": "practice"
-        }
-      },
-      {
-        "skill": {
-          "name": "Proactivity",
-          "type": "practice"
-        }
-      }
     ]
   },
   "careerPreferences": {
@@ -668,9 +644,6 @@
           "URL": "https://github.com/alcado94",
           "type": "github"
         }
-      ],
-      "contactMails": [
-        "camposdominguezalejandro@gmail.com"
       ]
     },
     "preferences": {
@@ -727,10 +700,6 @@
       },
       {
         "name": "PostgreSQL",
-        "type": "technology"
-      },
-      {
-        "name": "Python",
         "type": "technology"
       },
       {
