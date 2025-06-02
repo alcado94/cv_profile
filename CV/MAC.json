@@ -15,10 +15,17 @@
         "alt": "23/12/28/fb3840aa-4a74-4e2e-8391-b6f3cba2e69f_linkedin-photo-11521.linkedin-photo-11521"
       },
       "location": {
-        "notes": "Autocompleted using Google Maps API (id: ChIJ3VJ27lykOg0RMMvJc4L1BAM)",
-        "country": "España",
-        "region": "Galicia"
+        "country": "ES",
+        "region": "Galicia",
+        "municipality": "Ourense",
+        "address": "Ourense, España"
+      },
+      "contact": {
+        "contactMails": [
+          "camposdominguezalejandro@gmail.com"
+        ]
       }
+
     },
     "relevantLinks": [
       {
@@ -462,26 +469,6 @@
           },
           {
             "name": "Sqoop",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "officialDegree",
-        "degreeAchieved": true,
-        "name": "Computer Science ",
-        "startDate": "2016-09-01",
-        "institution": {
-          "name": "University of Bielsko-biala "
-        },
-        "finishDate": "2017-06-01",
-        "linkedCompetences": [
-          {
-            "name": "C#",
-            "type": "technology"
-          },
-          {
-            "name": "SQL",
             "type": "technology"
           }
         ]
