@@ -32,38 +32,32 @@ jobs:
         
     - name: Install dependencies
       run: |
-        cd cv_profile
         pip install -r requirements.txt
         
     - name: Validate CV schema
       run: |
-        cd cv_profile
         python3 src/builder.py CV/MAC.json --validate
         
     - name: List available templates
       run: |
-        cd cv_profile
         python3 src/builder.py CV/MAC.json --list-templates
         
     - name: Generate CV (Modern Template)
       run: |
-        cd cv_profile
         mkdir -p ../public
         python3 src/builder.py CV/MAC.json -t modern_cv.html -o ../public/index.html
         
     - name: Generate CV (Simple Template)
       run: |
-        cd cv_profile
         python3 src/builder.py CV/MAC.json -t simple_cv.html -o ../public/simple.html
         
     - name: Generate CV (Text Format)
       run: |
-        cd cv_profile
         python3 src/builder.py CV/MAC.json -t simple_text.txt -o ../public/cv.txt
         
     - name: Create index page with multiple formats
       run: |
-        cat > public/versions.html << 'EOF'
+        cat > ../public/versions.html << 'EOF'
         <!DOCTYPE html>
         <html lang="es">
         <head>
