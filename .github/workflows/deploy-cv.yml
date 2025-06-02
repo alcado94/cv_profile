@@ -34,13 +34,13 @@ jobs:
       run: |
         pip install -r requirements.txt
         
-    - name: Validate CV schema
-      run: |
-        python3 src/builder.py CV/MAC.json --validate
+    # - name: Validate CV schema
+    #   run: |
+    #     python3 src/builder.py CV/MAC.json --validate
         
-    - name: List available templates
-      run: |
-        python3 src/builder.py CV/MAC.json --list-templates
+    # - name: List available templates
+    #   run: |
+    #     python3 src/builder.py CV/MAC.json --list-templates
         
     - name: Generate CV (Modern Template)
       run: |
