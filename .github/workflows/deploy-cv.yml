@@ -44,16 +44,16 @@ jobs:
         
     - name: Generate CV (Modern Template)
       run: |
-        mkdir -p ../public
-        python3 src/builder.py CV/MAC.json -t modern_cv.html -o ../public/index.html
+        mkdir -p ./public
+        python3 src/builder.py CV/MAC.json -t modern_cv.html -o ./public/index.html
         
     - name: Generate CV (Text Format)
       run: |
-        python3 src/builder.py CV/MAC.json -t simple_text.txt -o ../public/cv.txt
+        python3 src/builder.py CV/MAC.json -t simple_text.txt -o ./public/cv.txt
         
     - name: Create index page with multiple formats
       run: |
-        cat > ../public/versions.html << 'EOF'
+        cat > ./public/versions.html << 'EOF'
         <!DOCTYPE html>
         <html lang="es">
         <head>
