@@ -3,8 +3,6 @@ name: CI - Validate CV and Templates
 on:
   pull_request:
     branches: [ main, master ]
-    paths:
-      - 'cv_profile/**'
   
   push:
     branches-ignore: [ main, master ]
