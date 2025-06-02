@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.5/schema/schema.json",
   "settings": {
-    "language": "EN",
+    "language": "ES",
     "MACVersion": "0.5"
   },
   "aboutMe": {
@@ -9,7 +9,7 @@
       "name": "Alejandro",
       "surnames": "Campos Domínguez",
       "title": "Data Scientist/ML Engineer",
-      "description": "Soy un ingeniero enfocado en el desarrollo de productos y plataformas que integran inteligencia artificial (IA y ML) y procesamiento de datos. Tengo experiencia y conocimientos sobre diferentes ámbitos del desarrollo como Frontend, Backend, ML Big Data y Devops, ya que me interesa aprender nuevas tecnologías continuamente y tener una comunicación efectiva con mi equipo.\n\nEn los últimos años, he estado trabajando proyectos de I+D, donde mi tarea principal era desarrollar modelos de ML y la toma de decisiones en el diseño de plataformas. Recientemente me he formado en IA Generativa y su aplicabilidad, desarrollando proyectos de sistemas RAG con grandes bases documentales.\n\nMe gusta trabajar juntos a diferentes perfiles tanto técnicos como más comerciales, para desarrollar soluciones efectivas y con gran impacto de cara al cliente.\n",
+      "description": "Con más de 7 años de experiencia, he desarrollado proyectos en los ámbitos de ML, IA Generativa, desarrollo Full-Stack, Big Data y DevOps. Mi pasión radica en el aprendizaje continuo y la aplicación de nuevas tecnologías para crear soluciones innovadoras que generen valor y tenga impacto para el negocio, con un enfoque colaborativo entre el equipo técnico y el equipo de negocio.\nRecientemente he desarrollado soluciones de IA, en las que he diseñado e implementado modelos de ML y desarrollando aplicaciones con IA Generativa, tomando decisiones arquitectónicas y técnicas entre los equipos técnicos y las áreas de negocio, traduciendo conceptos técnicos complejos en soluciones estratégicas.",
       "avatar": {
         "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/fb3840aa-4a74-4e2e-8391-b6f3cba2e69f_linkedin-photo-11521.linkedin-photo-11521",
         "alt": "23/12/28/fb3840aa-4a74-4e2e-8391-b6f3cba2e69f_linkedin-photo-11521.linkedin-photo-11521"
@@ -35,6 +35,40 @@
     "jobs": [
       {
         "organization": {
+          "name": "Kepler Data Tech"
+        },
+        "roles": [
+          {
+            "name": "Data Scientist",
+            "startDate": "2025-02-24",
+            "challenges": [
+              {
+                "description": "Realicé un prototipo de IA Generativa para la detección de cláusulas contractuales y la generación de informes automáticos de peritaje."
+              }
+            ],
+            "competences": [
+              {
+                "name": "AWS",
+                "type": "technology"
+              },
+              {
+                "name": "LangChain",
+                "type": "technology"
+              },
+              {
+                "name": "LangGraph",
+                "type": "technology"
+              },
+              {
+                "name": "MCP",
+                "type": "technology"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "organization": {
           "name": "EDNON",
           "image": {
             "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/12/28/20b38aa5-e77f-485b-8bb6-19deddf296a8_linkedin-photo-11521.linkedin-photo-11521",
@@ -45,6 +79,7 @@
           {
             "name": "Data Scientist",
             "startDate": "2022-03-01",
+            "finishDate": "2025-02-20",
             "challenges": [
               {
                 "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Desarrollo de proyectos de IA Generativa (LLM) en el ámbito legal  y desarrollo de sistemas RAG.\n- Uso de herramientas MLOps como MLFlow, AirFlow, Seldon Core o Kubeflow.\n- Especializado en trabajar con el ecosistema de Azure. \n- Apoyo a departamento comercial en promoción de proyectos."
@@ -102,7 +137,7 @@
             "finishDate": "2022-03-31",
             "challenges": [
               {
-                "description": "Funciones de asesoramiento y consultoría para el Concello de Ourense en temáticas relacionadas con Tecnologías Web e Inteligencia Artificial.\nAnálisis, diseño y desarrollo de aplicaciones Web Django para la administración pública."
+                "description": "Asesoramiento y consultoría al Concello de Ourense en proyectos de tecnologías web e inteligencia artificial.\nAnálisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública."
               }
             ],
             "competences": [
@@ -352,12 +387,6 @@
       {
         "skill": {
           "name": "PyTorch",
-          "type": "technology"
-        }
-      },
-      {
-        "skill": {
-          "name": "Python",
           "type": "technology"
         }
       },
