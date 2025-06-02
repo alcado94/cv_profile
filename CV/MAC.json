@@ -496,7 +496,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Machine Learning",
         "startDate": "2019-07-01",
         "institution": {
@@ -618,7 +618,7 @@
       },
       {
         "studyType": "officialDegree",
-        "degreeAchieved": true,
+        "degreeAchieved": false,
         "name": "Máster en Ingeniería Informática ",
         "startDate": "2019-09-01",
         "institution": {
