@@ -553,7 +553,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Microsoft Certified: Azure Data Fundamentals",
         "startDate": "2023-02-01",
         "institution": {
@@ -618,7 +618,7 @@
       },
       {
         "studyType": "officialDegree",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Máster en Ingeniería Informática ",
         "startDate": "2019-09-01",
         "institution": {
