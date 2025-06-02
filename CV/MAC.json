@@ -449,26 +449,6 @@
       {
         "studyType": "officialDegree",
         "degreeAchieved": true,
-        "name": "Computer Science ",
-        "startDate": "2016-09-01",
-        "institution": {
-          "name": "University of Bielsko-biala "
-        },
-        "finishDate": "2017-06-01",
-        "linkedCompetences": [
-          {
-            "name": "C#",
-            "type": "technology"
-          },
-          {
-            "name": "SQL",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "officialDegree",
-        "degreeAchieved": true,
         "name": "Grado en Ingeniería Informática ",
         "startDate": "2014-09-01",
         "institution": {
@@ -486,6 +466,26 @@
           },
           {
             "name": "Python",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
+        "name": "Computer Science ",
+        "startDate": "2016-09-01",
+        "institution": {
+          "name": "University of Bielsko-biala "
+        },
+        "finishDate": "2017-06-01",
+        "linkedCompetences": [
+          {
+            "name": "C#",
             "type": "technology"
           },
           {
