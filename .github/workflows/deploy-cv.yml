@@ -47,10 +47,6 @@ jobs:
         mkdir -p ../public
         python3 src/builder.py CV/MAC.json -t modern_cv.html -o ../public/index.html
         
-    - name: Generate CV (Simple Template)
-      run: |
-        python3 src/builder.py CV/MAC.json -t simple_cv.html -o ../public/simple.html
-        
     - name: Generate CV (Text Format)
       run: |
         python3 src/builder.py CV/MAC.json -t simple_text.txt -o ../public/cv.txt
