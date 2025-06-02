@@ -460,6 +460,49 @@
       },
       {
         "studyType": "officialDegree",
+        "degreeAchieved": false,
+        "name": "Máster en Ingeniería Informática ",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "Universidad de Vigo",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
+            "alt": "Logotipo_Universidade_de_Vigo.jpg"
+          }
+        },
+        "linkedCompetences": [
+          {
+            "name": "Java",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": true,
+        "name": "Computer Science ",
+        "startDate": "2016-09-01",
+        "institution": {
+          "name": "University of Bielsko-biala "
+        },
+        "finishDate": "2017-06-01",
+        "linkedCompetences": [
+          {
+            "name": "C#",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
         "degreeAchieved": true,
         "name": "Computer Science ",
         "startDate": "2016-09-01",
@@ -624,29 +667,6 @@
           },
           {
             "name": "Microsoft Power BI",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "officialDegree",
-        "degreeAchieved": false,
-        "name": "Máster en Ingeniería Informática ",
-        "startDate": "2019-09-01",
-        "institution": {
-          "name": "Universidad de Vigo",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
-            "alt": "Logotipo_Universidade_de_Vigo.jpg"
-          }
-        },
-        "linkedCompetences": [
-          {
-            "name": "Java",
-            "type": "technology"
-          },
-          {
-            "name": "Python",
             "type": "technology"
           }
         ]
