@@ -1,0 +1,75 @@
+name: CI - Validate CV and Templates
+
+on:
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'cv_profile/**'
+  
+  push:
+    branches-ignore: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        cd cv_profile
+        pip install -r requirements.txt
+        
+    - name: Validate CV JSON schema
+      run: |
+        cd cv_profile
+        python3 -m json.tool CV/MAC.json > /dev/null
+        echo "✅ JSON syntax is valid"
+        
+    - name: Validate MAC schema
+      run: |
+        cd cv_profile
+        python3 src/builder.py CV/MAC.json --validate
+        
+    - name: Test template generation
+      run: |
+        cd cv_profile
+        mkdir -p test-output
+        
+        # Test all templates
+        for template in templates/*.html templates/*.txt; do
+          if [ -f "$template" ]; then
+            template_name=$(basename "$template")
+            echo "Testing template: $template_name"
+            python3 src/builder.py CV/MAC.json -t "$template_name" -o "test-output/${template_name%.*}-test.${template_name##*.}"
+          fi
+        done
+        
+    - name: Check generated files
+      run: |
+        cd cv_profile
+        ls -la test-output/
+        
+        # Verify files were created and are not empty
+        for file in test-output/*; do
+          if [ -f "$file" ] && [ -s "$file" ]; then
+            echo "✅ $(basename "$file") generated successfully ($(wc -c < "$file") bytes)"
+          else
+            echo "❌ $(basename "$file") failed to generate or is empty"
+            exit 1
+          fi
+        done
+        
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-cv-outputs
+        path: cv_profile/test-output/
+        retention-days: 5 

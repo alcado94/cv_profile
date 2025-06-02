@@ -1,0 +1,79 @@
+{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}
+{{ aboutMe.profile.title }}
+{{ "=" * (aboutMe.profile.name|length + aboutMe.profile.surnames|length + 1) }}
+
+{% if aboutMe.profile.location -%}
+Ubicación: {{ aboutMe.profile.location.municipality or '' }}{% if aboutMe.profile.location.region %}, {{ aboutMe.profile.location.region }}{% endif %}{% if aboutMe.profile.location.country %}, {{ aboutMe.profile.location.country }}{% endif %}
+{% endif %}
+
+{% if aboutMe.relevantLinks -%}
+Contacto:
+{% for link in aboutMe.relevantLinks -%}
+- {{ link.type|title }}: {{ link.URL }}
+{% endfor %}
+{% endif %}
+
+{% if aboutMe.profile.description -%}
+SOBRE MÍ
+--------
+{{ aboutMe.profile.description }}
+
+{% endif %}
+
+{% if experience and experience.jobs -%}
+EXPERIENCIA PROFESIONAL
+------------------------
+{% if total_experience_years -%}
+Experiencia total: {{ total_experience_years }} años
+
+{% endif %}
+{% for job in experience.jobs -%}
+{% for role in job.roles -%}
+{{ job.organization.name }} | {{ role.name }}
+{{ role.startDate|format_date }} - {% if role.finishDate %}{{ role.finishDate|format_date }}{% else %}Presente{% endif %}{% if role.startDate %} ({{ role.startDate|experience_duration(role.finishDate) }}){% endif %}
+
+{% if role.challenges -%}
+{% for challenge in role.challenges -%}
+{{ challenge.description }}
+{% endfor %}
+{% endif %}
+
+{% if role.competences -%}
+Tecnologías: {{ role.competences|map(attribute='name')|join(', ') }}
+{% endif %}
+
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+{% if knowledge -%}
+CONOCIMIENTOS
+-------------
+
+{% if knowledge.languages -%}
+Idiomas:
+{% for language in knowledge.languages -%}
+- {{ language.fullName or language.name }}{% if language.level %}: {{ language.level }}{% endif %}
+{% endfor %}
+
+{% endif %}
+
+{% if knowledge.hardSkills -%}
+Habilidades técnicas:
+{% set technologies = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list -%}
+{% if technologies -%}
+{{ technologies|map(attribute='skill.name')|join(', ') }}
+{% endif %}
+
+{% endif %}
+
+{% if knowledge.studies -%}
+Formación:
+{% for study in knowledge.studies -%}
+- {{ study.name }} | {{ study.institution.name }}
+  {{ study.startDate|format_date }} - {% if study.finishDate %}{{ study.finishDate|format_date }}{% else %}En curso{% endif %}
+{% if study.linkedCompetences %}  Tecnologías: {{ study.linkedCompetences|map(attribute='name')|join(', ') }}{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endif %}
