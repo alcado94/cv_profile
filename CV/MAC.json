@@ -509,8 +509,8 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
-        "name": "Machine Learning",
+        "degreeAchieved": true,
+        "name": "Machine Learning - Coursera",
         "startDate": "2019-07-01",
         "institution": {
           "name": "Coursera - Stanford University",
@@ -518,7 +518,7 @@
         },
         "linkedCompetences": [
           {
-            "name": ".Net Core",
+            "name": "Machine Learning",
             "type": "technology"
           }
         ]
@@ -546,7 +546,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Microsoft Certified: Azure AI Fundamentals",
         "startDate": "2023-03-01",
         "institution": {
@@ -566,7 +566,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Microsoft Certified: Azure Data Fundamentals",
         "startDate": "2023-02-01",
         "institution": {
