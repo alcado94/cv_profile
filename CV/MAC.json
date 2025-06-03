@@ -95,7 +95,7 @@
             "finishDate": "2025-02-20",
             "challenges": [
               {
-                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Desarrollo de proyectos de IA Generativa (LLM) en el ámbito legal  y desarrollo de sistemas RAG.\n- Uso de herramientas MLOps como MLFlow, AirFlow, Seldon Core o Kubeflow.\n- Especializado en trabajar con el ecosistema de Azure. \n- Apoyo a departamento comercial en promoción de proyectos."
+                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Liderar y desarrollar proyectos de IA Generativa (LLM) en el ámbito legal para tareas especializadas y sistemas RAG.\n- Uso de herramientas MLOps como MLFlow, AirFlow, Seldon Core o Kubeflow.\n- Desarrollo de proyectos mediante herramientas de Azure como Azure ML, Azure Streaming Analytics, Azure Synapse y Azure OpenAI. \n- Apoyo a departamento comercial en promoción de proyectos."
               }
             ],
             "competences": [
@@ -154,7 +154,7 @@
             "finishDate": "2022-03-31",
             "challenges": [
               {
-                "description": "- Asesoramiento y consultoría al Concello de Ourense en proyectos de tecnologías web e inteligencia artificial.\n- Análisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública"
+                "description": "- Funciones de asesoramiento y consultoría para el Concello de Ourense en temáticas relacionadas con Tecnologías Web e Inteligencia Artificial.\n- Análisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública"
               }
             ],
             "competences": [
@@ -481,6 +481,29 @@
       },
       {
         "studyType": "officialDegree",
+        "degreeAchieved": false,
+        "name": "Máster en Ingeniería Informática ",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "Universidad de Vigo",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
+            "alt": "Logotipo_Universidade_de_Vigo.jpg"
+          }
+        },
+        "linkedCompetences": [
+          {
+            "name": "Java",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
         "degreeAchieved": true,
         "name": "Grado en Ingeniería Informática ",
         "startDate": "2014-09-01",
@@ -625,29 +648,6 @@
           },
           {
             "name": "Microsoft Power BI",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "officialDegree",
-        "degreeAchieved": false,
-        "name": "Máster en Ingeniería Informática ",
-        "startDate": "2019-09-01",
-        "institution": {
-          "name": "Universidad de Vigo",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
-            "alt": "Logotipo_Universidade_de_Vigo.jpg"
-          }
-        },
-        "linkedCompetences": [
-          {
-            "name": "Java",
-            "type": "technology"
-          },
-          {
-            "name": "Python",
             "type": "technology"
           }
         ]

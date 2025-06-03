@@ -120,7 +120,7 @@ class MacCVBuilder:
         # Procesar links relevantes
         if 'aboutMe' in context and 'relevantLinks' in context['aboutMe']:
             context['links_by_type'] = self._group_links_by_type()
-        
+
         return context
     
     def _calculate_total_experience(self) -> float:
@@ -169,6 +169,8 @@ class MacCVBuilder:
         try:
             template = self.jinja_env.get_template(template_name)
             context = self.get_template_context()
+
+            
             rendered = template.render(**context)
             
             if output_file:

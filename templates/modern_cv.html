@@ -521,25 +521,8 @@
                 {% if knowledge and knowledge.studies %}
                 <section class="section">
                     <h2 class="section-title">Education</h2>
-                    {% for study in knowledge.studies %}
-                        {% if study.studyType == 'officialDegree' %}
-                        <div class="education-item">
-                            <div class="education-year">
-                                {{ study.startDate|format_date("%Y") }} - 
-                                {% if study.finishDate %}
-                                    {{ study.finishDate|format_date("%Y") }}
-                                {% else %}
-                                    Present
-                                {% endif %}
-                            </div>
-                            <div class="education-title">{{ study.name }}</div>
-                            <div class="education-institution">{{ study.institution.name }}</div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                    
-                    {% for study in knowledge.studies %}
-                        {% if study.studyType != 'officialDegree' and study.studyType != 'certification' %}
+                    {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
+                        {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
                         <div class="education-item">
                             <div class="education-year">
                                 {{ study.startDate|format_date("%Y") }} - 
@@ -563,7 +546,13 @@
                     <ul class="certifications">
                         {% for study in knowledge.studies %}
                             {% if study.studyType == 'certification' and study.degreeAchieved %}
-                                <li>{{ study.name }}</li>
+                                <li>
+                                    {% if study.institution and study.institution.URL %}
+                                        <a href="{{ study.institution.URL }}" target="_blank" rel="noopener noreferrer" style="color: inherit;">{{ study.name }}</a>
+                                    {% else %}
+                                        {{ study.name }}
+                                    {% endif %}
+                                </li>
                             {% endif %}
                         {% endfor %}
                     </ul>
