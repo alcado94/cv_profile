@@ -394,31 +394,6 @@
                 padding: 40px 30px;
             }
             
-            .contact-skills-row,
-            .education-certs-row {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 20px;
-            }
-            
-            .header-left {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .header-right {
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -437,8 +412,11 @@
             </div>
             <div class="header-right">
                 <div class="contact-info">
-                    {% if careerPreferences and careerPreferences.contact and careerPreferences.contact.contactMails %}
-                        <div><strong>Email:</strong> {{ careerPreferences.contact.contactMails[0] }}</div>
+                    {% if aboutMe.profile.contact and aboutMe.profile.contact.contactMails %}
+                        <div><strong>Email:</strong> {{ aboutMe.profile.contact.contactMails[0] }}</div>
+                    {% endif %}
+                    {% if aboutMe.profile.contact and aboutMe.profile.contact.phoneNumbers %}
+                        <div><strong>Phone:</strong> {{ aboutMe.profile.contact.phoneNumbers[0].number }}</div>
                     {% endif %}
                     {% if aboutMe.profile.location %}
                         <div><strong>Location:</strong> 
