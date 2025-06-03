@@ -23,6 +23,12 @@
       "contact": {
         "contactMails": [
           "camposdominguezalejandro@gmail.com"
+        ],
+        "phoneNumbers": [
+          {
+            "countryCode": 34,
+            "number": "617618266"
+          }
         ]
       }
 
