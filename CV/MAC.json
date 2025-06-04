@@ -48,7 +48,7 @@
             "startDate": "2025-02-24",
             "challenges": [
               {
-                "description": "- Desarrollo de prototipos de **IA generativa** enfocados en la detección de cláusulas contractuales y en la generación automática de informes periciales mediante modelos LLM multimodales.\n- Apoyo en la elaboración de ofertas para clientes."
+                "description": "- Desarrollo de prototipos de **IA generativa** en **AWS** enfocados en la detección de cláusulas contractuales y en la generación automática de informes periciales mediante modelos LLM multimodales.\n- Apoyo en la elaboración de ofertas para clientes."
               }
             ],
             "competences": [
@@ -83,7 +83,7 @@
             "finishDate": "2025-02-20",
             "challenges": [
               {
-                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Liderar y desarrollar proyectos de IA Generativa (LLM) en el ámbito legal para tareas especializadas y sistemas **RAG**.\n- Uso de herramientas MLOps como **MLFlow**, AirFlow, Seldon Core o Kubeflow.\n- Desarrollo de proyectos mediante herramientas de Azure como Azure ML, Azure Streaming Analytics, Azure Synapse y Azure OpenAI. \n- Apoyo a departamento comercial en promoción de proyectos."
+                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Liderar y desarrollar proyectos de **IA Generativa (LLM)** en el ámbito legal para tareas especializadas y sistemas **RAG**.\n- Uso de herramientas MLOps como **MLFlow**, **AirFlow**, **Seldon Core** o **Kubeflow**.\n- Desarrollo de proyectos mediante herramientas de **Azure** como **Azure ML**, **Azure Streaming Analytics**, **Azure Synapse** y **Azure OpenAI**. \n- Apoyo a departamento comercial en promoción de proyectos."
               }
             ],
             "competences": [
@@ -142,7 +142,7 @@
             "finishDate": "2022-03-31",
             "challenges": [
               {
-                "description": "- Funciones de asesoramiento y consultoría para el Concello de Ourense en temáticas relacionadas con Tecnologías Web e Inteligencia Artificial.\n- Análisis, diseño y desarrollo de aplicaciones web basadas en Django para diferentes áreas de la administración pública"
+                "description": "- Funciones de asesoramiento y consultoría para el Concello de Ourense en temáticas relacionadas con Tecnologías Web e Inteligencia Artificial.\n- Análisis, diseño y desarrollo de aplicaciones web basadas en **Django** para diferentes áreas de la administración pública"
               }
             ],
             "competences": [
@@ -185,7 +185,7 @@
             "finishDate": "2020-09-30",
             "challenges": [
               {
-                "description": "- Desarrollador de aplicaciones web en Java y Angular en conjunto de tecnologías Big Data como Stack Elastic (ELK) y Apache Nifi para la realización de ETL"
+                "description": "- Desarrollador de aplicaciones web en **Java** y **Angular** en conjunto de tecnologías Big Data como **Stack Elastic (ELK)** y **Apache Nifi** para la realización de ETL"
               }
             ],
             "competences": [
@@ -220,7 +220,7 @@
             "finishDate": "2019-04-30",
             "challenges": [
               {
-                "description": "- Análisis de datos relacionado con el mundo de la automoción con Python, Pandas y Keras.\n- Diseño e implementación de ecosistemas Big Data con Apache Spark y Apache Kafka."
+                "description": "- Análisis de datos relacionado con el mundo de la automoción con **Python**, **Pandas** y **Keras**.\n- Diseño e implementación de ecosistemas Big Data con **Apache Spark** y **Apache Kafka**."
               }
             ],
             "competences": [
@@ -611,7 +611,7 @@
       {
         "studyType": "certification",
         "degreeAchieved": true,
-        "name": "Microsoft Certified: AI Engineer ",
+        "name": "AI Engineer ",
         "startDate": "2024-06-01",
         "institution": {
           "name": "Microsoft ",
@@ -632,7 +632,7 @@
       {
         "studyType": "certification",
         "degreeAchieved": true,
-        "name": "Microsoft Certified: Azure AI Fundamentals",
+        "name": "Azure AI Fundamentals",
         "startDate": "2023-03-01",
         "institution": {
           "name": "Microsoft ",
@@ -653,7 +653,7 @@
       {
         "studyType": "certification",
         "degreeAchieved": true,
-        "name": "Microsoft Certified: Azure Data Fundamentals",
+        "name": "Azure Data Fundamentals",
         "startDate": "2023-02-01",
         "institution": {
           "name": "Microsoft ",
@@ -674,7 +674,7 @@
       {
         "studyType": "certification",
         "degreeAchieved": true,
-        "name": "Microsoft Certified: Azure Data Scientist Associate",
+        "name": "Azure Data Scientist Associate",
         "startDate": "2023-08-01",
         "institution": {
           "name": "Microsoft ",
@@ -695,7 +695,7 @@
       {
         "studyType": "certification",
         "degreeAchieved": true,
-        "name": "Microsoft Certified: Power BI Data Analyst Associate",
+        "name": "Power BI Data Analyst Associate",
         "startDate": "2023-10-01",
         "institution": {
           "name": "Microsoft ",
