@@ -683,7 +683,7 @@
                     {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
                     <div class="education-item">
                         <div class="education-title">{{ study.name }}</div>
-                        <div class="education-institution">{{ study.institution.name }} ({{ study.startDate|format_date("%Y") }} / 
+                        <div class="education-institution">{{ study.institution.name }} ( {{ study.startDate|format_date("%Y") }} / 
                             {% if study.finishDate %}
                                 {{ study.finishDate|format_date("%Y") }}
                             {% else %}
