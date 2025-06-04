@@ -543,7 +543,7 @@
       },
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "Microsoft Certified: Azure AI Fundamentals",
         "startDate": "2023-03-01",
         "institution": {
@@ -554,6 +554,7 @@
             "alt": "microsoft-certified-fundamentals-badge.svg"
           }
         },
+        "finishDate": "2023-03-01",
         "linkedCompetences": [
           {
             "name": "Azure",
