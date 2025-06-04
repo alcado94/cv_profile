@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="{{ settings.language|lower }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - {{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            max-width: 240mm;
+            width: 900px;
+            min-height: 297mm;
+            margin: 0 auto;
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 40px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .name-title {
+            flex: 1;
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .header-left .title {
+            font-size: 12px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .contact-info {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .contact-info div {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .contact-info strong {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            justify-content: flex-end;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            fill: #666;
+            transition: fill 0.3s ease;
+        }
+
+        .social-icon:hover {
+            fill: #333;
+        }
+
+        .social-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .main-content {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #222;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .profile-text {
+            text-align: justify;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #555;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .skills-list li:before {
+            content: "•";
+            color: #999;
+            position: absolute;
+            left: 0;
+        }
+
+        .education-item {
+            margin-bottom: 25px;
+        }
+
+        .education-year {
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .education-institution {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job {
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+        }
+
+        .job-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .job-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #666;
+        }
+
+        .job-icon-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .job-content {
+            flex: 1;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .job-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .job-company {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-period {
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .job-description ul {
+            margin-top: 5px;
+            margin-left: 15px;
+            padding-bottom: 6px;
+        }
+
+        .job-description li {
+            padding-left: 6px;
+            position: relative;
+            margin-left: 0px;
+            text-align: left;
+        }
+
+        .job-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background-color: #f1f3f4;
+            color: #5f6368;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .languages {
+            list-style: none;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .language-name {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .language-level {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .certifications {
+            list-style: none;
+        }
+
+        .certifications li {
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #555;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .certifications li:before {
+            content: "•";
+            color: #999;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-skills-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .education-certs-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .default-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+                padding: 0px;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .cv-container {
+                width: 100%;
+                /* padding: 40px 30px; */
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-left">
+                {% if aboutMe.profile.avatar %}
+                <img src="{{ aboutMe.profile.avatar.link }}" 
+                     alt="{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}" class="profile-image">
+                {% endif %}
+                <div class="name-title">
+                    <h1>{{ aboutMe.profile.name }}<br>{{ aboutMe.profile.surnames }}</h1>
+                    <div class="title">{{ aboutMe.profile.title }}</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="contact-info">
+                    {% if aboutMe.profile.contact and aboutMe.profile.contact.contactMails %}
+                        <div><strong>Email:</strong> {{ aboutMe.profile.contact.contactMails[0] }}</div>
+                    {% endif %}
+                    {% if aboutMe.profile.contact and aboutMe.profile.contact.phoneNumbers %}
+                        <div><strong>Phone:</strong> {{ aboutMe.profile.contact.phoneNumbers[0].number }}</div>
+                    {% endif %}
+                    {% if aboutMe.profile.location %}
+                        <div><strong>Location:</strong> 
+                            {% if aboutMe.profile.location.region %}{{ aboutMe.profile.location.region }}{% endif %}
+                            {% if aboutMe.profile.location.country %}
+                                {% if aboutMe.profile.location.region %}, {% endif %}{{ aboutMe.profile.location.country }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% if aboutMe.relevantLinks %}
+                <div class="social-links">
+                    {% for link in aboutMe.relevantLinks %}
+                        <a href="{{ link.URL }}" target="_blank" class="social-link">
+                            {% if link.type == 'linkedin' %}
+                                <svg class="social-icon" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            {% elif link.type == 'github' %}
+                                <svg class="social-icon" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            {% else %}
+                                <svg class="social-icon" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="main-content">
+            {% if aboutMe.profile.description %}
+            <section class="section">
+                <div class="profile-text">
+                    {{ aboutMe.profile.description }}
+                </div>
+            </section>
+            {% endif %}
+
+            {% if experience and experience.jobs %}
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                {% for job in experience.jobs %}
+                    {% for role in job.roles %}
+                    <div class="job">
+                        <div class="job-container">
+                            <div class="job-icon">
+                                {% if job.organization.image and job.organization.image.link %}
+                                    <img src="{{ job.organization.image.link }}" alt="{{ job.organization.name }}" class="job-icon-image">
+                                {% else %}
+                                    <div class="default-icon">{{ job.organization.name[0]|upper }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="job-content">
+                                <div class="job-header">
+                                    <div>
+                                        <div class="job-title">{{ role.name }}</div>
+                                        <div class="job-company">{{ job.organization.name }}</div>
+                                    </div>
+                                    <div class="job-period">
+                                        {{ role.startDate|format_date("%b %Y") }} - 
+                                        {% if role.finishDate %}
+                                            {{ role.finishDate|format_date("%b %Y") }}
+                                        {% else %}
+                                            Present
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                            {% if role.challenges %}
+                                <ul>
+                                    {% for challenge in role.challenges %}
+                                    {% if challenge.description_html %}
+                                        {{ challenge.description_html|safe }}
+                                    {% else %}
+                                        {% for action in challenge.description.split('\n- ') %}
+                                            {% if action.strip() %}
+                                                <li>{{ action.replace('- ', '').strip() }}</li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            
+                            {% if role.competences %}
+                            <div class="job-technologies">
+                                {% for competence in role.competences %}
+                                    <span class="tech-tag">{{ competence.name }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            <div class="education-certs-row">
+                {% if knowledge and knowledge.studies %}
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
+                        {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
+                        <div class="education-item">
+                            <div class="education-year">
+                                {{ study.startDate|format_date("%Y") }} - 
+                                {% if study.finishDate %}
+                                    {{ study.finishDate|format_date("%Y") }}
+                                {% else %}
+                                    Present
+                                {% endif %}
+                            </div>
+                            <div class="education-title">{{ study.name }}</div>
+                            <div class="education-institution">{{ study.institution.name }}</div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </section>
+                {% endif %}
+
+                {% if knowledge and knowledge.studies %}
+                <section class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <ul class="certifications">
+                        {% for study in knowledge.studies %}
+                            {% if study.studyType == 'certification' and study.degreeAchieved %}
+                                <li>
+                                    {% if study.institution and study.institution.URL %}
+                                        <a href="{{ study.institution.URL }}" target="_blank" rel="noopener noreferrer" style="color: inherit;">{{ study.name }}</a>
+                                    {% else %}
+                                        {{ study.name }}
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </section>
+                {% endif %}
+            </div>
+
+            <div class="contact-skills-row">
+                {% if knowledge and knowledge.languages %}
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <ul class="languages">
+                        {% for language in knowledge.languages %}
+                        <li class="language-item">
+                            <span class="language-name">{{ language.fullName or language.name }}</span>
+                            <span class="language-level">
+                                {% if language.level == 'Native or bilingual proficiency' %}
+                                    Nativo
+                                {% elif language.level == 'Professional working proficiency' %}
+                                    Profesional
+                                {% elif language.level == 'Full professional proficiency' %}
+                                    Avanzado
+                                {% elif language.level == 'Limited working proficiency' %}
+                                    Intermedio
+                                {% elif language.level == 'Elementary proficiency' %}
+                                    Básico
+                                {% else %}
+                                    {{ language.level }}
+                                {% endif %}
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+                {% endif %}
+
+                {% if knowledge and knowledge.hardSkills %}
+                <section class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <ul class="skills-list">
+                        {% set tech_skills = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list %}
+                        {% if tech_skills %}
+                            {% set skill_groups = {} %}
+                            {% for skill in tech_skills %}
+                                {% set category = skill.skill.name %}
+                                {% if category in ['Python', 'Java', 'JavaScript', 'C#'] %}
+                                    {% set _ = skill_groups.update({'Programming': skill_groups.get('Programming', []) + [skill.skill.name]}) %}
+                                {% elif category in ['MLflow', 'Airflow', 'Kubeflow', 'Azure', 'Docker', 'Kubernetes'] %}
+                                    {% set _ = skill_groups.update({'MLOps/DevOps': skill_groups.get('MLOps/DevOps', []) + [skill.skill.name]}) %}
+                                {% elif category in ['PyTorch', 'Scikit-learn', 'Pandas', 'Numpy'] %}
+                                    {% set _ = skill_groups.update({'ML/Data Science': skill_groups.get('ML/Data Science', []) + [skill.skill.name]}) %}
+                                {% elif category in ['LangChain', 'LangGraph'] %}
+                                    {% set _ = skill_groups.update({'LLM/AI': skill_groups.get('LLM/AI', []) + [skill.skill.name]}) %}
+                                {% elif category in ['Spark', 'Kafka', 'Elasticsearch', 'Hive'] %}
+                                    {% set _ = skill_groups.update({'Big Data': skill_groups.get('Big Data', []) + [skill.skill.name]}) %}
+                                {% elif category in ['Django', 'FastAPI', 'Vue', 'NodeJS', 'AngularJS'] %}
+                                    {% set _ = skill_groups.update({'Web Development': skill_groups.get('Web Development', []) + [skill.skill.name]}) %}
+                                {% elif category in ['PostgreSQL', 'MySQL', 'InfluxDB'] %}
+                                    {% set _ = skill_groups.update({'Databases': skill_groups.get('Databases', []) + [skill.skill.name]}) %}
+                                {% else %}
+                                    {% set _ = skill_groups.update({'Other': skill_groups.get('Other', []) + [skill.skill.name]}) %}
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% for category, skills in skill_groups.items() %}
+                                {% if skills %}
+                                    <li>{{ skills|join(', ') }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </section>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html> 
