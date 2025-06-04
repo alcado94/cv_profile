@@ -507,7 +507,15 @@
         },
         "linkedCompetences": [
           {
-            "name": ".Net Core",
+            "name": "Pandas",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          },
+          {
+            "name": "Scikit-learn",
             "type": "technology"
           }
         ]
