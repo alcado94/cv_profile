@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.6/schema/schema.json",
+  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.5/schema/schema.json",
   "settings": {
     "language": "ES",
     "MACVersion": "0.5"
@@ -271,7 +271,19 @@
     "hardSkills": [
       {
         "skill": {
+          "name": "AWS",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
           "name": "Airflow",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Ansible",
           "type": "technology"
         }
       },
@@ -313,6 +325,30 @@
       },
       {
         "skill": {
+          "name": "Fastapi",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Git",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "GitHub Actions",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Grafana",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
           "name": "HTML",
           "type": "technology"
         }
@@ -343,6 +379,18 @@
       },
       {
         "skill": {
+          "name": "Keras",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Kibana",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
           "name": "Kubernetes",
           "type": "technology"
         }
@@ -350,6 +398,12 @@
       {
         "skill": {
           "name": "LangChain",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "LangGraph",
           "type": "technology"
         }
       },
@@ -398,6 +452,18 @@
       {
         "skill": {
           "name": "Scikit-learn",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Spark",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "Terraform",
           "type": "technology"
         }
       },
