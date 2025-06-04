@@ -83,7 +83,7 @@
             "finishDate": "2025-02-20",
             "challenges": [
               {
-                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Liderar y desarrollar proyectos de IA Generativa (LLM) en el ámbito legal para tareas especializadas y sistemas **RAG**.\n- Uso de herramientas MLOps como MLFlow, AirFlow, Seldon Core o Kubeflow.\n- Desarrollo de proyectos mediante herramientas de Azure como Azure ML, Azure Streaming Analytics, Azure Synapse y Azure OpenAI. \n- Apoyo a departamento comercial en promoción de proyectos."
+                "description": "- Diseño y desarrollo de sistemas ML en proyectos de I+D relacionados con industria y mantenimiento predictivo.\n- Liderar y desarrollar proyectos de IA Generativa (LLM) en el ámbito legal para tareas especializadas y sistemas **RAG**.\n- Uso de herramientas MLOps como **MLFlow**, AirFlow, Seldon Core o Kubeflow.\n- Desarrollo de proyectos mediante herramientas de Azure como Azure ML, Azure Streaming Analytics, Azure Synapse y Azure OpenAI. \n- Apoyo a departamento comercial en promoción de proyectos."
               }
             ],
             "competences": [
