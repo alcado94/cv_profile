@@ -167,7 +167,6 @@ class MacCVBuilder:
             return
 
         jobs = self.cv_data.get('experience', {}).get('jobs', [])
-        print(self.cv_data)
         for job in jobs:
             for role in job.get('roles', []):
                 for challenge in role.get('challenges', []):
@@ -175,7 +174,6 @@ class MacCVBuilder:
                     if desc:
                         # Convertir markdown a HTML
                         html = markdown.markdown(desc, extensions=['extra'])
-                        print(html)
                         challenge['description_html'] = html
     
     def render_template(self, template_name: str, output_file: Optional[str] = None) -> str:

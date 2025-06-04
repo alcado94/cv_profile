@@ -48,7 +48,10 @@
             "startDate": "2025-02-24",
             "challenges": [
               {
-                "description": "- Desarrollo de prototipos de **IA generativa** enfocados en la detección de cláusulas contractuales y en la generación automática de informes periciales mediante modelos LLM multimodales.\n\n- Apoyo en la elaboración de ofertas para clientes."
+                "description": "- Desarrollo de prototipos de **IA generativa** enfocados en la detección de cláusulas contractuales y en la generación automática de informes periciales mediante modelos LLM multimodales."
+              },
+              {
+                "description": "- Apoyo en la elaboración de ofertas para clientes."
               }
             ],
             "competences": [
