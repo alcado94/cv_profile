@@ -651,6 +651,17 @@
             "type": "technology"
           }
         ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Scrum Master",
+        "startDate": "2023-02-01",
+        "institution": {
+          "name": "Scrum Master",
+          "URL": "https://scrummanager.com/website/c/profile/member.php?id=42842"
+        },
+        "finishDate": "2023-02-01"
       }
     ],
     "softSkills": [
