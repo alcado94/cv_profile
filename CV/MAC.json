@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.5/schema/schema.json",
+  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.6/schema/schema.json",
   "settings": {
     "language": "ES",
     "MACVersion": "0.5"

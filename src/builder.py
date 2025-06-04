@@ -218,35 +218,34 @@ class MacCVBuilder:
         return sorted(templates)
     
     def validate_schema(self) -> bool:
-        """Valida si los datos del CV cumplen con el esquema básico MAC"""
-        required_sections = ['settings', 'aboutMe']
-        
-        for section in required_sections:
-            if section not in self.cv_data:
-                print(f"ERROR: Sección requerida '{section}' no encontrada")
-                return False
-        
-        # Validar settings
-        settings = self.cv_data.get('settings', {})
-        if 'language' not in settings:
-            print("ERROR: 'language' requerido en settings")
+        """
+        Valida si los datos del CV cumplen con el esquema MAC usando el $schema especificado en el propio archivo.
+        """
+        import urllib.request
+        import jsonschema
+
+        schema_url = self.cv_data.get("$schema")
+        if not schema_url:
+            print("ERROR: No se encontró la clave '$schema' en los datos del CV.")
             return False
-        
-        # Validar aboutMe
-        about_me = self.cv_data.get('aboutMe', {})
-        if 'profile' not in about_me:
-            print("ERROR: 'profile' requerido en aboutMe")
+
+        try:
+            with urllib.request.urlopen(schema_url) as response:
+                schema = json.load(response)
+        except Exception as e:
+            print(f"ERROR: No se pudo descargar el esquema desde {schema_url}: {e}")
             return False
-        
-        profile = about_me.get('profile', {})
-        required_profile_fields = ['name', 'surnames', 'title']
-        for field in required_profile_fields:
-            if field not in profile:
-                print(f"ERROR: '{field}' requerido en aboutMe.profile")
-                return False
-        
-        print("✓ Esquema MAC básico validado correctamente")
-        return True
+
+        try:
+            jsonschema.validate(instance=self.cv_data, schema=schema)
+            print("✓ Esquema MAC validado correctamente con el $schema proporcionado")
+            return True
+        except jsonschema.ValidationError as ve:
+            print(f"ERROR: El archivo no cumple el esquema MAC: {ve.message}")
+            return False
+        except Exception as e:
+            print(f"ERROR: Fallo al validar el esquema: {e}")
+            return False
 
 
 def main():
@@ -260,7 +259,8 @@ def main():
     )
     parser.add_argument(
         "-t", "--template", 
-        required=True,
+        required=False,
+        default="modern_cv.html",
         help="Nombre del template a usar"
     )
     parser.add_argument(
