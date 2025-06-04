@@ -702,6 +702,10 @@
         "type": "technology"
       },
       {
+        "name": "LangChain",
+        "type": "technology"
+      },
+      {
         "name": "PostgreSQL",
         "type": "technology"
       },
