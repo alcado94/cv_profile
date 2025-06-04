@@ -494,11 +494,15 @@
                             {% if role.challenges %}
                                 <ul>
                                     {% for challenge in role.challenges %}
+                                    {% if challenge.description_html %}
+                                        {{ challenge.description_html|safe }}
+                                    {% else %}
                                         {% for action in challenge.description.split('\n- ') %}
                                             {% if action.strip() %}
                                                 <li>{{ action.replace('- ', '').strip() }}</li>
                                             {% endif %}
                                         {% endfor %}
+                                    {% endif %}
                                     {% endfor %}
                                 </ul>
                             {% endif %}

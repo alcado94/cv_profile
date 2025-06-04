@@ -154,6 +154,29 @@ class MacCVBuilder:
             links_by_type[link_type].append(link)
         
         return links_by_type
+
+    def _convert_challenges_markdown_to_html(self):
+        """
+        Convierte todos los challenges de roles de jobs de markdown a HTML en self.cv_data.
+        """
+        # Intenta importar markdown, si no está disponible, omite la conversión
+        try:
+            import markdown
+        except ImportError:
+            print("El paquete 'markdown' no está instalado. No se realizará la conversión de markdown a HTML.")
+            return
+
+        jobs = self.cv_data.get('experience', {}).get('jobs', [])
+        print(self.cv_data)
+        for job in jobs:
+            for role in job.get('roles', []):
+                for challenge in role.get('challenges', []):
+                    desc = challenge.get('description')
+                    if desc:
+                        # Convertir markdown a HTML
+                        html = markdown.markdown(desc, extensions=['extra'])
+                        print(html)
+                        challenge['description_html'] = html
     
     def render_template(self, template_name: str, output_file: Optional[str] = None) -> str:
         """
@@ -169,7 +192,7 @@ class MacCVBuilder:
         try:
             template = self.jinja_env.get_template(template_name)
             context = self.get_template_context()
-
+            self._convert_challenges_markdown_to_html()
             
             rendered = template.render(**context)
             
