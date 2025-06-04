@@ -647,6 +647,12 @@
           "name": "Autonomía en el aprendizaje",
           "type": "practice"
         }
+      },
+      {
+        "skill": {
+          "name": "Proactividad",
+          "type": "practice"
+        }
       }
     ]
   },
