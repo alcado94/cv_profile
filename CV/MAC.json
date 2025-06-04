@@ -417,7 +417,7 @@
     "studies": [
       {
         "studyType": "certification",
-        "degreeAchieved": false,
+        "degreeAchieved": true,
         "name": "AWS Cloud Practitioner",
         "startDate": "2025-05-01",
         "institution": {
@@ -428,6 +428,7 @@
             "alt": "image (1).png"
           }
         },
+        "finishDate": "2025-05-01",
         "linkedCompetences": [
           {
             "name": "AWS",
