@@ -45,12 +45,12 @@ jobs:
     - name: Generate CV (Modern Template)
       run: |
         mkdir -p ./public
-        python3 src/builder.py CV/MAC.json -t modern_cv.html -o ./public/index.html
+        python3 src/builder.py CV/MAC.json -t modern_cv.html -o ./public/modern_cv.html
         
     - name: Generate CV (Classic CV)
       run: |
         mkdir -p ./public
-        python3 src/builder.py CV/MAC.json -t classic_cv.html -o ./public/classic_cv.html
+        python3 src/builder.py CV/MAC.json -t classic_cv.html -o ./public/index.html
         
     - name: Generate CV (Text Format)
       run: |
