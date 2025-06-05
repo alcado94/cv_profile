@@ -457,6 +457,18 @@
       },
       {
         "skill": {
+          "name": "Python",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
+          "name": "SQL",
+          "type": "technology"
+        }
+      },
+      {
+        "skill": {
           "name": "Scikit-learn",
           "type": "technology"
         }
@@ -504,6 +516,90 @@
         "linkedCompetences": [
           {
             "name": "AWS",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Azure AI Engineer Associate",
+        "startDate": "2024-06-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/E342888EDA8A2625?sharingId=734E40528099F728",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/fc98cffc-b261-43ee-84ef-372f21019218_microsoft-certified-.svg",
+            "alt": "microsoft-certified-associate-badge.svg"
+          }
+        },
+        "finishDate": "2025-06-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Azure AI Fundamentals",
+        "startDate": "2023-03-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/62d6fbef-d520-4523-84fc-e849c8fe1dee_microsoft-certified-.svg",
+            "alt": "microsoft-certified-fundamentals-badge.svg"
+          }
+        },
+        "finishDate": "2023-03-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Azure Data Fundamentals",
+        "startDate": "2023-02-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/c07389da-155f-4656-8c0e-1f09a7d275a9_microsoft-certified-.svg",
+            "alt": "microsoft-certified-fundamentals-badge.svg"
+          }
+        },
+        "finishDate": "2023-02-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": true,
+        "name": "Azure Data Scientist Associate",
+        "startDate": "2023-08-01",
+        "institution": {
+          "name": "Microsoft ",
+          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/5067E36859B04AB4?sharingId=734E40528099F728",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/7e62508e-988b-4ee3-b08a-507ccac776fd_microsoft-certified-.svg",
+            "alt": "microsoft-certified-associate-badge.svg"
+          }
+        },
+        "finishDate": "2025-08-01",
+        "linkedCompetences": [
+          {
+            "name": "Azure",
             "type": "technology"
           }
         ]
@@ -609,85 +705,24 @@
         ]
       },
       {
-        "studyType": "certification",
-        "degreeAchieved": true,
-        "name": "Azure AI Engineer Associate",
-        "startDate": "2024-06-01",
+        "studyType": "officialDegree",
+        "degreeAchieved": false,
+        "name": "Máster en Ingeniería Informática ",
+        "startDate": "2019-09-01",
         "institution": {
-          "name": "Microsoft ",
-          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/E342888EDA8A2625?sharingId=734E40528099F728",
+          "name": "Universidad de Vigo",
           "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/fc98cffc-b261-43ee-84ef-372f21019218_microsoft-certified-.svg",
-            "alt": "microsoft-certified-associate-badge.svg"
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
+            "alt": "Logotipo_Universidade_de_Vigo.jpg"
           }
         },
-        "finishDate": "2025-06-01",
         "linkedCompetences": [
           {
-            "name": "Azure",
+            "name": "Java",
             "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "certification",
-        "degreeAchieved": true,
-        "name": "Azure AI Fundamentals",
-        "startDate": "2023-03-01",
-        "institution": {
-          "name": "Microsoft ",
-          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/62d6fbef-d520-4523-84fc-e849c8fe1dee_microsoft-certified-.svg",
-            "alt": "microsoft-certified-fundamentals-badge.svg"
-          }
-        },
-        "finishDate": "2023-03-01",
-        "linkedCompetences": [
+          },
           {
-            "name": "Azure",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "certification",
-        "degreeAchieved": true,
-        "name": "Azure Data Fundamentals",
-        "startDate": "2023-02-01",
-        "institution": {
-          "name": "Microsoft ",
-          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/366023FDA5751DFC?sharingId",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/c07389da-155f-4656-8c0e-1f09a7d275a9_microsoft-certified-.svg",
-            "alt": "microsoft-certified-fundamentals-badge.svg"
-          }
-        },
-        "finishDate": "2023-02-01",
-        "linkedCompetences": [
-          {
-            "name": "Azure",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "certification",
-        "degreeAchieved": true,
-        "name": "Azure Data Scientist Associate",
-        "startDate": "2023-08-01",
-        "institution": {
-          "name": "Microsoft ",
-          "URL": "https://learn.microsoft.com/api/credentials/share/es-es/AlejandroCamposDomnguez-3076/5067E36859B04AB4?sharingId=734E40528099F728",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/7e62508e-988b-4ee3-b08a-507ccac776fd_microsoft-certified-.svg",
-            "alt": "microsoft-certified-associate-badge.svg"
-          }
-        },
-        "finishDate": "2025-08-01",
-        "linkedCompetences": [
-          {
-            "name": "Azure",
+            "name": "Python",
             "type": "technology"
           }
         ]
@@ -713,29 +748,6 @@
           },
           {
             "name": "Microsoft Power BI",
-            "type": "technology"
-          }
-        ]
-      },
-      {
-        "studyType": "officialDegree",
-        "degreeAchieved": false,
-        "name": "Máster en Ingeniería Informática ",
-        "startDate": "2019-09-01",
-        "institution": {
-          "name": "Universidad de Vigo",
-          "image": {
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/24/08/13/6c1edb0e-0817-42b7-a179-229cae9bc25c_logotipo_universidad.jpg",
-            "alt": "Logotipo_Universidade_de_Vigo.jpg"
-          }
-        },
-        "linkedCompetences": [
-          {
-            "name": "Java",
-            "type": "technology"
-          },
-          {
-            "name": "Python",
             "type": "technology"
           }
         ]
