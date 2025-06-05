@@ -42,19 +42,83 @@ jobs:
     #   run: |
     #     python3 src/builder.py CV/MAC.json --list-templates
         
-    - name: Generate CV (Modern Template)
+    - name: Generate All CV Variants
       run: |
         mkdir -p ./public
-        python3 src/builder.py CV/MAC.json -t modern_cv.html -o ./public/modern_cv.html
         
-    - name: Generate CV (Classic CV)
-      run: |
-        mkdir -p ./public
-        python3 src/builder.py CV/MAC.json -t classic_cv.html -o ./public/index.html
+        # Function to get file extension from template
+        get_extension() {
+          case "$1" in
+            *.html) echo "html" ;;
+            *.txt) echo "txt" ;;
+            *.md) echo "md" ;;
+            *) echo "html" ;;
+          esac
+        }
         
-    - name: Generate CV (Text Format)
-      run: |
-        python3 src/builder.py CV/MAC.json -t simple_text.txt -o ./public/cv.txt
+        # Function to get language suffix from JSON filename
+        get_lang_suffix() {
+          local json_file="$1"
+          local basename=$(basename "$json_file" .json)
+          if [[ "$basename" == *"_EN" ]]; then
+            echo "_en"
+          elif [[ "$basename" == *"_ES" ]]; then
+            echo "_es"
+          else
+            echo ""
+          fi
+        }
+        
+        # Function to get base name for output file
+        get_base_name() {
+          local template="$1"
+          local basename=$(basename "$template" | sed 's/\.[^.]*$//')
+          
+          case "$basename" in
+            "modern_cv") echo "modern_cv" ;;
+            "classic_cv") echo "index" ;;
+            "simple_text") echo "cv" ;;
+            *) echo "$basename" ;;
+          esac
+        }
+        
+        # Iterate over all JSON files in CV folder
+        for json_file in CV/*.json; do
+          if [ -f "$json_file" ]; then
+            echo "Processing CV file: $json_file"
+            lang_suffix=$(get_lang_suffix "$json_file")
+            
+            # Iterate over all templates
+            for template in templates/*; do
+              if [ -f "$template" ]; then
+                template_name=$(basename "$template")
+                echo "  Processing template: $template_name"
+                
+                # Get file extension and base name
+                extension=$(get_extension "$template_name")
+                base_name=$(get_base_name "$template_name")
+                
+                # Generate output filename
+                output_file="./public/${base_name}${lang_suffix}.${extension}"
+                
+                # Generate CV
+                echo "    Generating: $output_file"
+                python3 src/builder.py "$json_file" -t "$template_name" -o "$output_file"
+                
+                if [ $? -eq 0 ]; then
+                  echo "    ✓ Successfully generated $output_file"
+                else
+                  echo "    ✗ Failed to generate $output_file"
+                fi
+              fi
+            done
+            echo ""
+          fi
+        done
+        
+        # List generated files
+        echo "Generated files:"
+        ls -la ./public/
         
     - name: Create index page with multiple formats
       run: |

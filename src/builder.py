@@ -21,17 +21,33 @@ except ImportError:
 class MacCVBuilder:
     """Constructor de CV usando el formato MAC de Manfred y templates Jinja2"""
     
-    def __init__(self, data_file: str, template_dir: str = "templates"):
+    def __init__(self, data_file: str, template_dir: str = "templates", show_photo: bool = True, language: str = None):
         """
         Inicializa el builder con los datos del CV y el directorio de templates
         
         Args:
             data_file: Ruta al archivo JSON con los datos del CV (formato MAC)
             template_dir: Directorio donde están los templates Jinja2
+            show_photo: Si mostrar o no la foto de perfil (default: True)
+            language: Idioma para los textos de las plantillas ("es" o "en", default: None - detectar del JSON)
         """
         self.data_file = Path(data_file)
         self.template_dir = Path(template_dir)
+        self.show_photo = show_photo
         self.cv_data = self._load_cv_data()
+        
+        # Detectar idioma del archivo JSON o usar el proporcionado
+        if language is None:
+            detected_language = self.cv_data.get('settings', {}).get('language', 'ES')
+            self.language = detected_language.lower()
+        else:
+            self.language = language.lower()
+        
+        # Asegurar que el idioma es válido
+        if self.language not in ['es', 'en']:
+            print(f"ADVERTENCIA: Idioma '{self.language}' no soportado, usando español por defecto")
+            self.language = 'es'
+        
         self.jinja_env = Environment(
             loader=FileSystemLoader(self.template_dir),
             trim_blocks=True,
@@ -112,6 +128,11 @@ class MacCVBuilder:
         # Añadir datos procesados
         context['generated_date'] = datetime.now().strftime("%d/%m/%Y")
         context['schema_version'] = context.get('settings', {}).get('MACVersion', 'unknown')
+        context['show_photo'] = self.show_photo
+        context['language'] = self.language
+        
+        # Añadir textos traducidos
+        context['texts'] = self._get_translated_texts()
         
         # Procesar experiencia laboral
         if 'experience' in context and 'jobs' in context['experience']:
@@ -122,6 +143,63 @@ class MacCVBuilder:
             context['links_by_type'] = self._group_links_by_type()
 
         return context
+    
+    def _get_translated_texts(self) -> Dict[str, str]:
+        """Devuelve los textos traducidos según el idioma seleccionado"""
+        if self.language == "en":
+            return {
+                'contact': 'Contact',
+                'languages': 'Languages',
+                'certifications': 'Certifications',
+                'skills': 'Skills',
+                'profile': 'Profile',
+                'work_experience': 'Work Experience',
+                'education': 'Education',
+                'present': 'Present',
+                'email': 'Email',
+                'phone': 'Phone',
+                'location': 'Location',
+                'about_me': 'ABOUT ME',
+                'professional_experience': 'PROFESSIONAL EXPERIENCE',
+                'total_experience': 'Total experience',
+                'years': 'years',
+                'knowledge': 'KNOWLEDGE',
+                'technical_skills': 'Technical skills',
+                'training': 'Training',
+                'in_progress': 'In progress',
+                'native': 'Native',
+                'professional': 'Professional',
+                'advanced': 'Advanced',
+                'intermediate': 'Intermediate',
+                'basic': 'Basic'
+            }
+        else:  # Spanish (default)
+            return {
+                'contact': 'Contacto',
+                'languages': 'Idiomas',
+                'certifications': 'Certificaciones',
+                'skills': 'Habilidades',
+                'profile': 'Perfil',
+                'work_experience': 'Experiencia Laboral',
+                'education': 'Educación',
+                'present': 'Presente',
+                'email': 'Email',
+                'phone': 'Teléfono',
+                'location': 'Ubicación',
+                'about_me': 'SOBRE MÍ',
+                'professional_experience': 'EXPERIENCIA PROFESIONAL',
+                'total_experience': 'Experiencia total',
+                'years': 'años',
+                'knowledge': 'CONOCIMIENTOS',
+                'technical_skills': 'Habilidades técnicas',
+                'training': 'Formación',
+                'in_progress': 'En curso',
+                'native': 'Nativo',
+                'professional': 'Profesional',
+                'advanced': 'Avanzado',
+                'intermediate': 'Intermedio',
+                'basic': 'Básico'
+            }
     
     def _calculate_total_experience(self) -> float:
         """Calcula el total de años de experiencia"""
@@ -303,11 +381,22 @@ def main():
         action="store_true",
         help="Valida el esquema MAC del archivo de datos"
     )
+    parser.add_argument(
+        "--no-photo", 
+        action="store_true",
+        help="No mostrar la foto de perfil en el CV generado"
+    )
+    parser.add_argument(
+        "--lang", 
+        choices=["es", "en"],
+        default=None,
+        help="Idioma para los textos de las plantillas (es=español, en=inglés). Si no se especifica, se detecta del archivo JSON"
+    )
     
     args = parser.parse_args()
     
     # Crear el builder
-    builder = MacCVBuilder(args.data_file, args.template_dir)
+    builder = MacCVBuilder(args.data_file, args.template_dir, show_photo=not args.no_photo, language=args.lang)
     
     # Validar esquema si se solicita
     if args.validate:

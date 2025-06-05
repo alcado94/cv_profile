@@ -398,7 +398,7 @@
     <div class="cv-container">
         <header class="header">
             <div class="header-left">
-                {% if aboutMe.profile.avatar %}
+                {% if show_photo and aboutMe.profile.avatar %}
                 <img src="{{ aboutMe.profile.avatar.link }}" 
                      alt="{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}" class="profile-image">
                 {% endif %}
@@ -410,13 +410,13 @@
             <div class="header-right">
                 <div class="contact-info">
                     {% if aboutMe.profile.contact and aboutMe.profile.contact.contactMails %}
-                        <div><strong>Email:</strong> {{ aboutMe.profile.contact.contactMails[0] }}</div>
+                        <div><strong>{{ texts.email }}:</strong> {{ aboutMe.profile.contact.contactMails[0] }}</div>
                     {% endif %}
                     {% if aboutMe.profile.contact and aboutMe.profile.contact.phoneNumbers %}
-                        <div><strong>Phone:</strong> {{ aboutMe.profile.contact.phoneNumbers[0].number }}</div>
+                        <div><strong>{{ texts.phone }}:</strong> {{ aboutMe.profile.contact.phoneNumbers[0].number }}</div>
                     {% endif %}
                     {% if aboutMe.profile.location %}
-                        <div><strong>Location:</strong> 
+                        <div><strong>{{ texts.location }}:</strong> 
                             {% if aboutMe.profile.location.region %}{{ aboutMe.profile.location.region }}{% endif %}
                             {% if aboutMe.profile.location.country %}
                                 {% if aboutMe.profile.location.region %}, {% endif %}{{ aboutMe.profile.location.country }}
@@ -459,7 +459,7 @@
 
             {% if experience and experience.jobs %}
             <section class="section">
-                <h2 class="section-title">Work Experience</h2>
+                <h2 class="section-title">{{ texts.work_experience }}</h2>
                 
                 {% for job in experience.jobs %}
                     {% for role in job.roles %}
@@ -483,7 +483,7 @@
                                         {% if role.finishDate %}
                                             {{ role.finishDate|format_date("%b %Y") }}
                                         {% else %}
-                                            Present
+                                            {{ texts.present }}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -524,7 +524,7 @@
             <div class="education-certs-row">
                 {% if knowledge and knowledge.studies %}
                 <section class="section">
-                    <h2 class="section-title">Education</h2>
+                    <h2 class="section-title">{{ texts.education }}</h2>
                     {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
                         {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
                         <div class="education-item">
@@ -533,7 +533,7 @@
                                 {% if study.finishDate %}
                                     {{ study.finishDate|format_date("%Y") }}
                                 {% else %}
-                                    Present
+                                    {{ texts.present }}
                                 {% endif %}
                             </div>
                             <div class="education-title">{{ study.name }}</div>
@@ -546,7 +546,7 @@
 
                 {% if knowledge and knowledge.studies %}
                 <section class="section">
-                    <h2 class="section-title">Certifications</h2>
+                    <h2 class="section-title">{{ texts.certifications }}</h2>
                     <ul class="certifications">
                         {% for study in knowledge.studies %}
                             {% if study.studyType == 'certification' and study.degreeAchieved %}
@@ -567,22 +567,22 @@
             <div class="contact-skills-row">
                 {% if knowledge and knowledge.languages %}
                 <section class="section">
-                    <h2 class="section-title">Languages</h2>
+                    <h2 class="section-title">{{ texts.languages }}</h2>
                     <ul class="languages">
                         {% for language in knowledge.languages %}
                         <li class="language-item">
                             <span class="language-name">{{ language.fullName or language.name }}</span>
                             <span class="language-level">
                                 {% if language.level == 'Native or bilingual proficiency' %}
-                                    Nativo
+                                    {{ texts.native }}
                                 {% elif language.level == 'Professional working proficiency' %}
-                                    Profesional
+                                    {{ texts.professional }}
                                 {% elif language.level == 'Full professional proficiency' %}
-                                    Avanzado
+                                    {{ texts.advanced }}
                                 {% elif language.level == 'Limited working proficiency' %}
-                                    Intermedio
+                                    {{ texts.intermediate }}
                                 {% elif language.level == 'Elementary proficiency' %}
-                                    Básico
+                                    {{ texts.basic }}
                                 {% else %}
                                     {{ language.level }}
                                 {% endif %}
@@ -595,7 +595,7 @@
 
                 {% if knowledge and knowledge.hardSkills %}
                 <section class="section">
-                    <h2 class="section-title">Skills</h2>
+                    <h2 class="section-title">{{ texts.skills }}</h2>
                     <ul class="skills-list">
                         {% set tech_skills = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list %}
                         {% if tech_skills %}

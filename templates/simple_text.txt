@@ -3,34 +3,34 @@
 {{ "=" * (aboutMe.profile.name|length + aboutMe.profile.surnames|length + 1) }}
 
 {% if aboutMe.profile.location -%}
-Ubicación: {{ aboutMe.profile.location.municipality or '' }}{% if aboutMe.profile.location.region %}, {{ aboutMe.profile.location.region }}{% endif %}{% if aboutMe.profile.location.country %}, {{ aboutMe.profile.location.country }}{% endif %}
+{{ texts.location }}: {{ aboutMe.profile.location.municipality or '' }}{% if aboutMe.profile.location.region %}, {{ aboutMe.profile.location.region }}{% endif %}{% if aboutMe.profile.location.country %}, {{ aboutMe.profile.location.country }}{% endif %}
 {% endif %}
 
 {% if aboutMe.relevantLinks -%}
-Contacto:
+{{ texts.contact }}:
 {% for link in aboutMe.relevantLinks -%}
 - {{ link.type|title }}: {{ link.URL }}
 {% endfor %}
 {% endif %}
 
 {% if aboutMe.profile.description -%}
-SOBRE MÍ
---------
+{{ texts.about_me }}
+{{ "-" * texts.about_me|length }}
 {{ aboutMe.profile.description }}
 
 {% endif %}
 
 {% if experience and experience.jobs -%}
-EXPERIENCIA PROFESIONAL
-------------------------
+{{ texts.professional_experience }}
+{{ "-" * texts.professional_experience|length }}
 {% if total_experience_years -%}
-Experiencia total: {{ total_experience_years }} años
+{{ texts.total_experience }}: {{ total_experience_years }} {{ texts.years }}
 
 {% endif %}
 {% for job in experience.jobs -%}
 {% for role in job.roles -%}
 {{ job.organization.name }} | {{ role.name }}
-{{ role.startDate|format_date }} - {% if role.finishDate %}{{ role.finishDate|format_date }}{% else %}Presente{% endif %}{% if role.startDate %} ({{ role.startDate|experience_duration(role.finishDate) }}){% endif %}
+{{ role.startDate|format_date }} - {% if role.finishDate %}{{ role.finishDate|format_date }}{% else %}{{ texts.present }}{% endif %}{% if role.startDate %} ({{ role.startDate|experience_duration(role.finishDate) }}){% endif %}
 
 {% if role.challenges -%}
 {% for challenge in role.challenges -%}
@@ -47,11 +47,11 @@ Tecnologías: {{ role.competences|map(attribute='name')|join(', ') }}
 {% endif %}
 
 {% if knowledge -%}
-CONOCIMIENTOS
--------------
+{{ texts.knowledge }}
+{{ "-" * texts.knowledge|length }}
 
 {% if knowledge.languages -%}
-Idiomas:
+{{ texts.languages }}:
 {% for language in knowledge.languages -%}
 - {{ language.fullName or language.name }}{% if language.level %}: {{ language.level }}{% endif %}
 {% endfor %}
@@ -59,7 +59,7 @@ Idiomas:
 {% endif %}
 
 {% if knowledge.hardSkills -%}
-Habilidades técnicas:
+{{ texts.technical_skills }}:
 {% set technologies = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list -%}
 {% if technologies -%}
 {{ technologies|map(attribute='skill.name')|join(', ') }}

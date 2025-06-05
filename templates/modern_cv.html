@@ -469,7 +469,7 @@
         <div class="sidebar">
             <!-- Profile Section -->
             <div class="profile-section">
-                {% if aboutMe.profile.avatar %}
+                {% if show_photo and aboutMe.profile.avatar %}
                 <img src="{{ aboutMe.profile.avatar.link }}" 
                      alt="{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}" class="profile-image">
                 {% endif %}
@@ -490,7 +490,7 @@
 
             <!-- Contact Information -->
             <div class="sidebar-section">
-                <h2 class="sidebar-title">Contact</h2>
+                <h2 class="sidebar-title">{{ texts.contact }}</h2>
                 <div class="contact-info">
                     <div class="contact-item">camposdominguezalejandro@gmail.com</div>
                     {% if aboutMe.profile.location %}
@@ -524,22 +524,22 @@
             <!-- Languages -->
             {% if knowledge and knowledge.languages %}
             <div class="sidebar-section">
-                <h2 class="sidebar-title">Languages</h2>
+                <h2 class="sidebar-title">{{ texts.languages }}</h2>
                 <ul class="languages-list">
                     {% for language in knowledge.languages %}
                     <li class="language-item">
                         <span class="language-name">{{ language.fullName or language.name }}</span>
                         <span class="language-level">
                             {% if language.level == 'Native or bilingual proficiency' %}
-                                Native
+                                {{ texts.native }}
                             {% elif language.level == 'Professional working proficiency' %}
-                                Professional
+                                {{ texts.professional }}
                             {% elif language.level == 'Full professional proficiency' %}
-                                Advanced
+                                {{ texts.advanced }}
                             {% elif language.level == 'Limited working proficiency' %}
-                                Intermediate
+                                {{ texts.intermediate }}
                             {% elif language.level == 'Elementary proficiency' %}
-                                Basic
+                                {{ texts.basic }}
                             {% else %}
                                 {{ language.level }}
                             {% endif %}
@@ -553,7 +553,7 @@
             <!-- Certifications -->
             {% if knowledge and knowledge.studies %}
             <div class="sidebar-section">
-                <h2 class="sidebar-title">Certifications</h2>
+                <h2 class="sidebar-title">{{ texts.certifications }}</h2>
                 <ul class="certifications-list">
                     {% for study in knowledge.studies %}
                         {% if study.studyType == 'certification' and study.degreeAchieved %}
@@ -573,7 +573,7 @@
             <!-- Skills -->
             {% if knowledge and knowledge.hardSkills %}
             <div class="sidebar-section sidebar-skills">
-                <h2 class="sidebar-title">Skills</h2>
+                <h2 class="sidebar-title">{{ texts.skills }}</h2>
                 {% set tech_skills = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list %}
                 {% if tech_skills %}
                     {% set skill_groups = {} %}
@@ -612,7 +612,7 @@
             <!-- Professional Summary -->
             {% if aboutMe.profile.description %}
             <div class="main-section">
-                <h2 class="main-title">Profile</h2>
+                <h2 class="main-title">{{ texts.profile }}</h2>
                 <div class="profile-description">
                     {{ aboutMe.profile.description }}
                 </div>
@@ -622,7 +622,7 @@
             <!-- Work Experience -->
             {% if experience and experience.jobs %}
             <div class="main-section">
-                <h2 class="main-title">Work Experience</h2>
+                <h2 class="main-title">{{ texts.work_experience }}</h2>
                 
                 {% for job in experience.jobs %}
                     {% for role in job.roles %}
@@ -643,7 +643,7 @@
                                         {% if role.finishDate %}
                                             {{ role.finishDate|format_date("%b %Y") }}
                                         {% else %}
-                                            Present
+                                            {{ texts.present }}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -677,7 +677,7 @@
             <!-- Education -->
             {% if knowledge and knowledge.studies %}
             <div class="main-section">
-                <h2 class="main-title">Education</h2>
+                <h2 class="main-title">{{ texts.education }}</h2>
                 {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
                     {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
                     <div class="education-item">
@@ -686,7 +686,7 @@
                             {% if study.finishDate %}
                                 {{ study.finishDate|format_date("%Y") }}
                             {% else %}
-                                Present
+                                {{ texts.present }}
                             {% endif %})
                         </div>
                     </div>
