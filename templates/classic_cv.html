@@ -593,40 +593,13 @@
                 </section>
                 {% endif %}
 
-                {% if knowledge and knowledge.hardSkills %}
+                {% if skills_by_category %}
                 <section class="section">
                     <h2 class="section-title">{{ texts.skills }}</h2>
                     <ul class="skills-list">
-                        {% set tech_skills = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list %}
-                        {% if tech_skills %}
-                            {% set skill_groups = {} %}
-                            {% for skill in tech_skills %}
-                                {% set category = skill.skill.name %}
-                                {% if category in ['Python', 'Java', 'JavaScript', 'C#'] %}
-                                    {% set _ = skill_groups.update({'Programming': skill_groups.get('Programming', []) + [skill.skill.name]}) %}
-                                {% elif category in ['MLflow', 'Airflow', 'Kubeflow', 'Azure', 'Docker', 'Kubernetes'] %}
-                                    {% set _ = skill_groups.update({'MLOps/DevOps': skill_groups.get('MLOps/DevOps', []) + [skill.skill.name]}) %}
-                                {% elif category in ['PyTorch', 'Scikit-learn', 'Pandas', 'Numpy'] %}
-                                    {% set _ = skill_groups.update({'ML/Data Science': skill_groups.get('ML/Data Science', []) + [skill.skill.name]}) %}
-                                {% elif category in ['LangChain', 'LangGraph'] %}
-                                    {% set _ = skill_groups.update({'LLM/AI': skill_groups.get('LLM/AI', []) + [skill.skill.name]}) %}
-                                {% elif category in ['Spark', 'Kafka', 'Elasticsearch', 'Hive'] %}
-                                    {% set _ = skill_groups.update({'Big Data': skill_groups.get('Big Data', []) + [skill.skill.name]}) %}
-                                {% elif category in ['Django', 'FastAPI', 'Vue', 'NodeJS', 'AngularJS'] %}
-                                    {% set _ = skill_groups.update({'Web Development': skill_groups.get('Web Development', []) + [skill.skill.name]}) %}
-                                {% elif category in ['PostgreSQL', 'MySQL', 'InfluxDB'] %}
-                                    {% set _ = skill_groups.update({'Databases': skill_groups.get('Databases', []) + [skill.skill.name]}) %}
-                                {% else %}
-                                    {% set _ = skill_groups.update({'Other': skill_groups.get('Other', []) + [skill.skill.name]}) %}
-                                {% endif %}
-                            {% endfor %}
-                            
-                            {% for category, skills in skill_groups.items() %}
-                                {% if skills %}
-                                    <li>{{ skills|join(', ') }}</li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                        {% for category, skills in skills_by_category.items() %}
+                            <li><strong>{{ category }}:</strong> {{ skills|join(', ') }}</li>
+                        {% endfor %}
                     </ul>
                 </section>
                 {% endif %}

@@ -39,7 +39,7 @@
 {% endif %}
 
 {% if role.competences -%}
-Tecnologías: {{ role.competences|map(attribute='name')|join(', ') }}
+{{ texts.technical_skills }}: {{ role.competences|map(attribute='name')|join(', ') }}
 {% endif %}
 
 {% endfor %}
@@ -58,21 +58,20 @@ Tecnologías: {{ role.competences|map(attribute='name')|join(', ') }}
 
 {% endif %}
 
-{% if knowledge.hardSkills -%}
+{% if skills_by_category -%}
 {{ texts.technical_skills }}:
-{% set technologies = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list -%}
-{% if technologies -%}
-{{ technologies|map(attribute='skill.name')|join(', ') }}
-{% endif %}
+{% for category, skills in skills_by_category.items() -%}
+{{ category }}: {{ skills|join(', ') }}
+{% endfor %}
 
 {% endif %}
 
 {% if knowledge.studies -%}
-Formación:
+{{ texts.training }}:
 {% for study in knowledge.studies -%}
 - {{ study.name }} | {{ study.institution.name }}
-  {{ study.startDate|format_date }} - {% if study.finishDate %}{{ study.finishDate|format_date }}{% else %}En curso{% endif %}
-{% if study.linkedCompetences %}  Tecnologías: {{ study.linkedCompetences|map(attribute='name')|join(', ') }}{% endif %}
+  {{ study.startDate|format_date }} - {% if study.finishDate %}{{ study.finishDate|format_date }}{% else %}{{ texts.in_progress }}{% endif %}
+{% if study.linkedCompetences %}  {{ texts.technical_skills }}: {{ study.linkedCompetences|map(attribute='name')|join(', ') }}{% endif %}
 
 {% endfor %}
 {% endif %}

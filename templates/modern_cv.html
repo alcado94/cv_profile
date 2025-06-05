@@ -571,39 +571,18 @@
             {% endif %}
 
             <!-- Skills -->
-            {% if knowledge and knowledge.hardSkills %}
-            <div class="sidebar-section sidebar-skills">
+            {% if skills_by_category %}
+            <section class="sidebar-section sidebar-skills">
                 <h2 class="sidebar-title">{{ texts.skills }}</h2>
-                {% set tech_skills = knowledge.hardSkills|selectattr('skill.type', 'equalto', 'technology')|list %}
-                {% if tech_skills %}
-                    {% set skill_groups = {} %}
-                    {% for skill in tech_skills %}
-                        {% set category = skill.skill.name %}
-                        {% if category in ['PyTorch', 'Scikit-learn', 'Pandas', 'Numpy', 'LangChain', 'LangGraph'] %}
-                            {% set _ = skill_groups.update({'ML/AI': skill_groups.get('ML/AI', []) + [skill.skill.name]}) %}
-                        {% elif category in ['Spark', 'Kafka', 'Elasticsearch', 'Hive'] %}
-                            {% set _ = skill_groups.update({'Big Data': skill_groups.get('Big Data', []) + [skill.skill.name]}) %}
-                        {% elif category in ['Django', 'FastAPI', 'Vue', 'NodeJS', 'AngularJS', 'Python', 'Java', 'JavaScript', 'C#'] %}
-                            {% set _ = skill_groups.update({'Web Development': skill_groups.get('Web Development', []) + [skill.skill.name]}) %}
-                        {% elif category in ['MLflow', 'Airflow', 'Kubeflow'] %}
-                            {% set _ = skill_groups.update({'MLOps': skill_groups.get('MLOps', []) + [skill.skill.name]}) %}
-                        {% elif category in ['Azure', 'Docker', 'Kubernetes'] %}
-                            {% set _ = skill_groups.update({'DevOps': skill_groups.get('DevOps', []) + [skill.skill.name]}) %}
-                        {% else %}
-                            {% set _ = skill_groups.update({'Other': skill_groups.get('Other', []) + [skill.skill.name]}) %}
-                        {% endif %}
-                    {% endfor %}
-                    
-                    {% for category in ['ML/AI', 'Big Data', 'Web Development', 'MLOps', 'DevOps', 'Other'] %}
-                        {% if skill_groups.get(category) %}
-                            <div class="sidebar-skill-category">
-                                <div class="sidebar-skill-category-title">{{ category }}</div>
-                                <div class="sidebar-skill-list">{{ skill_groups[category]|join(', ') }}</div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </div>
+                {% for category in ['ML/AI', 'MLOps', 'DevOps', 'Big Data', 'Web Development', 'Databases'] %}
+                    {% if skills_by_category.get(category) %}
+                        <div class="sidebar-skill-category">
+                            <div class="sidebar-skill-category-title">{{ category }}</div>
+                            <div class="sidebar-skill-list">{{ skills_by_category[category]|join(', ') }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </section>
             {% endif %}
         </div>
 
