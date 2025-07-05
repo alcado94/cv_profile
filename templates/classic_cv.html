@@ -20,8 +20,8 @@
         }
 
         .cv-container {
-            max-width: 240mm;
-            width: 900px;
+            max-width: 1200px;
+            width: 95%;
             min-height: 297mm;
             margin: 0 auto;
             background-color: white;
@@ -385,12 +385,49 @@
             }
         }
 
+        @media (max-width: 1200px) {
+            .cv-container {
+                width: 98%;
+                padding: 50px;
+            }
+        }
+
         @media (max-width: 900px) {
             .cv-container {
                 width: 100%;
-                /* padding: 40px 30px; */
+                padding: 40px 30px;
             }
             
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .header-right {
+                text-align: left;
+            }
+            
+            .contact-skills-row,
+            .education-certs-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cv-container {
+                padding: 30px 20px;
+            }
+            
+            .header-left {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
         }
     </style>
 </head>
