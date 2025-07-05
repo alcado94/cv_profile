@@ -454,11 +454,126 @@
         @media (max-width: 900px) {
             .cv-container {
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: none;
             }
             
             .sidebar {
                 border-right: none;
                 border-bottom: 1px solid #e9ecef;
+                width: 100%;
+                min-height: auto;
+                padding: 20px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .profile-section {
+                flex-direction: row;
+                gap: 20px;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            
+            .profile-image {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 0;
+            }
+            
+            .profile-info {
+                flex: 1;
+            }
+            
+            .profile-name {
+                font-size: 18px;
+                line-height: 1.2;
+                margin-bottom: 5px;
+            }
+            
+            .profile-title {
+                font-size: 12px;
+            }
+            
+            .contact-info {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .contact-item {
+                font-size: 11px;
+                background-color: #f8f9fa;
+                padding: 5px 10px;
+                border-radius: 15px;
+                border: 1px solid #e9ecef;
+            }
+            
+            .social-links {
+                justify-content: flex-start;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .cv-container {
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: none;
+            }
+            
+            .sidebar {
+                padding: 15px;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile-name {
+                font-size: 20px;
+            }
+            
+            .profile-title {
+                font-size: 14px;
+            }
+            
+            .contact-info {
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .contact-item {
+                font-size: 12px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .sidebar-section {
+                margin-bottom: 15px;
+            }
+            
+            .sidebar-title {
+                font-size: 11px;
             }
         }
     </style>
