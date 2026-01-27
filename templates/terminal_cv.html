@@ -343,6 +343,7 @@
             .terminal-output {
                 font-size: 12px;
                 padding: 15px;
+                padding-bottom: 90px;
             }
 
             .help-sidebar {
@@ -355,6 +356,14 @@
 
             .terminal-input {
                 font-size: 13px;
+            }
+
+            .terminal-input-container {
+                position: sticky;
+                bottom: 0;
+                z-index: 5;
+                padding-bottom: calc(15px + env(safe-area-inset-bottom));
+                background: var(--ctp-mantle);
             }
         }
 
