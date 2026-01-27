@@ -78,6 +78,7 @@ jobs:
             "modern_cv") echo "modern_cv" ;;
             "classic_cv") echo "index" ;;
             "simple_text") echo "cv" ;;
+            "markdown_cv") echo "cv" ;;
             *) echo "$basename" ;;
           esac
         }
@@ -204,6 +205,11 @@ jobs:
                         <div class="title">📝 Formato Texto</div>
                         <div class="description">Versión en texto plano</div>
                     </a>
+
+                    <a href="cv.md" class="format-link" style="background: #24292e;">
+                        <div class="title">⬇️ Formato Markdown</div>
+                        <div class="description">Versión raw para GitHub/Obsidian</div>
+                    </a>
                 </div>
                 
                 <div class="footer">
@@ -238,6 +244,7 @@ jobs:
         - **[Formato Moderno](index.html)** - Diseño profesional y elegante
         - **[Formato Simple](simple.html)** - Diseño limpio y minimalista  
         - **[Formato Texto](cv.txt)** - Versión en texto plano
+        - **[Formato Markdown](cv.md)** - Versión en Markdown
         - **[Selector de Formatos](versions.html)** - Página de selección
         
         ## 🔄 Actualización Automática
