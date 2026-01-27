@@ -195,6 +195,11 @@ jobs:
                         <div class="title">🎨 Formato Moderno</div>
                         <div class="description">Diseño profesional y elegante (HTML)</div>
                     </a>
+
+                    <a href="terminal_cv.html" class="format-link" style="background: #3b3f57;">
+                        <div class="title">🖥️ Formato Terminal</div>
+                        <div class="description">Experiencia interactiva tipo terminal (HTML)</div>
+                    </a>
                     
                     <a href="simple.html" class="format-link">
                         <div class="title">📄 Formato Simple</div>
@@ -242,6 +247,7 @@ jobs:
         ## 📋 Formatos Disponibles
         
         - **[Formato Moderno](index.html)** - Diseño profesional y elegante
+        - **[Formato Terminal](terminal_cv.html)** - Experiencia interactiva tipo terminal
         - **[Formato Simple](simple.html)** - Diseño limpio y minimalista  
         - **[Formato Texto](cv.txt)** - Versión en texto plano
         - **[Formato Markdown](cv.md)** - Versión en Markdown
@@ -304,6 +310,7 @@ jobs:
           tar -xf artifact.tar
           mkdir -p ../release-files
           cp index.html ../release-files/cv-modern.html
+          cp terminal_cv.html ../release-files/cv-terminal.html
           cp simple.html ../release-files/cv-simple.html
           cp cv.txt ../release-files/cv.txt
           
@@ -319,6 +326,7 @@ jobs:
             
             📄 Archivos incluidos:
             - `cv-modern.html` - Formato moderno
+            - `cv-terminal.html` - Formato terminal
             - `cv-simple.html` - Formato simple
             - `cv.txt` - Formato texto
             

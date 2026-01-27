@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="{{ settings.language|lower }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Terminal - {{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ctp-base: #303446;
+            --ctp-mantle: #292c3c;
+            --ctp-crust: #232634;
+            --ctp-text: #c6d0f5;
+            --ctp-subtext: #a5adce;
+            --ctp-overlay: #737994;
+            --ctp-surface0: #414559;
+            --ctp-surface1: #51576d;
+            --ctp-surface2: #626880;
+            --ctp-lavender: #babbf1;
+            --ctp-blue: #8caaee;
+            --ctp-green: #a6d189;
+            --ctp-yellow: #e5c890;
+            --ctp-red: #e78284;
+            --ctp-mauve: #ca9ee6;
+            --ctp-teal: #81c8be;
+        }
+
+        body {
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            background: radial-gradient(1200px 600px at 10% 10%, #3b3f57 0%, var(--ctp-base) 35%, var(--ctp-crust) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--ctp-text);
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--ctp-mantle);
+            border-radius: 12px;
+            box-shadow: 0 24px 70px rgba(10, 10, 20, 0.55);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+            border: 1px solid var(--ctp-surface0);
+        }
+
+        .terminal-header {
+            background: var(--ctp-surface0);
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--ctp-surface1);
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .btn-close { background: var(--ctp-red); }
+        .btn-minimize { background: var(--ctp-yellow); }
+        .btn-maximize { background: var(--ctp-green); }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+            color: var(--ctp-subtext);
+            font-weight: 500;
+        }
+
+        .terminal-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .terminal-output {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: var(--ctp-mantle);
+            font-size: 14px;
+            line-height: 1.35;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-output::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-output::-webkit-scrollbar-track {
+            background: var(--ctp-mantle);
+        }
+
+        .terminal-output::-webkit-scrollbar-thumb {
+            background: var(--ctp-surface1);
+            border-radius: 4px;
+        }
+
+        .terminal-output::-webkit-scrollbar-thumb:hover {
+            background: var(--ctp-surface2);
+        }
+
+        .output-line {
+            margin-bottom: 4px;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .boot-line {
+            color: var(--ctp-green);
+            margin-bottom: 4px;
+        }
+
+        .prompt {
+            color: var(--ctp-green);
+            font-weight: 700;
+        }
+
+        .command-input-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .user-command {
+            color: var(--ctp-blue);
+            font-weight: 500;
+        }
+
+        .command-output {
+            color: var(--ctp-text);
+            margin-left: 0;
+            white-space: pre-line;
+        }
+
+        .command-output.error {
+            color: var(--ctp-red);
+        }
+
+        .command-output.success {
+            color: var(--ctp-green);
+        }
+
+        .command-output.info {
+            color: var(--ctp-blue);
+        }
+
+        .command-output.warning {
+            color: var(--ctp-yellow);
+        }
+
+        .section-title {
+            color: var(--ctp-mauve);
+            font-weight: 700;
+            font-size: 16px;
+            margin: 10px 0 6px 0;
+            text-transform: uppercase;
+        }
+
+        .job-item, .skill-category, .education-item, .cert-item {
+            margin-bottom: 4px;
+            padding-left: 10px;
+            border-left: 2px solid var(--ctp-surface1);
+        }
+
+        .job-title {
+            color: var(--ctp-blue);
+            font-weight: 700;
+        }
+
+        .job-company {
+            color: var(--ctp-lavender);
+            font-style: italic;
+        }
+
+        .job-period {
+            color: var(--ctp-subtext);
+            font-size: 12px;
+        }
+
+        .job-description {
+            color: var(--ctp-subtext);
+            margin-top: 2px;
+            font-size: 13px;
+        }
+
+        .skill-category-name {
+            color: var(--ctp-green);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .skill-list {
+            color: var(--ctp-subtext);
+            font-size: 13px;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: var(--ctp-surface0);
+            color: var(--ctp-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .terminal-input-container {
+            background: var(--ctp-mantle);
+            padding: 15px 20px;
+            border-top: 1px solid var(--ctp-surface0);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--ctp-text);
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .terminal-input::placeholder {
+            color: var(--ctp-overlay);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--ctp-green);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .help-sidebar {
+            width: 280px;
+            background: var(--ctp-surface0);
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 1px solid var(--ctp-surface1);
+            font-size: 13px;
+            display: none;
+        }
+
+        .help-sidebar h3 {
+            color: var(--ctp-green);
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .help-command {
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .help-command:hover {
+            background: var(--ctp-surface1);
+        }
+
+        .help-command-name {
+            color: var(--ctp-blue);
+            font-weight: 700;
+        }
+
+        .help-command-desc {
+            color: var(--ctp-subtext);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .toggle-help {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            background: var(--ctp-surface0);
+            border: 1px solid var(--ctp-surface1);
+            color: var(--ctp-green);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Roboto Mono', monospace;
+            transition: all 0.2s;
+        }
+
+        .toggle-help:hover {
+            background: var(--ctp-surface1);
+        }
+
+        .link {
+            color: var(--ctp-blue);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .terminal-container {
+                max-height: 95vh;
+            }
+
+            .terminal-output {
+                font-size: 12px;
+                padding: 15px;
+            }
+
+            .help-sidebar {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 14px;
+            }
+
+            .terminal-input {
+                font-size: 13px;
+            }
+        }
+
+        .neofetch-container {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        .neofetch-logo {
+            color: var(--ctp-green);
+            font-size: 11px;
+            line-height: 1.2;
+            white-space: pre;
+        }
+
+        .neofetch-info {
+            flex: 1;
+        }
+
+        .neofetch-line {
+            margin-bottom: 4px;
+        }
+
+        .neofetch-label {
+            color: var(--ctp-green);
+            font-weight: 700;
+        }
+
+        .neofetch-value {
+            color: var(--ctp-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-button btn-close"></div>
+            <div class="terminal-button btn-minimize"></div>
+            <div class="terminal-button btn-maximize"></div>
+            <div class="terminal-title">{{ aboutMe.profile.name|lower }}@cv ~ terminal</div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="terminal-output" id="output">
+                <!-- Output will be added here by JavaScript -->
+            </div>
+            
+            <div class="help-sidebar" id="helpSidebar">
+                <h3>📋 Comandos</h3>
+                <div class="help-command" onclick="executeCommand('help')">
+                    <div class="help-command-name">help</div>
+                    <div class="help-command-desc">Lista todos los comandos</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('whoami')">
+                    <div class="help-command-name">whoami</div>
+                    <div class="help-command-desc">Muestra perfil</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('experience')">
+                    <div class="help-command-name">experience</div>
+                    <div class="help-command-desc">Experiencia laboral</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('skills')">
+                    <div class="help-command-name">skills</div>
+                    <div class="help-command-desc">Habilidades técnicas</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('education')">
+                    <div class="help-command-name">education</div>
+                    <div class="help-command-desc">Formación académica</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('certs')">
+                    <div class="help-command-name">certs</div>
+                    <div class="help-command-desc">Certificaciones</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('languages')">
+                    <div class="help-command-name">languages</div>
+                    <div class="help-command-desc">Idiomas</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('contact')">
+                    <div class="help-command-name">contact</div>
+                    <div class="help-command-desc">Información de contacto</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('stack')">
+                    <div class="help-command-name">stack</div>
+                    <div class="help-command-desc">Stack tecnológico</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('neofetch')">
+                    <div class="help-command-name">neofetch</div>
+                    <div class="help-command-desc">Resumen visual</div>
+                </div>
+                <div class="help-command" onclick="executeCommand('clear')">
+                    <div class="help-command-name">clear</div>
+                    <div class="help-command-desc">Limpiar terminal</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="terminal-input-container">
+            <span class="prompt">{{ aboutMe.profile.name|lower }}@cv:~$</span>
+            <input type="text" id="commandInput" class="terminal-input" placeholder="Escribe 'help' para ver comandos disponibles..." autocomplete="off" autofocus>
+        </div>
+    </div>
+
+    <button class="toggle-help" onclick="toggleHelp()">[ ? ]</button>
+
+    <script>
+        // Datos del CV embebidos desde Jinja2
+        const CV_DATA = {
+            profile: {
+                name: "{{ aboutMe.profile.name }}",
+                surnames: "{{ aboutMe.profile.surnames }}",
+                title: "{{ aboutMe.profile.title }}",
+                description: {{ aboutMe.profile.description|tojson }},
+                location: {
+                    municipality: "{{ aboutMe.profile.location.municipality }}",
+                    region: "{{ aboutMe.profile.location.region }}",
+                    country: "{{ aboutMe.profile.location.country }}"
+                }
+            },
+            experience: {{ experience|tojson }},
+            knowledge: {{ knowledge|tojson }},
+            contact: {
+                email: "{{ careerPreferences.contact.contactMails[0] if careerPreferences.contact.contactMails else '' }}",
+                links: {{ aboutMe.relevantLinks|tojson }}
+            },
+            stack: {{ manfredSpecificData.mainStackTechs|tojson if manfredSpecificData else []|tojson }},
+            preferredRoles: {{ careerPreferences.preferences.preferredRoles|tojson if careerPreferences else []|tojson }},
+            skillsByCategory: {{ skills_by_category|tojson if skills_by_category else {}|tojson }}
+        };
+
+        const output = document.getElementById('output');
+        const commandInput = document.getElementById('commandInput');
+        const helpSidebar = document.getElementById('helpSidebar');
+        
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        // Boot sequence
+        function bootSequence() {
+            const bootLines = [
+                'Booting CV System v1.0...',
+                `Loading profile: ${CV_DATA.profile.name} ${CV_DATA.profile.surnames}`,
+                `Role: ${CV_DATA.profile.title}`,
+                `Location: ${CV_DATA.profile.location.municipality}, ${CV_DATA.profile.location.region}, ${CV_DATA.profile.country}`,
+                '',
+                "System ready. Type 'help' for available commands.",
+                ''
+            ];
+
+            bootLines.forEach((line, index) => {
+                setTimeout(() => {
+                    const lineDiv = document.createElement('div');
+                    lineDiv.className = 'output-line boot-line';
+                    lineDiv.textContent = line;
+                    output.appendChild(lineDiv);
+                    scrollToBottom();
+                }, index * 200);
+            });
+        }
+
+        function addOutput(text, className = 'command-output') {
+            const div = document.createElement('div');
+            div.className = `output-line ${className}`;
+            div.innerHTML = text;
+            output.appendChild(div);
+            scrollToBottom();
+        }
+
+        function addPromptLine(command) {
+            const div = document.createElement('div');
+            div.className = 'output-line command-input-line';
+            div.innerHTML = `<span class="prompt">${CV_DATA.profile.name.toLowerCase()}@cv:~$</span> <span class="user-command">${command}</span>`;
+            output.appendChild(div);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Presente';
+            const date = new Date(dateStr);
+            const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+            return `${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        function executeCommand(cmd) {
+            const command = cmd.trim().toLowerCase();
+            
+            if (command !== '') {
+                commandHistory.unshift(command);
+                historyIndex = -1;
+            }
+
+            addPromptLine(cmd);
+
+            const args = command.split(' ');
+            const mainCmd = args[0];
+
+            switch (mainCmd) {
+                case 'help':
+                case 'ls':
+                    showHelp();
+                    break;
+                case 'whoami':
+                case 'about':
+                    showProfile();
+                    break;
+                case 'experience':
+                case 'jobs':
+                    showExperience();
+                    break;
+                case 'job':
+                    if (args[1]) {
+                        showJobDetail(parseInt(args[1]) - 1);
+                    } else {
+                        addOutput('Uso: job &lt;número&gt;\nEjemplo: job 1', 'command-output error');
+                    }
+                    break;
+                case 'skills':
+                    showSkills();
+                    break;
+                case 'education':
+                    showEducation();
+                    break;
+                case 'certs':
+                case 'certifications':
+                    showCertifications();
+                    break;
+                case 'languages':
+                case 'idiomas':
+                    showLanguages();
+                    break;
+                case 'contact':
+                case 'contacto':
+                    showContact();
+                    break;
+                case 'stack':
+                    showStack();
+                    break;
+                case 'roles':
+                    showRoles();
+                    break;
+                case 'neofetch':
+                    showNeofetch();
+                    break;
+                case 'clear':
+                case 'cls':
+                    output.innerHTML = '';
+                    break;
+                case '':
+                    break;
+                default:
+                    addOutput(`Comando no reconocido: '${mainCmd}'. Escribe 'help' para ver comandos disponibles.`, 'command-output error');
+            }
+
+            commandInput.value = '';
+        }
+
+        function showHelp() {
+            let helpText = `<div class="section-title">Comandos Disponibles</div>`;
+            helpText += `<div class="command-output">
+  <span class="info">whoami</span>       - Muestra información del perfil
+  <span class="info">experience</span>   - Lista toda la experiencia laboral
+  <span class="info">job &lt;n&gt;</span>      - Detalle del trabajo número n
+  <span class="info">skills</span>       - Muestra habilidades técnicas por categoría
+  <span class="info">education</span>    - Muestra formación académica
+  <span class="info">certs</span>        - Lista certificaciones
+  <span class="info">languages</span>    - Muestra idiomas
+  <span class="info">contact</span>      - Información de contacto
+  <span class="info">stack</span>        - Stack tecnológico principal
+  <span class="info">roles</span>        - Roles profesionales preferidos
+  <span class="info">neofetch</span>     - Resumen visual tipo neofetch
+  <span class="info">clear</span>        - Limpia la terminal
+  <span class="info">help</span>         - Muestra esta ayuda
+</div>`;
+            addOutput(helpText);
+        }
+
+        function showProfile() {
+            let profileText = `<div class="section-title">👤 Perfil Profesional</div>`;
+            profileText += `<div class="command-output">
+<span class="info">${CV_DATA.profile.name} ${CV_DATA.profile.surnames}</span>
+<span class="warning">${CV_DATA.profile.title}</span>
+
+${CV_DATA.profile.description}
+
+<span style="color: #999">📍 ${CV_DATA.profile.location.municipality}, ${CV_DATA.profile.location.region}, ${CV_DATA.profile.location.country}</span>
+</div>`;
+            addOutput(profileText);
+        }
+
+        function showExperience() {
+            let expText = `<div class="section-title">💼 Experiencia Laboral</div>`;
+            
+            if (CV_DATA.experience && CV_DATA.experience.jobs) {
+                CV_DATA.experience.jobs.forEach((job, index) => {
+                    job.roles.forEach(role => {
+                        let highlights = [];
+                        if (role.challenges && role.challenges.length > 0) {
+                            role.challenges.forEach(challenge => {
+                                const lines = challenge.description.split('\n');
+                                lines.forEach(line => {
+                                    const cleaned = line.replace(/^\s*-\s*/, '').trim();
+                                    if (cleaned) {
+                                        highlights.push(cleaned);
+                                    }
+                                });
+                            });
+                        }
+                        const topHighlights = highlights.slice(0, 2).map(item => `  • ${item}`).join('\n');
+                        const techs = role.competences ? role.competences.map(c => c.name) : [];
+                        const techBadges = techs.length ? techs.map(t => `<span class="tech-badge">${t}</span>`).join('') : '';
+
+                        expText += `<div class="job-item">
+  <span class="job-title">[${index + 1}] ${role.name}</span>
+  <div class="job-company">${job.organization.name}</div>
+  <div class="job-period">${formatDate(role.startDate)} - ${role.finishDate ? formatDate(role.finishDate) : 'Presente'}</div>
+  ${topHighlights ? `<div class=\"job-description\">${topHighlights}</div>` : ''}
+  ${techBadges ? `<div class=\"job-description\">${techBadges}</div>` : ''}
+</div>`;
+                    });
+                });
+                expText += `<div class="command-output" style="margin-top: 12px">
+<span class="info">💡 Tip:</span> Usa 'job &lt;número&gt;' para ver detalles (ej: job 1)
+</div>`;
+            }
+            
+            addOutput(expText);
+        }
+
+        function showJobDetail(index) {
+            if (!CV_DATA.experience || !CV_DATA.experience.jobs || index < 0 || index >= CV_DATA.experience.jobs.length) {
+                addOutput(`Trabajo no encontrado. Usa 'experience' para ver la lista.`, 'command-output error');
+                return;
+            }
+
+            const job = CV_DATA.experience.jobs[index];
+            const role = job.roles[0];
+
+            let jobText = `<div class="section-title">📋 ${role.name}</div>`;
+            jobText += `<div class="command-output">
+<span class="job-company">${job.organization.name}</span>
+<span class="job-period">${formatDate(role.startDate)} - ${role.finishDate ? formatDate(role.finishDate) : 'Presente'}</span>
+
+`;
+            
+            if (role.challenges && role.challenges.length > 0) {
+                jobText += `<span class="warning">Responsabilidades:</span>\n`;
+                role.challenges.forEach(challenge => {
+                    const lines = challenge.description.split('\n');
+                    lines.forEach(line => {
+                        if (line.trim()) {
+                            jobText += `${line}\n`;
+                        }
+                    });
+                });
+            }
+
+            if (role.competences && role.competences.length > 0) {
+                jobText += `\n<span class="warning">Tecnologías:</span> `;
+                jobText += role.competences.map(c => `<span class="tech-badge">${c.name}</span>`).join('');
+            }
+
+            jobText += `</div>`;
+            addOutput(jobText);
+        }
+
+        function showSkills() {
+            let skillsText = `<div class="section-title">🛠️  Habilidades Técnicas</div>`;
+            
+            if (CV_DATA.skillsByCategory && Object.keys(CV_DATA.skillsByCategory).length > 0) {
+                for (const [category, skills] of Object.entries(CV_DATA.skillsByCategory)) {
+                    skillsText += `<div class="skill-category">
+  <div class="skill-category-name">${category}</div>
+  <div class="skill-list">${skills.join(', ')}</div>
+</div>`;
+                }
+            }
+            
+            addOutput(skillsText);
+        }
+
+        function showEducation() {
+            let eduText = `<div class="section-title">🎓 Formación Académica</div>`;
+            
+            if (CV_DATA.knowledge && CV_DATA.knowledge.studies) {
+                const degrees = CV_DATA.knowledge.studies.filter(s => 
+                    s.studyType === 'officialDegree' || s.studyType === 'unaccredited'
+                );
+                
+                degrees.forEach(study => {
+                    const startYear = study.startDate ? new Date(study.startDate).getFullYear() : '';
+                    const endYear = study.finishDate ? new Date(study.finishDate).getFullYear() : 'En curso';
+                    
+                    eduText += `<div class="education-item">
+  <span class="job-title">${study.name}</span>
+  <div class="job-company">${study.institution.name}</div>
+  <div class="job-period">${startYear} - ${endYear}</div>
+</div>`;
+                });
+            }
+            
+            addOutput(eduText);
+        }
+
+        function showCertifications() {
+            let certsText = `<div class="section-title">📜 Certificaciones</div>`;
+            
+            if (CV_DATA.knowledge && CV_DATA.knowledge.studies) {
+                const certs = CV_DATA.knowledge.studies.filter(s => 
+                    s.studyType === 'certification' && s.degreeAchieved
+                );
+                
+                certsText += `<div class="command-output">`;
+                certs.forEach(cert => {
+                    const year = cert.finishDate ? new Date(cert.finishDate).getFullYear() : '';
+                    const label = `${cert.name} - ${cert.institution.name} ${year ? `(${year})` : ''}`;
+                    if (cert.institution && cert.institution.URL) {
+                        certsText += `  • <a href="${cert.institution.URL}" target="_blank" rel="noopener noreferrer" class="link">${label}</a>\n`;
+                    } else {
+                        certsText += `  • <span class="success">${label}</span>\n`;
+                    }
+                });
+                certsText += `</div>`;
+            }
+            
+            addOutput(certsText);
+        }
+
+        function showLanguages() {
+            let langText = `<div class="section-title">🌍 Idiomas</div>`;
+            
+            if (CV_DATA.knowledge && CV_DATA.knowledge.languages) {
+                langText += `<div class="command-output">`;
+                CV_DATA.knowledge.languages.forEach(lang => {
+                    const levelMap = {
+                        'Native or bilingual proficiency': 'Nativo',
+                        'Professional working proficiency': 'Profesional',
+                        'Full professional proficiency': 'Avanzado',
+                        'Limited working proficiency': 'Intermedio',
+                        'Elementary proficiency': 'Básico'
+                    };
+                    const level = levelMap[lang.level] || lang.level;
+                    langText += `  • <span class="info">${lang.fullName}</span> - ${level}\n`;
+                });
+                langText += `</div>`;
+            }
+            
+            addOutput(langText);
+        }
+
+        function showContact() {
+            let contactText = `<div class="section-title">📧 Contacto</div>`;
+            contactText += `<div class="command-output">`;
+            
+            if (CV_DATA.contact.email) {
+                contactText += `  <span class="info">Email:</span> ${CV_DATA.contact.email}\n\n`;
+            }
+            
+            if (CV_DATA.contact.links && CV_DATA.contact.links.length > 0) {
+                contactText += `  <span class="info">Perfiles:</span>\n`;
+                CV_DATA.contact.links.forEach(link => {
+                    const icon = link.type === 'linkedin' ? '💼' : link.type === 'github' ? '🐙' : '🔗';
+                    contactText += `  ${icon} <a href="${link.URL}" target="_blank" class="link">${link.type}</a>\n`;
+                });
+            }
+            
+            contactText += `</div>`;
+            addOutput(contactText);
+        }
+
+        function showStack() {
+            let stackText = `<div class="section-title">⚡ Stack Tecnológico Principal</div>`;
+            
+            if (CV_DATA.stack && CV_DATA.stack.length > 0) {
+                stackText += `<div class="command-output">`;
+                CV_DATA.stack.forEach(tech => {
+                    stackText += `<span class="tech-badge">${tech.name}</span>`;
+                });
+                stackText += `</div>`;
+            }
+            
+            addOutput(stackText);
+        }
+
+        function showRoles() {
+            let rolesText = `<div class="section-title">🎯 Roles Preferidos</div>`;
+            
+            if (CV_DATA.preferredRoles && CV_DATA.preferredRoles.length > 0) {
+                rolesText += `<div class="command-output">`;
+                CV_DATA.preferredRoles.forEach(role => {
+                    rolesText += `  • <span class="success">${role}</span>\n`;
+                });
+                rolesText += `</div>`;
+            }
+            
+            addOutput(rolesText);
+        }
+
+        function showNeofetch() {
+            const logo = `    ___    
+   /   \\   
+  |  CV |  
+  |_____|  
+   |   |   
+   |   |   
+   -----   `;
+
+            let neofetchText = `<div class="neofetch-container">
+<div class="neofetch-logo">${logo}</div>
+<div class="neofetch-info">
+<div class="neofetch-line"><span class="neofetch-label">${CV_DATA.profile.name}@cv</span></div>
+<div class="neofetch-line">-------------------</div>
+<div class="neofetch-line"><span class="neofetch-label">Nombre:</span> <span class="neofetch-value">${CV_DATA.profile.name} ${CV_DATA.profile.surnames}</span></div>
+<div class="neofetch-line"><span class="neofetch-label">Rol:</span> <span class="neofetch-value">${CV_DATA.profile.title}</span></div>
+<div class="neofetch-line"><span class="neofetch-label">Ubicación:</span> <span class="neofetch-value">${CV_DATA.profile.location.municipality}, ${CV_DATA.profile.location.country}</span></div>
+<div class="neofetch-line"><span class="neofetch-label">Email:</span> <span class="neofetch-value">${CV_DATA.contact.email}</span></div>
+<div class="neofetch-line"><span class="neofetch-label">Trabajos:</span> <span class="neofetch-value">${CV_DATA.experience.jobs ? CV_DATA.experience.jobs.length : 0}</span></div>
+<div class="neofetch-line"><span class="neofetch-label">Stack:</span> <span class="neofetch-value">${CV_DATA.stack ? CV_DATA.stack.map(s => s.name).join(', ') : ''}</span></div>
+</div>
+</div>`;
+            
+            addOutput(neofetchText);
+        }
+
+        function toggleHelp() {
+            const sidebar = document.getElementById('helpSidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        }
+
+        // Event listeners
+        commandInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                executeCommand(commandInput.value);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    commandInput.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    commandInput.value = commandHistory[historyIndex];
+                } else if (historyIndex === 0) {
+                    historyIndex = -1;
+                    commandInput.value = '';
+                }
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                const value = commandInput.value.toLowerCase();
+                const commands = ['help', 'whoami', 'experience', 'job', 'skills', 'education', 'certs', 'languages', 'contact', 'stack', 'roles', 'neofetch', 'clear'];
+                const match = commands.find(cmd => cmd.startsWith(value));
+                if (match) {
+                    commandInput.value = match;
+                }
+            }
+        });
+
+        // Keep focus on input
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('a') && !e.target.closest('.help-command')) {
+                commandInput.focus();
+            }
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            bootSequence();
+            commandInput.focus();
+            
+            helpSidebar.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
