@@ -266,6 +266,7 @@ class MacCVBuilder:
             'Numpy': 'ML/AI',
             'LangChain': 'ML/AI',
             'LangGraph': 'ML/AI',
+            'PydanticAI': 'ML/AI',
             'Keras': 'ML/AI',
             
             # DevOps
@@ -307,6 +308,7 @@ class MacCVBuilder:
             'ELK': 'Big Data',
             'Kibana': 'Big Data',
             'Hadoop': 'Big Data',
+            'Databricks': 'Big Data',
             'Sqoop': 'Big Data',
             
             # Databases
