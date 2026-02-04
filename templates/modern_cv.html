@@ -603,7 +603,9 @@
             <div class="sidebar-section">
                 <h2 class="sidebar-title">{{ texts.contact }}</h2>
                 <div class="contact-info">
-                    <div class="contact-item">camposdominguezalejandro@gmail.com</div>
+                    {% if careerPreferences.contact and careerPreferences.contact.contactMails %}
+                        <div class="contact-item">{{ careerPreferences.contact.contactMails[0] }}</div>
+                    {% endif %}
                     {% if aboutMe.profile.location %}
                         <div class="contact-item">
                             {% if aboutMe.profile.location.region %}{{ aboutMe.profile.location.region }}{% endif %}

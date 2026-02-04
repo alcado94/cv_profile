@@ -469,8 +469,8 @@
             </div>
             <div class="header-right">
                 <div class="contact-info">
-                    {% if aboutMe.profile.contact and aboutMe.profile.contact.contactMails %}
-                        <div><strong>{{ texts.email }}:</strong> {{ aboutMe.profile.contact.contactMails[0] }}</div>
+                    {% if careerPreferences.contact and careerPreferences.contact.contactMails %}
+                        <div><strong>{{ texts.email }}:</strong> {{ careerPreferences.contact.contactMails[0] }}</div>
                     {% endif %}
                     {% if aboutMe.profile.contact and aboutMe.profile.contact.phoneNumbers %}
                         <div><strong>{{ texts.phone }}:</strong> {{ aboutMe.profile.contact.phoneNumbers[0].number }}</div>
