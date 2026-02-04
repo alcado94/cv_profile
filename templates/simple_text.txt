@@ -54,6 +54,7 @@
 {{ texts.languages }}:
 {% for language in knowledge.languages -%}
 - {{ language.fullName or language.name }}{% if language.level %}: {{ language.level }}{% endif %}
+
 {% endfor %}
 
 {% endif %}
@@ -66,9 +67,23 @@
 
 {% endif %}
 
-{% if knowledge.studies -%}
+{% set studies = knowledge.studies or [] -%}
+{% set training_studies = studies | rejectattr('studyType', 'equalto', 'certification') | list -%}
+{% set certification_studies = studies | selectattr('studyType', 'equalto', 'certification') | list -%}
+
+{% if training_studies -%}
 {{ texts.training }}:
-{% for study in knowledge.studies -%}
+{% for study in training_studies -%}
+- {{ study.name }} | {{ study.institution.name }}
+  {{ study.startDate|format_date }} - {% if study.finishDate %}{{ study.finishDate|format_date }}{% else %}{{ texts.in_progress }}{% endif %}
+{% if study.linkedCompetences %}  {{ texts.technical_skills }}: {{ study.linkedCompetences|map(attribute='name')|join(', ') }}{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if certification_studies -%}
+{{ texts.certifications }}:
+{% for study in certification_studies -%}
 - {{ study.name }} | {{ study.institution.name }}
   {{ study.startDate|format_date }} - {% if study.finishDate %}{{ study.finishDate|format_date }}{% else %}{{ texts.in_progress }}{% endif %}
 {% if study.linkedCompetences %}  {{ texts.technical_skills }}: {{ study.linkedCompetences|map(attribute='name')|join(', ') }}{% endif %}
