@@ -1,0 +1,94 @@
+{
+  "templates": [
+    {
+      "id": "modern",
+      "name": "Modern CV",
+      "template": "modern_cv.html",
+      "output": "modern_cv.html",
+      "type": "html",
+      "switcher": true,
+      "versions": {
+        "show": false
+      },
+      "release": {
+        "include": false
+      },
+      "order": 2
+    },
+    {
+      "id": "classic",
+      "name": "Classic CV",
+      "template": "classic_cv.html",
+      "output": "index.html",
+      "type": "html",
+      "switcher": true,
+      "versions": {
+        "show": true,
+        "title": "Formato Moderno",
+        "description": "Diseno profesional y elegante (HTML)",
+        "style": ""
+      },
+      "release": {
+        "include": true,
+        "filename": "cv-modern.html"
+      },
+      "order": 1
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal CV",
+      "template": "terminal_cv.html",
+      "output": "terminal_cv.html",
+      "type": "html",
+      "switcher": true,
+      "versions": {
+        "show": true,
+        "title": "Formato Terminal",
+        "description": "Experiencia interactiva tipo terminal (HTML)",
+        "style": "background: #3b3f57;"
+      },
+      "release": {
+        "include": true,
+        "filename": "cv-terminal.html"
+      },
+      "order": 3
+    },
+    {
+      "id": "text",
+      "name": "Text CV",
+      "template": "simple_text.txt",
+      "output": "cv.txt",
+      "type": "txt",
+      "switcher": true,
+      "versions": {
+        "show": true,
+        "title": "Formato Texto",
+        "description": "Version en texto plano",
+        "style": ""
+      },
+      "release": {
+        "include": true,
+        "filename": "cv.txt"
+      },
+      "order": 4
+    },
+    {
+      "id": "markdown",
+      "name": "Markdown CV",
+      "template": "markdown_cv.md",
+      "output": "cv.md",
+      "type": "md",
+      "switcher": true,
+      "versions": {
+        "show": true,
+        "title": "Formato Markdown",
+        "description": "Version raw para GitHub/Obsidian",
+        "style": "background: #24292e;"
+      },
+      "release": {
+        "include": false
+      },
+      "order": 5
+    }
+  ]
+}

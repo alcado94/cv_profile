@@ -196,11 +196,7 @@
   'use strict';
 
   // Configuración de templates disponibles
-  const TEMPLATES = [
-    { name: 'Modern CV', filename: 'modern_cv.html' },
-    { name: 'Terminal CV', filename: 'terminal_cv.html' },
-    { name: 'Classic CV', filename: 'classic_cv.html' }
-  ];
+  const TEMPLATES = {{ templates_switcher | default([]) | tojson }};
 
   // Elementos del DOM
   const button = document.getElementById('templateSwitcherBtn');
@@ -215,17 +211,24 @@
    * @returns {string} Nombre del archivo del template actual
    */
   function getCurrentTemplate() {
+    if (!TEMPLATES.length) {
+      return '';
+    }
+
     const path = window.location.pathname;
-    const filename = path.split('/').pop();
+    let filename = path.split('/').pop();
+    if (!filename) {
+      filename = 'index.html';
+    }
     
     // Si el filename está en nuestra lista de templates, devolverlo
-    const template = TEMPLATES.find(t => t.filename === filename);
+    const template = TEMPLATES.find(t => t.output === filename);
     if (template) {
       return filename;
     }
     
     // Por defecto, retornar el primero (Modern CV)
-    return TEMPLATES[0].filename;
+    return TEMPLATES[0].output;
   }
 
   /**
@@ -247,6 +250,10 @@
    * Renderiza la lista de templates en el menú
    */
   function renderTemplateList() {
+    if (!TEMPLATES.length) {
+      return;
+    }
+
     const currentTemplate = getCurrentTemplate();
     
     list.innerHTML = '';
@@ -255,12 +262,12 @@
       const li = document.createElement('li');
       const link = document.createElement('a');
       
-      link.href = buildTemplateURL(template.filename);
+      link.href = buildTemplateURL(template.output);
       link.textContent = template.name;
       link.className = 'template-switcher-item';
       
       // Marcar como activo si es el template actual
-      if (template.filename === currentTemplate) {
+      if (template.output === currentTemplate) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
       }

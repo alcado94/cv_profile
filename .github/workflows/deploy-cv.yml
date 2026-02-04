@@ -44,187 +44,11 @@ jobs:
         
     - name: Generate All CV Variants
       run: |
-        mkdir -p ./public
-        
-        # Function to get file extension from template
-        get_extension() {
-          case "$1" in
-            *.html) echo "html" ;;
-            *.txt) echo "txt" ;;
-            *.md) echo "md" ;;
-            *) echo "html" ;;
-          esac
-        }
-        
-        # Function to get language suffix from JSON filename
-        get_lang_suffix() {
-          local json_file="$1"
-          local basename=$(basename "$json_file" .json)
-          if [[ "$basename" == *"_EN" ]]; then
-            echo "_en"
-          elif [[ "$basename" == *"_ES" ]]; then
-            echo "_es"
-          else
-            echo ""
-          fi
-        }
-        
-        # Function to get base name for output file
-        get_base_name() {
-          local template="$1"
-          local basename=$(basename "$template" | sed 's/\.[^.]*$//')
-          
-          case "$basename" in
-            "modern_cv") echo "modern_cv" ;;
-            "classic_cv") echo "index" ;;
-            "simple_text") echo "cv" ;;
-            "markdown_cv") echo "cv" ;;
-            *) echo "$basename" ;;
-          esac
-        }
-        
-        # Iterate over all JSON files in CV folder
-        for json_file in CV/*.json; do
-          if [ -f "$json_file" ]; then
-            echo "Processing CV file: $json_file"
-            lang_suffix=$(get_lang_suffix "$json_file")
-            
-            # Iterate over all templates
-            for template in templates/*; do
-              if [ -f "$template" ]; then
-                template_name=$(basename "$template")
-                echo "  Processing template: $template_name"
-                
-                # Get file extension and base name
-                extension=$(get_extension "$template_name")
-                base_name=$(get_base_name "$template_name")
-                
-                # Generate output filename
-                output_file="./public/${base_name}${lang_suffix}.${extension}"
-                
-                # Generate CV
-                echo "    Generating: $output_file"
-                python3 src/builder.py "$json_file" -t "$template_name" -o "$output_file"
-                
-                if [ $? -eq 0 ]; then
-                  echo "    ✓ Successfully generated $output_file"
-                else
-                  echo "    ✗ Failed to generate $output_file"
-                fi
-              fi
-            done
-            echo ""
-          fi
-        done
-        
-        # List generated files
-        echo "Generated files:"
-        ls -la ./public/
-        
-    - name: Create index page with multiple formats
-      run: |
-        cat > ./public/versions.html << 'EOF'
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>CV - Alejandro Campos Domínguez - Formatos Disponibles</title>
-            <style>
-                body {
-                    font-family: 'Helvetica Neue', Arial, sans-serif;
-                    max-width: 600px;
-                    margin: 50px auto;
-                    padding: 40px;
-                    background-color: #f5f5f5;
-                    color: #333;
-                }
-                .container {
-                    background: white;
-                    padding: 40px;
-                    border-radius: 10px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                }
-                h1 {
-                    color: #2c3e50;
-                    text-align: center;
-                    margin-bottom: 30px;
-                }
-                .format-links {
-                    display: grid;
-                    gap: 20px;
-                    margin-top: 30px;
-                }
-                .format-link {
-                    display: block;
-                    padding: 20px;
-                    background: #4a90e2;
-                    color: white;
-                    text-decoration: none;
-                    border-radius: 8px;
-                    text-align: center;
-                    transition: background-color 0.3s;
-                }
-                .format-link:hover {
-                    background: #357abd;
-                }
-                .format-link .title {
-                    font-size: 1.2em;
-                    font-weight: bold;
-                    margin-bottom: 5px;
-                }
-                .format-link .description {
-                    font-size: 0.9em;
-                    opacity: 0.9;
-                }
-                .footer {
-                    text-align: center;
-                    margin-top: 30px;
-                    color: #666;
-                    font-size: 0.9em;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>CV - Alejandro Campos Domínguez</h1>
-                <p style="text-align: center; color: #666;">Selecciona el formato que prefieras:</p>
-                
-                <div class="format-links">
-                    <a href="index.html" class="format-link">
-                        <div class="title">🎨 Formato Moderno</div>
-                        <div class="description">Diseño profesional y elegante (HTML)</div>
-                    </a>
-
-                    <a href="terminal_cv.html" class="format-link" style="background: #3b3f57;">
-                        <div class="title">🖥️ Formato Terminal</div>
-                        <div class="description">Experiencia interactiva tipo terminal (HTML)</div>
-                    </a>
-                    
-                    <a href="simple.html" class="format-link">
-                        <div class="title">📄 Formato Simple</div>
-                        <div class="description">Diseño limpio y minimalista (HTML)</div>
-                    </a>
-                    
-                    <a href="cv.txt" class="format-link">
-                        <div class="title">📝 Formato Texto</div>
-                        <div class="description">Versión en texto plano</div>
-                    </a>
-
-                    <a href="cv.md" class="format-link" style="background: #24292e;">
-                        <div class="title">⬇️ Formato Markdown</div>
-                        <div class="description">Versión raw para GitHub/Obsidian</div>
-                    </a>
-                </div>
-                
-                <div class="footer">
-                    <p>🔄 Actualizado automáticamente con GitHub Actions</p>
-                    <p>📅 Generado el $(date '+%d/%m/%Y a las %H:%M')</p>
-                </div>
-            </div>
-        </body>
-        </html>
-        EOF
+        python3 src/generate_all.py \
+          --config config/templates.json \
+          --data-dir CV \
+          --template-dir templates \
+          --output-dir public
         
     - name: Add favicon and meta tags
       run: |
@@ -236,41 +60,6 @@ jobs:
         
         # Add Open Graph meta tags
         sed -i 's|<meta name="viewport"|<meta property="og:title" content="CV - Alejandro Campos Domínguez">\n    <meta property="og:description" content="Data Scientist/ML Engineer con experiencia en ML, IA Generativa, Big Data y DevOps">\n    <meta property="og:type" content="profile">\n    <meta name="viewport"|g' public/*.html
-        
-    - name: Create README for GitHub Pages
-      run: |
-        cat > public/README.md << 'EOF'
-        # CV - Alejandro Campos Domínguez
-        
-        Este sitio contiene mi CV generado automáticamente usando GitHub Actions y templates Jinja2.
-        
-        ## 📋 Formatos Disponibles
-        
-        - **[Formato Moderno](index.html)** - Diseño profesional y elegante
-        - **[Formato Terminal](terminal_cv.html)** - Experiencia interactiva tipo terminal
-        - **[Formato Simple](simple.html)** - Diseño limpio y minimalista  
-        - **[Formato Texto](cv.txt)** - Versión en texto plano
-        - **[Formato Markdown](cv.md)** - Versión en Markdown
-        - **[Selector de Formatos](versions.html)** - Página de selección
-        
-        ## 🔄 Actualización Automática
-        
-        Este CV se actualiza automáticamente cada vez que se modifica:
-        - Los datos del CV (`cv_profile/CV/MAC.json`)
-        - Los templates (`cv_profile/templates/`)
-        - El script generador (`cv_profile/src/`)
-        
-        ## 🛠️ Tecnologías Utilizadas
-        
-        - **Formato de datos**: [MAC (Manfred Awesomic CV)](https://github.com/getmanfred/mac)
-        - **Generación**: Python + Jinja2
-        - **Despliegue**: GitHub Actions + GitHub Pages
-        - **Templates**: HTML/CSS responsivo
-        
-        ---
-        
-        Generado automáticamente el $(date '+%d/%m/%Y a las %H:%M UTC')
-        EOF
         
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
@@ -309,10 +98,47 @@ jobs:
           cd cv-files
           tar -xf artifact.tar
           mkdir -p ../release-files
-          cp index.html ../release-files/cv-modern.html
-          cp terminal_cv.html ../release-files/cv-terminal.html
-          cp simple.html ../release-files/cv-simple.html
-          cp cv.txt ../release-files/cv.txt
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          config_path = Path("../config/templates.json")
+          config = json.loads(config_path.read_text(encoding="utf-8"))
+          templates = config.get("templates", [])
+
+          release_dir = Path("../release-files")
+          release_dir.mkdir(parents=True, exist_ok=True)
+
+          release_files = []
+          for entry in templates:
+              release = entry.get("release", {})
+              if not release.get("include"):
+                  continue
+
+              source_name = entry.get("output")
+              target_name = release.get("filename") or source_name
+              if not source_name:
+                  continue
+
+              source_path = Path(".") / source_name
+              target_path = release_dir / target_name
+              if source_path.exists():
+                  target_path.write_bytes(source_path.read_bytes())
+                  release_files.append(target_name)
+
+          body_lines = [
+              "Nueva version del CV generada automaticamente",
+              "",
+              "Archivos incluidos:",
+          ]
+          body_lines.extend([f"- `{name}`" for name in release_files])
+          (release_dir / "body.txt").write_text("\n".join(body_lines), encoding="utf-8")
+          PY
+          {
+            echo "RELEASE_BODY<<EOF"
+            cat ../release-files/body.txt
+            echo "EOF"
+          } >> $GITHUB_ENV
           
       - name: Create Release
         uses: actions/create-release@v1
@@ -321,15 +147,6 @@ jobs:
         with:
           tag_name: cv-${{ github.sha }}
           release_name: CV Release $(date '+%Y-%m-%d')
-          body: |
-            🆕 Nueva versión del CV generada automáticamente
-            
-            📄 Archivos incluidos:
-            - `cv-modern.html` - Formato moderno
-            - `cv-terminal.html` - Formato terminal
-            - `cv-simple.html` - Formato simple
-            - `cv.txt` - Formato texto
-            
-            🔗 Ver online: ${{ steps.deployment.outputs.page_url }}
+          body: ${{ env.RELEASE_BODY }}
           draft: false
           prerelease: false 

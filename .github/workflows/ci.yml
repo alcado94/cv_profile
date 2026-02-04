@@ -40,15 +40,11 @@ jobs:
       run: |
         cd cv_profile
         mkdir -p test-output
-        
-        # Test all templates
-        for template in templates/*.html templates/*.txt; do
-          if [ -f "$template" ]; then
-            template_name=$(basename "$template")
-            echo "Testing template: $template_name"
-            python3 src/builder.py CV/MAC.json -t "$template_name" -o "test-output/${template_name%.*}-test.${template_name##*.}"
-          fi
-        done
+        python3 src/generate_all.py \
+          --config config/templates.json \
+          --data-dir CV \
+          --template-dir templates \
+          --output-dir test-output
         
     - name: Check generated files
       run: |
