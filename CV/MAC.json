@@ -48,7 +48,7 @@
             "startDate": "2025-02-24",
             "challenges": [
               {
-                "description": "- Desarrollo de prototipos de **IA generativa** en **AWS** enfocados en la detección de cláusulas contractuales y en la generación automática de informes periciales mediante modelos **LLM**.\n- Desarrollo de soluciones con **agentes de IA** para optimizar operaciones internas, con foco en arquitectura e infraestructura sobre **AWS**.\n- Desarrollo de prototipos de modelos globales de **detección de anomalías** en la plataforma **Databricks** para mantenimiento predictivo en sistemas de trenes.\n- Implementación de validación técnica para **modelos de regresión** orientados a la puntuación de productos.\n- Apoyo en la elaboración de ofertas para clientes."
+                "description": "- Diseño de prototipos de **IA generativa** sobre **AWS** orientados a la detección de cláusulas contractuales y a la generación automática de informes periciales mediante modelos **LLM**.\n- Definición de soluciones basadas en **agentes de IA** para optimizar operaciones internas, con especial atención a la arquitectura y la infraestructura en **AWS**.\n- Construcción de prototipos de modelos globales de **detección de anomalías** en **Databricks** aplicados al mantenimiento predictivo en sistemas ferroviarios.\n- Ejecución de validaciones técnicas para **modelos de regresión** destinados a la puntuación de productos.\n- Colaboración en la preparación de propuestas comerciales para clientes."
               }
             ],
             "competences": [
