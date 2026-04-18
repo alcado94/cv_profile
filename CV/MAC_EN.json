@@ -48,7 +48,7 @@
             "startDate": "2025-02-24",
             "challenges": [
               {
-                "description": "- Development of **generative AI** prototypes on **AWS** focused on contractual clause detection and automatic generation of expert reports using multimodal **LLM** models.\n- Support in preparing proposals for clients."
+                "description": "- Development of **generative AI** prototypes on **AWS** focused on contractual clause detection and automatic generation of expert reports using multimodal **LLM** models.\n- Development of **AI agent** solutions to streamline internal operations, focused on **AWS** architecture and infrastructure.\n- Support in preparing proposals for clients."
               }
             ],
             "competences": [
