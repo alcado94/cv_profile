@@ -403,6 +403,36 @@
                 padding: 0px;
                 margin: 0;
             }
+
+            .header,
+            .header-left,
+            .contact-info,
+            .section,
+            .job,
+            .education-item,
+            .skills-list li,
+            .certifications li,
+            .profile-image,
+            .job-icon,
+            .job-icon-image {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .section-title,
+            h2,
+            h3 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .header,
+            .header-left,
+            .job-container,
+            .job-header,
+            .social-links {
+                display: block;
+            }
         }
 
         @media (max-width: 1200px) {

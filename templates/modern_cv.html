@@ -449,6 +449,38 @@
                 width: 100%;
                 margin: 0px;
             }
+
+            .profile-section,
+            .contact-info,
+            .contact-item,
+            .sidebar-section,
+            .sidebar-skill-category,
+            .main-section,
+            .job,
+            .education-item,
+            .profile-image,
+            .job-icon,
+            .job-icon-image,
+            .certifications-list li,
+            .language-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .main-title,
+            .sidebar-title,
+            h2,
+            h3 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .profile-section,
+            .profile-info,
+            .job-header,
+            .job-title-row {
+                display: block;
+            }
         }
 
         @media (max-width: 900px) {
