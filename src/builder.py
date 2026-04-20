@@ -317,6 +317,19 @@ class MacCVBuilder:
 
         return links_by_type
 
+    def _normalize_skill_name(self, skill_name: str) -> str:
+        """Normaliza el nombre de una skill para agrupar aliases conocidos."""
+        skill_aliases = {
+            "fastapi": "FastAPI",
+            "github actions": "GitHub Actions",
+            "gitlab ci": "GitLab CI",
+            "nodejs": "NodeJS",
+            "numpy": "NumPy",
+        }
+
+        cleaned_skill_name = skill_name.strip()
+        return skill_aliases.get(cleaned_skill_name.lower(), cleaned_skill_name)
+
     def _group_skills_by_category(self) -> Dict[str, List[str]]:
         """Agrupa las hard skills por categorías técnicas"""
         categories = {
@@ -339,10 +352,11 @@ class MacCVBuilder:
             "Seldon Core": "MLOps",
             "dbt": "MLOps",
             # ML/AI
+            "Python": "ML/AI",
             "PyTorch": "ML/AI",
             "Scikit-learn": "ML/AI",
             "Pandas": "ML/AI",
-            "Numpy": "ML/AI",
+            "NumPy": "ML/AI",
             "LangChain": "ML/AI",
             "LangGraph": "ML/AI",
             "PydanticAI": "ML/AI",
@@ -355,22 +369,21 @@ class MacCVBuilder:
             "Terraform": "DevOps",
             "Ansible": "DevOps",
             "GitHub Actions": "DevOps",
-            "Github Actions": "DevOps",
             "Nginx": "DevOps",
             "Grafana": "DevOps",
-            "Gitlab CI": "DevOps",
+            "GitLab CI": "DevOps",
             "Git": "DevOps",
+            "ELK": "DevOps",
+            "Elasticsearch": "DevOps",
+            "Kibana": "DevOps",
             # Programming
-            "Python": "Programming",
             "Java": "Programming",
-            "JavaScript": "Programming",
             "C#": "Programming",
-            "NodeJS": "Programming",
-            "SQL": "Programming",
             # Web Development
             "Django": "Web Development",
-            "Fastapi": "Web Development",
             "FastAPI": "Web Development",
+            "JavaScript": "Web Development",
+            "NodeJS": "Web Development",
             "Vue": "Web Development",
             "AngularJS": "Web Development",
             "HTML": "Web Development",
@@ -378,25 +391,34 @@ class MacCVBuilder:
             # Big Data
             "Spark": "Big Data",
             "Kafka": "Big Data",
-            "Elasticsearch": "Big Data",
             "Hive": "Big Data",
-            "ELK": "Big Data",
-            "Kibana": "Big Data",
             "Hadoop": "Big Data",
             "Databricks": "Big Data",
             "Sqoop": "Big Data",
             # Databases
+            "SQL": "Databases",
             "PostgreSQL": "Databases",
             "MySQL": "Databases",
             "InfluxDB": "Databases",
         }
 
         # Obtener skills tecnológicas
-        tech_skills = [
-            skill["skill"]["name"]
-            for skill in self.cv_data.get("knowledge", {}).get("hardSkills", [])
-            if skill.get("skill", {}).get("type") == "technology"
-        ]
+        tech_skills = []
+        seen_skills = set()
+
+        for skill in self.cv_data.get("knowledge", {}).get("hardSkills", []):
+            skill_data = skill.get("skill", {})
+            if skill_data.get("type") != "technology":
+                continue
+
+            normalized_skill_name = self._normalize_skill_name(
+                skill_data.get("name", "")
+            )
+            if not normalized_skill_name or normalized_skill_name in seen_skills:
+                continue
+
+            seen_skills.add(normalized_skill_name)
+            tech_skills.append(normalized_skill_name)
 
         # Agrupar skills según el mapeo
         for skill_name in tech_skills:
