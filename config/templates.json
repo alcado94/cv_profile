@@ -13,6 +13,24 @@
       "release": {
         "include": false
       },
+      "order": 3
+    },
+    {
+      "id": "minimalist",
+      "name": "Minimalist CV",
+      "template": "minimalist_cv.html",
+      "output": "minimalist_cv.html",
+      "type": "html",
+      "switcher": true,
+      "versions": {
+        "show": true,
+        "title": "Formato Minimalista",
+        "description": "Diseno editorial limpio con doble columna (HTML)",
+        "style": "background: #111111;"
+      },
+      "release": {
+        "include": false
+      },
       "order": 2
     },
     {
@@ -51,7 +69,7 @@
         "include": true,
         "filename": "cv-terminal.html"
       },
-      "order": 3
+      "order": 4
     },
     {
       "id": "text",
@@ -70,7 +88,7 @@
         "include": true,
         "filename": "cv.txt"
       },
-      "order": 4
+      "order": 5
     },
     {
       "id": "markdown",
@@ -88,7 +106,7 @@
       "release": {
         "include": false
       },
-      "order": 5
+      "order": 6
     }
   ]
 }
