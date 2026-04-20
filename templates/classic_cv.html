@@ -404,34 +404,16 @@
                 margin: 0;
             }
 
-            .header,
-            .header-left,
-            .contact-info,
-            .section,
-            .job,
-            .education-item,
-            .skills-list li,
-            .certifications li,
-            .profile-image,
-            .job-icon,
-            .job-icon-image {
+            .print-section-title,
+            .print-job-item,
+            .print-education-item {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
 
-            .section-title,
-            h2,
-            h3 {
+            .print-section-title {
                 break-after: avoid;
                 page-break-after: avoid;
-            }
-
-            .header,
-            .header-left,
-            .job-container,
-            .job-header,
-            .social-links {
-                display: block;
             }
         }
 
@@ -571,10 +553,10 @@
             <div class="education-certs-row">
                 {% if knowledge and knowledge.studies %}
                 <section class="section">
-                    <h2 class="section-title">{{ texts.education }}</h2>
+                    <h2 class="section-title print-section-title">{{ texts.education }}</h2>
                     {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
                         {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
-                        <div class="education-item">
+                        <div class="education-item print-education-item">
                             <span class="education-title">{{ study.name }}</span>
                             <span> - </span>
                             <span class="education-institution">{{ study.institution.name }}</span>
@@ -596,11 +578,11 @@
 
             {% if experience and experience.jobs %}
             <section class="section">
-                <h2 class="section-title">{{ texts.work_experience }}</h2>
+                <h2 class="section-title print-section-title">{{ texts.work_experience }}</h2>
                 
                 {% for job in experience.jobs %}
                     {% for role in job.roles %}
-                    <div class="job">
+                    <div class="job print-job-item">
                         <div class="job-container">
                             <div class="job-icon">
                                 {% if job.organization.image and job.organization.image.link %}

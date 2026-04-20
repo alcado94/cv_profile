@@ -450,36 +450,16 @@
                 margin: 0px;
             }
 
-            .profile-section,
-            .contact-info,
-            .contact-item,
-            .sidebar-section,
-            .sidebar-skill-category,
-            .main-section,
-            .job,
-            .education-item,
-            .profile-image,
-            .job-icon,
-            .job-icon-image,
-            .certifications-list li,
-            .language-item {
+            .print-section-title,
+            .print-job-item,
+            .print-education-item {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
 
-            .main-title,
-            .sidebar-title,
-            h2,
-            h3 {
+            .print-section-title {
                 break-after: avoid;
                 page-break-after: avoid;
-            }
-
-            .profile-section,
-            .profile-info,
-            .job-header,
-            .job-title-row {
-                display: block;
             }
         }
 
@@ -746,11 +726,11 @@
             <!-- Work Experience -->
             {% if experience and experience.jobs %}
             <div class="main-section">
-                <h2 class="main-title">{{ texts.work_experience }}</h2>
+                <h2 class="main-title print-section-title">{{ texts.work_experience }}</h2>
                 
                 {% for job in experience.jobs %}
                     {% for role in job.roles %}
-                    <div class="job">
+                    <div class="job print-job-item">
                         <div class="job-header">
                             <div class="job-icon">
                                 {% if job.organization.image and job.organization.image.link %}
@@ -801,10 +781,10 @@
             <!-- Education -->
             {% if knowledge and knowledge.studies %}
             <div class="main-section">
-                <h2 class="main-title">{{ texts.education }}</h2>
+                <h2 class="main-title print-section-title">{{ texts.education }}</h2>
                 {% for study in knowledge.studies|sort(attribute='startDate', reverse=True) %}
                     {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
-                    <div class="education-item">
+                    <div class="education-item print-education-item">
                         <div class="education-title">{{ study.name }}</div>
                         <div class="education-institution">{{ study.institution.name }} ( {{ study.startDate|format_date("%Y") }} / 
                             {% if study.finishDate %}
