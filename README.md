@@ -1,81 +1,154 @@
-<img src="/assets/cv_icon.png" align="right" width="128px" />
+# CV Profile
 
-# Alejandro Campos Domínguez's CV
+Este repositorio centraliza el currículum profesional y actúa como punto de sincronización con Manfred. La información se mantiene versionada en GitHub para dejar trazabilidad de cambios, hitos profesionales y actualizaciones del perfil.
 
-This repository contains **my professional data**, stored as a [MAC](/CV/MAC.json) (or Manfred Awesomic CV), an open-source, interchangeable, machine-readable format. It's also synchronized with [my profile in Manfred](https://getmanfred.com/profile/alejandro-campos-dominguez).
-<br/>
-<br/>
-
-<div align='center'>
-  <img src='https://img.shields.io/static/v1?label=CV%20Last%20Sync&message=2025-06-06 05:44 UTC&color=brightgreen&style=for-the-badge'>
-  <a href='https://github.com/getmanfred/mac'>
-    <img src='https://img.shields.io/static/v1?label=MAC%20Version&message=0.5&color=brightgreen&style=for-the-badge'>
-  </a>
-  <a href='#%EF%B8%8F-license'>
-    <img src='https://img.shields.io/badge/GDPR%20Compliant-40479B?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAG7AAABuwE67OPiAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAThQTFRF////QUebQUebQUebQUebQkibQ0maREmaRUqaRUuZRkuZR0yZSE2YSU6YSk6YTFCXTlKWVFeUVVeUVliUV1mTV1mUWFqTWVqTW1ySXF2SXV6RXl+RYGCQYGCRYWGQamiNbWuMb2yLcG2LcW6Lc2+KdXGJdnKJeHSIeXSIe3aHfHeHfXeHfXiGfnmGf3mGg3yFg32Eh4CDiICDioKCjoaAj4aAkYh/lYt+npJ7oJR7ppl4ppl5qZx3q513rp92r6B1sKF1sqN0s6N0tKR0tqZzt6Zzuahyuqlyvatxv61wwK5vw7FuxbJuxrNty7dszLdsz7pr0Ltq1L5p2sNm2sNn3MVm3cZl4Mhk4Mhl48pk5cxj5sxj6M5i6tBh7NFh7tNg8dZf89de9dle9tpd+t1c+95b/N9b/+FaZsCVrgAAAAR0Uk5TAKH3+IOyXJkAAAGHSURBVFjD7dbZUsIwGAVgwFPbWgUEFQQXFgFRWcQNFVRAqLsimwsqspj3fwPvEMfWJnR0BoZz90+bL03apDEYRhllOGI0jemIyWiAzgwAYNEJOC76BjYA4PDlo7TUrViAhdib3w7wdbILwO5/iy2wAcEGqTgBcyawB8BZIY0g4xDKtXRPla6VGYfA+ThvT+nlfBw9ILpUVJdIBYgRWVLqjpPkiEgDyIQ8TisAs0+EyDQA3+qEFEew3mnxNIAt7g4rAmvuuG0QVyM7EIr/cnteE+CPSg/HUyrNw6ckH9V6Ag8hq2r9S7ekOKkFrFydRVVHcJ280ZwDARBUAeHntb95jWqTOEUJLKdUgNQyFZCrN+9sCs3nis16jgYwt4jyHhwjLTMN4MhubSsCO1tZxz8uJiHzrcwIjEDivH3i+fq+T9rnCTbAWiWFcQDiJgCMF0jVyvhfKB3IAIL7z7EZAPJBiWOcAwkSgMA7ubR0qz52JOH1PqlrS5uY5xYH/oykCeg+aI4yynDkEwtqUWMkn99xAAAAAElFTkSuQmCC'>
+<div align="center">
+  <a href="https://github.com/getmanfred/mac">
+    <img src="https://img.shields.io/static/v1?label=MAC%20Version&message=0.5&color=brightgreen&style=for-the-badge">
   </a>
 </div>
-<br/>
-<br/>
 
-- [Folder Structure](#-folder-structure)
-- [How can you sync your Manfred profile with your own repo](#-how-can-you-sync-your-manfred-profile-with-your-own-repo)
-- [How can you update your CV in Manfred](#%E2%93%9C%EF%B8%8F-how-can-you-update-your-cv-in-manfred)
-- [How can you update your CV in GitHub](#octocat-how-can-you-update-your-cv-in-github)
-- [Contact and Troubleshooting](#-contact-and-troubleshooting)
-- [License](#%EF%B8%8F-license)
+## Propósito
 
-## 📁 Folder Structure
+- Mantener el CV en un formato estructurado y portable.
+- Sincronizar el contenido con la plataforma de Manfred.
+- Generar distintas salidas del currículum a partir de una única fuente de datos.
+- Automatizar validación, generación y despliegue con GitHub Actions.
 
-The structure of this repo is pretty simple. You have all metadata and config files on the base directory. There, you will find more files and folders, but just two are directly related and relevant to my MAC, `/cv` and `/assets`:
+## Tecnologías
 
-    .
-    │
-    ├── CV
-    │    ├── MAC[_instance1][_language1].json
-    │    ├── ...
-    │    └── MAC[_instanceN][_languageN].json
-    │
-    ├── assets
-    │
-    └── ...
+- `MAC (Manfred Awesomic CV)` como esquema JSON base: https://github.com/getmanfred/mac
+- Python para validación y generación del contenido.
+- Jinja2 para las plantillas.
+- GitHub Actions para CI/CD.
+- GitHub Pages para publicar la versión estática.
 
-- [/cv](/cv), where you can find multiple versions of my CV (eg. `MAC.json` or `MAC_dev_ES.json`).
-- [/assets](/assets), where I store assets related with my CVs (eg. pictures, certifications, etc.).
+## Seguir El Esquema MAC
 
-## 🔗 How can you sync your Manfred profile with your own repo
+La fuente de verdad del currículum está en `CV/MAC.json` y `CV/MAC_EN.json`. Ambos archivos deben seguir el JSON Schema definido por el proyecto MAC.
 
-1. First, you have to [create an empty repository](https://github.com/new) (public or private) in your GitHub Account.
-2. If you have a profile at Manfred ([getmanfred.com](https://www.getmanfred.com/)), you can configure the synchronization within `Settings/Data Management`.
+Respetar este esquema es importante por tres motivos:
 
-<img alt="getmanfred.com" src="https://github.com/getmanfred/mac/blob/master/assets/sync/github_manfred_sync.png?raw=true" width="600">
+- garantiza compatibilidad con Manfred;
+- evita errores al validar o renderizar el CV;
+- permite sincronizar cambios automáticamente entre este repositorio y la plataforma.
 
-3. You will be asked to select one repository to install the [Manfred GitHub Connector App](https://github.com/apps/manfred-github-connector). Just follow the instructions.
+No conviene añadir campos ad hoc ni cambiar la estructura fuera de lo permitido por MAC.
 
-<img alt="https://github.com/apps/manfred-github-connector" src="https://github.com/getmanfred/mac/blob/master/assets/sync/github_manfred_connector.png?raw=true" width="600">
+Referencia oficial:
 
-4. **You are done!** So easy, so powerful.
+- https://github.com/getmanfred/mac
+- https://github.com/getmanfred/mac/blob/master/schema/schema.json
 
-## Ⓜ️ How can you update your CV in Manfred
+## Estructura Del Repositorio
 
-Just navigate to [your profile](https://getmanfred.com/profile) and update whatever you want. If you have synchronized your profile with your GitHub repo, **it will be updated automagically with a new version of your MAC**, including the latest updates.
+- `CV/`: archivos fuente del currículum en formato MAC.
+- `src/`: lógica de validación y generación.
+- `templates/`: plantillas Jinja2 para las distintas vistas y exportaciones.
+- `config/templates.json`: catálogo de salidas generadas.
+- `.github/workflows/`: flujos de CI, despliegue y automatización con LLMs.
+- `doc/`: documentación y recursos auxiliares.
 
-<img alt="Magic" src="https://media4.giphy.com/media/ujUdrdpX7Ok5W/giphy.gif?cid=ecf05e471avdapgosxv5t0j0kovk1rr4vq59nlnapfuebgph&rid=giphy.gif&ct=g">
+## Comandos Útiles
 
-## :octocat: How can you update your CV in GitHub
+Instalar dependencias:
 
-Just edit your MAC in the `/CV` folder in the repository page or directly in your machine, commit and push the changes. [Your profile in Manfred](<(https://getmanfred.com/profile)>) will be updated too. **If you have configured Manfred to synchronize your data in other platforms, they will be updated too!**
+```bash
+pip install -r requirements.txt
+```
 
-## 🪠 Contact and Troubleshooting
+Validar el CV principal contra MAC:
 
-> :warning: Remember that your CV has to be [a valid MAC JSON file](https://github.com/getmanfred/mac) to be synchronized !!!
+```bash
+python3 src/builder.py CV/MAC.json --validate
+```
 
-For example, there are 4 "study types" ("officialDegree", "certification", "unaccredited" and "selfTraining") if you include a new type like "kindergarten", your CV could be a valid JSON file but not a MAC and therefore, **your data won't be synchronized and we will send you an email with detailed info on the error**.
+Validar la versión en inglés:
 
-You can find the full MAC definition available [here](https://github.com/getmanfred/mac/blob/master/schema/schema.json). If you have any question, please, don't hesitate to reach us at [support@getmanfred.com](mailto:support@getmanfred.com), ping us on [Twitter](https://twitter.com/getmanfred) or [fill a support ticket](https://getmanfred.freshdesk.com/). We'd love to help you! 🤓
+```bash
+python3 src/builder.py CV/MAC_EN.json --validate
+```
 
-## ⚖️ License
+Generar una salida HTML individual:
 
-The CVs included in this repository contain my personal and professional data, and they can't be automatically processed without my explicit permission according to the [GDPR](https://gdpr-info.eu/) (General Data Protection Regulation).
+```bash
+python3 src/builder.py CV/MAC.json -t modern_cv.html -o dist/cv.html
+```
 
-The [MAC format](https://github.com/getmanfred/mac) is free and open-source software licensed and distributed under the [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0 International).
+Listar plantillas disponibles:
+
+```bash
+python3 src/builder.py CV/MAC.json --list-templates
+```
+
+Generar todas las variantes configuradas:
+
+```bash
+python3 src/generate_all.py --config config/templates.json --data-dir CV --template-dir templates --output-dir public
+```
+
+## CI/CD
+
+El repositorio define dos flujos principales de automatización:
+
+### Validación continua
+
+`/.github/workflows/ci.yml` se ejecuta en:
+
+- `pull_request` contra `main` y `master`;
+- `push` a ramas distintas de `main` y `master`.
+
+Este flujo:
+
+- comprueba que `CV/MAC.json` sea JSON válido;
+- valida el fichero contra el esquema MAC;
+- genera todas las variantes configuradas en un directorio temporal;
+- verifica que los archivos generados existan y no estén vacíos.
+
+### Build Y Despliegue
+
+`/.github/workflows/deploy-cv.yml` se ejecuta al hacer `push` en `main` o `master`.
+
+Este flujo:
+
+- instala dependencias;
+- genera todas las variantes del CV en `public/`;
+- añade metadatos HTML para la web publicada;
+- publica el resultado en GitHub Pages;
+- opcionalmente crea una release cuando el commit incluye `[release]`.
+
+Sitio publicado:
+
+- https://alcado94.github.io/cv_profile/
+
+## Sincronización Con Manfred
+
+Si este repositorio está conectado con Manfred, los cambios sobre los archivos MAC pueden sincronizarse con el perfil de la plataforma. Del mismo modo, las actualizaciones realizadas en Manfred pueden reflejarse en este repositorio según la configuración de sincronización del perfil.
+
+## Actualización Del CV
+
+Para actualizar el contenido:
+
+1. Edita `CV/MAC.json` o `CV/MAC_EN.json`.
+2. Mantén la estructura compatible con MAC.
+3. Valida los archivos modificados.
+4. Genera al menos una salida para comprobar el render.
+
+## Impresión En PDF
+
+La forma más simple de obtener un PDF es abrir la versión desplegada del CV en el navegador y usar la opción de impresión:
+
+- `Ctrl+P` en Linux/Windows.
+- `Cmd+P` en macOS.
+
+Las vistas HTML están preparadas para producir una versión imprimible con formato profesional.
+
+## Automatización Desde GitHub
+
+El repositorio incluye automatizaciones en `.github/workflows/opencode.yml` para ejecutar cambios asistidos por LLM a partir de comentarios con `/oc` o `/opencode` en GitHub. Esto permite usar issues y comentarios como punto de entrada para tareas de mantenimiento y evolución del CV.
+
+## Licencia
+
+Los CVs incluidos en este repositorio contienen datos personales y profesionales, y no pueden procesarse automáticamente sin permiso explícito del titular conforme al RGPD.
+
+El formato MAC es software abierto y se distribuye bajo licencia Creative Commons Attribution Share Alike 4.0 International.
