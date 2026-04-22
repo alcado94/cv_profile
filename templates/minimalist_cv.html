@@ -15,12 +15,10 @@
             color-scheme: light;
             --page-bg: #ffffff;
             --paper: #ffffff;
-            --text: #111111;
-            --muted: #616161;
+            --text: #222222;
+            --muted: #626262;
             --soft: #8a8a8a;
-            --line: #dad7d2;
-            --line-strong: #bdb7af;
-            --accent: #161616;
+            --accent: #1d2a36;
         }
 
         html {
@@ -28,11 +26,10 @@
         }
 
         body {
-            font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: var(--page-bg);
             color: var(--text);
-            line-height: 1.6;
-            padding: 0;
+            line-height: 1.55;
         }
 
         a {
@@ -41,354 +38,342 @@
         }
 
         .page {
-            max-width: 1240px;
+            max-width: 1320px;
             margin: 0 auto;
             background: var(--paper);
-            padding: 52px 58px 72px;
+            padding: 52px 52px 72px;
         }
 
-        .hero {
-            position: relative;
-            padding: 4px 0 42px;
-            border-bottom: 1px solid var(--line-strong);
+        .masthead {
+            display: grid;
+            grid-template-columns: 76px minmax(0, 1fr);
+            column-gap: 28px;
+            align-items: start;
+            margin-bottom: 54px;
         }
 
-        .hero-actions {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            gap: 10px;
+        /* .masthead-actions { */
+        /*     display: flex; */
+        /*     gap: 8px; */
+        /*     padding-top: 2px; */
+        /* } */
+
+        /* .nav-square { */
+        /*     width: 28px; */
+        /*     height: 28px; */
+        /*     display: inline-flex; */
+        /*     align-items: center; */
+        /*     justify-content: center; */
+        /*     background: var(--accent); */
+        /*     color: #ffffff; */
+        /*     border: 1px solid var(--accent); */
+        /*     font-size: 0.95rem; */
+        /*     line-height: 1; */
+        /*     transition: opacity 0.2s ease; */
+        /* } */
+
+        /* .nav-square:hover { */
+        /*     opacity: 0.88; */
+        /* } */
+
+        .profile-image-container {
+            width: 76px; /* Same width as the old nav actions column */
+            height: 76px;
+            border-radius: 50%; /* Make it circular */
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        .nav-square {
-            width: 44px;
-            height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent);
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 600;
-            border: 1px solid var(--accent);
-            transition: opacity 0.2s ease;
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .nav-square:hover {
-            opacity: 0.86;
+        .masthead-copy {
+            max-width: 420px;
         }
 
-        .hero-copy {
-            text-align: center;
-            padding: 0 126px;
-        }
-
-        .hero-line {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: clamp(2.15rem, 4.8vw, 4.7rem);
-            line-height: 0.94;
-            letter-spacing: -0.055em;
-        }
-
-        .hero-name {
-            font-weight: 600;
-        }
-
-        .hero-separator,
-        .hero-role {
-            color: var(--muted);
+        .masthead-name {
+            font-size: 1.08rem;
             font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
 
-        .hero-meta {
-            margin-top: 22px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px 18px;
+        .masthead-title {
+            margin-top: 2px;
             color: var(--muted);
-            font-size: 0.8rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .hero-meta a {
-            border-bottom: 1px solid transparent;
-        }
-
-        .hero-meta a:hover {
-            border-bottom-color: var(--text);
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: minmax(250px, 310px) minmax(0, 1fr);
-            gap: 76px;
-            padding-top: 44px;
-        }
-
-        .sidebar,
-        .main {
-            min-width: 0;
-        }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 26px;
-        }
-
-        .sidebar-section,
-        .main-section {
-            padding-top: 18px;
-            border-top: 1px solid var(--line);
-        }
-
-        .sidebar-section:first-child,
-        .main-section:first-child {
-            padding-top: 0;
-            border-top: 0;
-        }
-
-        .section-title,
-        .main-section-title {
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .sidebar-copy,
-        .detail-copy,
-        .skill-text,
-        .language-level,
-        .experience-body,
-        .experience-stack {
-            color: var(--muted);
-        }
-
-        .sidebar-copy {
-            font-size: 0.98rem;
-            line-height: 1.72;
-        }
-
-        .highlight-list,
-        .education-list,
-        .certification-list,
-        .language-list,
-        .skill-list {
-            display: grid;
-            gap: 14px;
-        }
-
-        .highlight-item,
-        .education-item,
-        .certification-item,
-        .language-item,
-        .skill-item {
-            display: grid;
-            gap: 3px;
-        }
-
-        .highlight-item {
-            grid-template-columns: 54px 1fr;
-            align-items: baseline;
-            gap: 12px;
-        }
-
-        .highlight-value {
-            font-size: 1.6rem;
-            line-height: 1;
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            color: var(--text);
-        }
-
-        .highlight-text,
-        .detail-meta,
-        .language-level,
-        .experience-period,
-        .experience-stack {
-            font-size: 0.82rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        .detail-title,
-        .language-name,
-        .skill-name {
-            color: var(--text);
-            font-size: 0.98rem;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-
-        .detail-copy {
-            font-size: 0.92rem;
-        }
-
-        .language-name {
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .skill-name {
-            font-size: 0.86rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .skill-text {
-            font-size: 0.94rem;
-            line-height: 1.6;
-        }
-
-        .main {
-            display: flex;
-            flex-direction: column;
-            gap: 26px;
-        }
-
-        .experience-list {
-            display: grid;
-            gap: 28px;
-        }
-
-        .experience-item {
-            padding-top: 24px;
-            border-top: 1px solid var(--line);
-        }
-
-        .experience-item:first-child {
-            padding-top: 0;
-            border-top: 0;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: minmax(108px, 138px) minmax(0, 1fr);
-            gap: 20px;
-        }
-
-        .experience-period {
-            color: var(--soft);
-            line-height: 1.55;
-            padding-top: 3px;
-        }
-
-        .experience-role-line {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 8px;
+            font-size: 1.08rem;
+            font-weight: 300;
             line-height: 1.2;
         }
 
-        .experience-role {
-            font-size: 1.34rem;
-            font-weight: 600;
-            letter-spacing: -0.03em;
+        .editorial {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
         }
 
-        .experience-company {
-            font-size: 1rem;
+        .editorial-section {
+            display: grid;
+            grid-template-columns: 140px minmax(0, 1fr); /* Main section grid: Label | Content */
+            column-gap: 28px;
+            align-items: start;
+        }
+
+        .section-label {
             color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.35;
+            padding-top: 2px;
+        }
+        
+        .section-content {
+            display: flex;
+            flex-direction: column;
+            gap: 18px; /* Spacing between blocks within a section content area */
+        }
+
+        /* Increase gap for work experience section content specifically */
+        .editorial-section#work-experience .section-content {
+            gap: 34px;
+        }
+
+        /* --- About Section Specific Styles --- */
+        .about-content-grid {
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr); /* Contact Info | Summary */
+            column-gap: 28px;
+            align-items: start;
+        }
+
+        .contact-block {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.75;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li + li {
+            margin-top: 2px;
+        }
+
+        .contact-list a {
+            display: inline-block;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .summary {
+            font-size: 0.92rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .summary p + p {
+            margin-top: 14px;
+        }
+
+        /* --- Work Experience Section Specific Styles --- */
+        .experience-entry {
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr); /* Meta Column | Description Column */
+            column-gap: 28px;
+            align-items: start;
+        }
+
+        .experience-meta-column {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.75;
+        }
+
+        .role-organization {
+            color: var(--text);
+            font-size: 0.93rem;
+            line-height: 1.45;
+        }
+
+        .role-name,
+        .role-period {
+            display: block;
+        }
+
+        .role-name {
+            color: var(--muted);
+        }
+
+        .role-period {
+            color: var(--soft);
+        }
+
+        .experience-description-column .experience-content {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .experience-description-column .experience-content p + p,
+        .experience-description-column .experience-content ul + p,
+        .experience-description-column .experience-content p + ul,
+        .experience-description-column .experience-content ul + ul,
+        .experience-description-column .experience-content ol + p,
+        .experience-description-column .experience-content p + ol,
+        .experience-description-column .experience-content ol + ol {
+            margin-top: 14px;
+        }
+
+        .experience-description-column .experience-content ul,
+        .experience-description-column .experience-content ol {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .experience-description-column .experience-content li {
+            margin-bottom: 2px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .experience-description-column .experience-content li::before {
+            content: none;
+        }
+
+        .experience-description-column .experience-content li:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-description-column .experience-content strong {
             font-weight: 500;
         }
 
-        .experience-body {
-            margin-top: 13px;
-            font-size: 0.99rem;
-            line-height: 1.72;
-        }
-
-        .experience-body p,
-        .experience-body ul,
-        .experience-body ol {
-            margin: 0;
-        }
-
-        .experience-body ul,
-        .experience-body ol {
-            padding-left: 20px;
-        }
-
-        .experience-body li + li {
-            margin-top: 6px;
-        }
-
-        .experience-stack {
-            margin-top: 14px;
+        /* --- Education & Certifications Specific Styles --- */
+        .education-entry,
+        .certification-entry {
             line-height: 1.6;
+            margin-bottom: 12px; /* Spacing between entries */
+        }
+        .education-entry:last-child,
+        .certification-entry:last-child {
+            margin-bottom: 0;
         }
 
-        .experience-stack-label {
+        .education-main-info,
+        .certification-main-info {
             color: var(--text);
-            font-weight: 700;
+            font-size: 0.93rem;
+            line-height: 1.45;
+        }
+        .education-degree,
+        .certification-title a,
+        .certification-title span {
+            color: var(--text);
+            font-weight: normal; /* To counteract potential link/strong styling */
         }
 
-        @media (max-width: 1040px) {
-            .page {
-                padding: 36px 30px 44px;
-            }
-
-            .hero-copy {
-                padding: 0 92px;
-            }
-
-            .content {
-                gap: 42px;
-            }
+        .education-period,
+        .certification-period {
+            display: block;
+            color: var(--soft);
+            font-size: 0.88rem;
         }
 
-        @media (max-width: 780px) {
+        /* --- Skills Section Specific Styles --- */
+        .skill-entry {
+            margin-bottom: 8px; /* Spacing between skill categories */
+        }
+        .skill-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-category-title {
+            color: var(--text);
+            font-size: 0.93rem;
+            line-height: 1.45;
+            font-weight: bold; /* Make category titles bold */
+            margin-bottom: 4px; /* Space between title and skills list */
+        }
+
+        .skill-list {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6; /* Tighter line spacing for skills */
+        }
+
+        /* --- Certifications Grid Specific Styles --- */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 28px; /* Vertical and horizontal gap */
+        }
+
+        .certifications-grid .certification-entry {
+            margin-bottom: 0; /* Remove individual margin as grid handles spacing */
+        }
+        .certifications-grid .certification-title {
+            font-size: 0.93rem;
+            line-height: 1.45;
+        }
+        .certifications-grid .certification-period {
+            font-size: 0.88rem;
+            line-height: 1.35;
+        }
+
+        /* Highlights */
+        .highlight-content {
+            font-size: 0.92rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .highlight-content p + p {
+            margin-top: 14px;
+        }
+
+        @media (max-width: 900px) {
             .page {
-                padding: 24px 20px 34px;
+                padding: 30px 24px 40px;
             }
 
-            .hero {
-                padding-top: 54px;
-                padding-bottom: 28px;
-            }
-
-            .hero-actions {
-                position: static;
-                margin-bottom: 18px;
-            }
-
-            .hero-copy {
-                padding: 0;
-                text-align: left;
-            }
-
-            .hero-line {
-                justify-content: flex-start;
-                gap: 8px;
-            }
-
-            .hero-meta {
-                justify-content: flex-start;
-            }
-
-            .content {
+            .masthead {
                 grid-template-columns: 1fr;
-                gap: 36px;
-                padding-top: 32px;
+                row-gap: 18px;
+                margin-bottom: 36px;
             }
 
-            .experience-grid {
+            .editorial-section {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+                row-gap: 10px;
+            }
+
+            .about-content-grid {
                 grid-template-columns: 1fr;
-                gap: 10px;
+                row-gap: 10px;
             }
 
-            .experience-period {
-                padding-top: 0;
+            .experience-entry {
+                grid-template-columns: 1fr;
+                row-gap: 10px;
+            }
+
+            .editorial {
+                gap: 24px;
+            }
+
+            .certifications-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+                gap: 15px 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            .certifications-grid {
+                grid-template-columns: 1fr; /* 1 column on very small screens */
             }
         }
 
@@ -399,237 +384,214 @@
 
             .page {
                 max-width: none;
-                padding: 14mm 14mm 16mm;
+                padding: 14mm 12mm 16mm;
             }
 
+            .template-switcher,
             .nav-square {
-                display: none;
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
-    {% set certifications = knowledge.studies|selectattr('studyType', 'equalto', 'certification')|selectattr('degreeAchieved', 'equalto', true)|list if knowledge and knowledge.studies else [] %}
     {% set about_label = 'About me' if language == 'en' else 'Sobre mi' %}
-    {% set highlights_label = 'Highlights' if language == 'en' else 'Destacados' %}
-    {% set skills_label = 'Skills' if language == 'en' else 'Habilidades' %}
     {% set work_experience_label = 'Work experience' if language == 'en' else 'Experiencia profesional' %}
-    {% set experience_highlight_label = 'years of experience' if language == 'en' else texts.years ~ ' de experiencia' %}
+    {% set education_label = 'Education' if language == 'en' else 'Educacion' %}
+    {% set certifications_label = 'Certifications' if language == 'en' else 'Certificaciones' %}
+    {% set skills_label = 'Skills' if language == 'en' else 'Habilidades' %}
+    {% set highlights_label = 'Highlights' if language == 'en' else 'Highlights' %}
+
+    {% set public_profiles = careerPreferences.contact.publicProfiles if careerPreferences and careerPreferences.contact and careerPreferences.contact.publicProfiles else [] %}
+    {% set contact_mails = careerPreferences.contact.contactMails if careerPreferences and careerPreferences.contact and careerPreferences.contact.contactMails else [] %}
+    {% set relevant_links = aboutMe.relevantLinks if aboutMe and aboutMe.relevantLinks else [] %}
+    {% set public_urls = public_profiles|map(attribute='URL')|list %}
+    
+    {% set studies = knowledge.studies if knowledge and knowledge.studies else [] %}
+    {% set education_entries = studies|selectattr('studyType', 'in', ['officialDegree', 'unaccredited'])|list %}
+    {% set certification_entries = studies|selectattr('studyType', 'equalto', 'certification')|list %}
+    {% set soft_skills = knowledge.softSkills if knowledge and knowledge.softSkills else [] %}
+    {% set highlights_text = manfredSpecificData.desiredJobDescription if manfredSpecificData and manfredSpecificData.desiredJobDescription else '' %}
+
     <div class="page" id="cv-top">
-        <!-- Keep the header centered and the nav controls visually detached to match the editorial reference layout. -->
-        <header class="hero">
-            <div class="hero-actions" aria-label="Section navigation">
-                <a class="nav-square" href="#about-me" aria-label="Jump to about section">&#8592;</a>
-                <a class="nav-square" href="#work-experience" aria-label="Jump to work experience section">&#8594;</a>
+        <header class="masthead">
+            <div class="profile-image-container">
+                {% if aboutMe.profile.avatar.link %}
+                <img class="profile-image" src="{{ aboutMe.profile.avatar.link }}" alt="{{ aboutMe.profile.avatar.alt }}">
+                {% else %}
+                <!-- Placeholder for when no avatar link is available -->
+                <svg class="profile-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 20.993V24H0v-2.993C0 17.514 4.029 14 9 14h6c4.971 0 9 3.514 9 6.993zM12 0C7.029 0 3 4.029 3 9s4.029 9 9 9 9-4.029 9-9-4.029-9-9-9z"/>
+                </svg>
+                {% endif %}
             </div>
 
-            <div class="hero-copy">
-                <h1 class="hero-line">
-                    <span class="hero-name">{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}</span>
-                    {% if aboutMe.profile.title %}
-                    <span class="hero-separator">|</span>
-                    <span class="hero-role">{{ aboutMe.profile.title }}</span>
-                    {% endif %}
-                </h1>
-
-                <div class="hero-meta">
-                    {% if aboutMe.profile.location %}
-                    <span>
-                        {% if aboutMe.profile.location.municipality %}{{ aboutMe.profile.location.municipality }}{% endif %}
-                        {% if aboutMe.profile.location.region %}{% if aboutMe.profile.location.municipality %}, {% endif %}{{ aboutMe.profile.location.region }}{% endif %}
-                        {% if aboutMe.profile.location.country %}{% if aboutMe.profile.location.region or aboutMe.profile.location.municipality %}, {% endif %}{{ aboutMe.profile.location.country }}{% endif %}
-                    </span>
-                    {% endif %}
-                    {% for link in aboutMe.relevantLinks or [] %}
-                    <a href="{{ link.URL }}" target="_blank" rel="noopener noreferrer">{{ link.type|upper }}</a>
-                    {% endfor %}
-                </div>
+            <div class="masthead-copy">
+                <h1 class="masthead-name">{{ aboutMe.profile.name }} {{ aboutMe.profile.surnames }}</h1>
+                {% if aboutMe.profile.title %}
+                <div class="masthead-title">{{ aboutMe.profile.title }}</div>
+                {% endif %}
             </div>
         </header>
 
-        <div class="content">
-            <aside class="sidebar">
-                {% if aboutMe.profile.description %}
-                <section class="sidebar-section" id="about-me">
-                    <div class="section-title">{{ about_label }}</div>
-                    <p class="sidebar-copy">{{ aboutMe.profile.description }}</p>
-                </section>
-                {% endif %}
+        <main class="editorial">
+            {% if aboutMe.profile.description or contact_mails or public_profiles or relevant_links %}
+            <section class="editorial-section" id="about-me">
+                <div class="section-label">{{ about_label }}</div>
 
-                {% if total_experience_years or certifications or (knowledge and knowledge.languages) %}
-                <section class="sidebar-section">
-                    <!-- Derived highlights keep the sidebar useful without requiring non-MAC custom fields. -->
-                    <div class="section-title">{{ highlights_label }}</div>
-                    <div class="highlight-list">
-                        {% if total_experience_years %}
-                        <div class="highlight-item">
-                            <div class="highlight-value">{{ total_experience_years }}</div>
-                            <div class="highlight-text">{{ experience_highlight_label }}</div>
-                        </div>
-                        {% endif %}
-                        {% if certifications %}
-                        <div class="highlight-item">
-                            <div class="highlight-value">{{ certifications|length }}</div>
-                            <div class="highlight-text">{{ texts.certifications|lower }}</div>
-                        </div>
-                        {% endif %}
-                        {% if knowledge and knowledge.languages %}
-                        <div class="highlight-item">
-                            <div class="highlight-value">{{ knowledge.languages|length }}</div>
-                            <div class="highlight-text">{{ texts.languages|lower }}</div>
-                        </div>
-                        {% endif %}
-                    </div>
-                </section>
-                {% endif %}
+                <div class="section-content about-content-grid">
+                    <div class="contact-block">
+                        <ul class="contact-list">
+                            {% for mail in contact_mails %}
+                            <li><a href="mailto:{{ mail }}">{{ mail }}</a></li>
+                            {% endfor %}
 
-                {% if knowledge and knowledge.studies %}
-                <section class="sidebar-section">
-                    <div class="section-title">{{ texts.education }}</div>
-                    <div class="education-list">
-                        {% for study in knowledge.studies|sort(attribute='startDate', reverse=true) %}
-                            {% if study.studyType == 'officialDegree' or study.studyType == 'unaccredited' %}
-                            <article class="education-item">
-                                {% if study.startDate %}
-                                <div class="detail-meta">
-                                    {{ study.startDate|format_date("%Y") }} - {% if study.finishDate %}{{ study.finishDate|format_date("%Y") }}{% else %}{{ texts.present }}{% endif %}
-                                </div>
+                            {% for profile in public_profiles %}
+                            <li>
+                                <a href="{{ profile.URL }}" target="_blank" rel="noopener noreferrer">{{ profile.type }}</a>
+                            </li>
+                            {% endfor %}
+
+                            {% for link in relevant_links %}
+                                {% if link.URL not in public_urls %}
+                            <li>
+                                <a href="{{ link.URL }}" target="_blank" rel="noopener noreferrer">{{ link.type }}</a>
+                            </li>
                                 {% endif %}
-                                <div class="detail-title">{{ study.name }}</div>
-                                <div class="detail-copy">{{ study.institution.name }}</div>
-                            </article>
-                            {% endif %}
-                        {% endfor %}
+                            {% endfor %}
+                        </ul>
                     </div>
-                </section>
-                {% endif %}
 
-                {% if skills_by_category %}
-                <section class="sidebar-section">
-                    <div class="section-title">{{ skills_label }}</div>
-                    <div class="skill-list">
-                        {% for category, skills in skills_by_category.items() %}
-                        <article class="skill-item">
-                            <div class="skill-name">{{ category }}</div>
-                            <div class="skill-text">{{ skills|join(', ') }}</div>
-                        </article>
-                        {% endfor %}
+                    <div class="summary">
+                        {% if aboutMe.profile.description %}
+                        <p>{{ aboutMe.profile.description }}</p>
+                        {% endif %}
                     </div>
-                </section>
-                {% endif %}
+                </div>
+            </section>
+            {% endif %}
 
-                {% if certifications %}
-                <section class="sidebar-section">
-                    <div class="section-title">{{ texts.certifications }}</div>
-                    <div class="certification-list">
-                        {% for study in certifications|sort(attribute='finishDate', reverse=true) %}
-                        <article class="certification-item">
-                            {% if study.finishDate %}
-                            <div class="detail-meta">{{ study.finishDate|format_date("%Y") }}</div>
-                            {% endif %}
-                            <div class="detail-title">
-                                {% if study.institution and study.institution.URL %}
-                                <a href="{{ study.institution.URL }}" target="_blank" rel="noopener noreferrer">{{ study.name }}</a>
-                                {% else %}
-                                {{ study.name }}
-                                {% endif %}
+            {% if experience and experience.jobs %}
+            <section class="editorial-section" id="work-experience">
+                <div class="section-label">{{ work_experience_label }}</div>
+
+                <div class="section-content">
+                    {% for job in experience.jobs %}
+                        {% for role in job.roles %}
+                        <article class="experience-entry">
+                            <div class="experience-meta-column">
+                                <div class="role-organization">{{ job.organization.name }}</div>
+                                <span class="role-name">{{ role.name }}</span>
+                                <span class="role-period">
+                                    {{ role.startDate|format_date("%b %Y") }} - {% if role.finishDate %}{{ role.finishDate|format_date("%b %Y") }}{% else %}{{ texts.present }}{% endif %}
+                                </span>
                             </div>
-                            <div class="detail-copy">{{ study.institution.name }}</div>
-                        </article>
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
 
-                {% if knowledge and knowledge.languages %}
-                <section class="sidebar-section">
-                    <div class="section-title">{{ texts.languages }}</div>
-                    <div class="language-list">
-                        {% for language in knowledge.languages %}
-                        <article class="language-item">
-                            <div class="language-name">{{ language.fullName or language.name }}</div>
-                            <div class="language-level">
-                                {% if language.level == 'Native or bilingual proficiency' %}
-                                    {{ texts.native }}
-                                {% elif language.level == 'Professional working proficiency' %}
-                                    {{ texts.professional }}
-                                {% elif language.level == 'Full professional proficiency' %}
-                                    {{ texts.advanced }}
-                                {% elif language.level == 'Limited working proficiency' %}
-                                    {{ texts.intermediate }}
-                                {% elif language.level == 'Elementary proficiency' %}
-                                    {{ texts.basic }}
-                                {% else %}
-                                    {{ language.level }}
-                                {% endif %}
-                            </div>
-                        </article>
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
-            </aside>
-
-            <main class="main" id="work-experience">
-                <!-- Keep narrative and longer text blocks on the right to preserve the two-column hierarchy from the mockup. -->
-                {% if experience and experience.jobs %}
-                <section class="main-section">
-                    <div class="main-section-title">{{ work_experience_label }}</div>
-                    <div class="experience-list">
-                        {% for job in experience.jobs %}
-                            {% for role in job.roles %}
-                            <article class="experience-item">
-                                <div class="experience-grid">
-                                    <div class="experience-period">
-                                        {{ role.startDate|format_date("%b %Y") }}<br>
-                                        {% if role.finishDate %}
-                                        {{ role.finishDate|format_date("%b %Y") }}
-                                        {% else %}
-                                        {{ texts.present }}
-                                        {% endif %}
-                                    </div>
-
-                                    <div>
-                                        <div class="experience-role-line">
-                                            <h2 class="experience-role">{{ role.name }}</h2>
-                                            <span class="experience-company">| {{ job.organization.name }}</span>
-                                        </div>
-
-                                        <div class="experience-body">
-                                            {% for challenge in role.challenges or [] %}
-                                                {% if challenge.description_html %}
-                                                    {{ challenge.description_html|safe }}
-                                                {% else %}
-                                                    <ul>
-                                                        {% for action in challenge.description.split('\n- ') %}
-                                                            {% if action.strip() %}
-                                                            <li>{{ action.replace('- ', '').strip() }}</li>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </ul>
+                            <div class="experience-description-column">
+                                <div class="experience-content">
+                                    {% for challenge in role.challenges or [] %}
+                                        {% if challenge.description_html %}
+                                            {{ challenge.description_html|safe }}
+                                        {% elif challenge.description %}
+                                            <ul>
+                                            {% for line in challenge.description.split('
+') %}
+                                                {% if line.strip() %}
+                                                <li>{{ line|replace('- ', '')|trim }}</li>
                                                 {% endif %}
                                             {% endfor %}
-                                        </div>
-
-                                        {% if role.competences %}
-                                        <div class="experience-stack">
-                                            <span class="experience-stack-label">{{ texts.technical_skills }}:</span>
-                                            {{ role.competences|map(attribute='name')|join(', ') }}
-                                        </div>
+                                            </ul>
                                         {% endif %}
-                                    </div>
+                                    {% endfor %}
                                 </div>
-                            </article>
-                            {% endfor %}
+                            </div>
+                        </article>
                         {% endfor %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            {% if education_entries %}
+            <section class="editorial-section" id="education">
+                <div class="section-label">{{ education_label }}</div>
+
+                <div class="section-content">
+                    {% for study in education_entries|sort(attribute='startDate', reverse=true) %}
+                    <div class="education-entry">
+                        <div class="education-main-info">
+                            {% if study.institution.name %}{{ study.institution.name|trim }}{% endif %}{% if study.institution.name and study.name %} | {% endif %}{% if study.name %}<span class="education-degree">{{ study.name|trim }}</span>{% endif %}
+                        </div>
+                        <div class="education-period">
+                            {% if study.startDate is defined and study.startDate %}{{ study.startDate|format_date("%Y") }}{% endif %}{% if (study.finishDate is defined and study.finishDate) or (study.startDate is defined and study.startDate) %} - {% endif %}{% if study.finishDate is defined and study.finishDate %}{{ study.finishDate|format_date("%Y") }}{% else %}{{ texts.present }}{% endif %}
+                        </div>
                     </div>
-                </section>
-                {% endif %}
-            </main>
-        </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            {% if certification_entries %}
+            <section class="editorial-section" id="certifications">
+                <div class="section-label">{{ certifications_label }}</div>
+
+                <div class="section-content certifications-grid">
+                    {% for study in certification_entries|sort(attribute='startDate', reverse=true) %}
+                    <div class="certification-entry">
+                        <div class="certification-main-info">
+                            {% if study.institution and study.institution.URL %}
+                                <a href="{{ study.institution.URL }}" target="_blank" rel="noopener noreferrer">{% if study.name %}{{ study.name|trim }}{% endif %}</a>
+                            {% else %}
+                                {% if study.name %}{{ study.name|trim }}{% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="certification-period">
+                            {% if study.institution.name %}{{ study.institution.name|trim }}{% endif %}
+                            {% if study.institution.name and ((study.finishDate is defined and study.finishDate) or (study.startDate is defined and study.startDate)) %} | {% endif %}
+                            {% if study.finishDate is defined and study.finishDate %}{{ study.finishDate|format_date("%Y") }}{% elif study.startDate is defined and study.startDate %}{{ study.startDate|format_date("%Y") }}{% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            {% if skills_by_category or soft_skills %}
+            <section class="editorial-section" id="skills">
+                <div class="section-label">{{ skills_label }}</div>
+
+                <div class="section-content">
+                    {% for category, skills in skills_by_category.items() %}
+                    <div class="skill-entry">
+                        <div class="skill-category-title">{{ category }}</div>
+                        <div class="skill-list">{{ skills|join(' | ') }}</div>
+                    </div>
+                    {% endfor %}
+
+                    {% if soft_skills %}
+                    <div class="skill-entry">
+                        <div class="skill-category-title">{{ 'Soft' if language == 'en' else 'Soft' }}</div>
+                        <div class="skill-list">{{ soft_skills|map(attribute='skill')|map(attribute='name')|join(' | ') }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </section>
+            {% endif %}
+
+            {% if highlights_text %}
+            <section class="editorial-section" id="highlights">
+                <div class="section-label">{{ highlights_label }}</div>
+
+                <div class="section-content">
+                    <div class="highlight-content">
+                        <p>{{ highlights_text }}</p>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </main>
     </div>
 
-    <!-- Future adaptation note: keep the left column concise and reserve longer narrative content for the work experience column. -->
     {% include 'components/template_switcher.html' %}
 </body>
 </html>
